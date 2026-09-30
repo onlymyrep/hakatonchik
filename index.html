@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kazan Pulse — Экосистема городских активностей</title>
+    <style>
+        :root {
+            --bg: #0A0A0A;
+            --card: #1C1C1E;
+            --text: #FFFFFF;
+            --text-muted: #8E8E93;
+            --accent-blue: #0A84FF;
+            --accent-green: #30D158;
+            --accent-purple: #BF5AF2;
+            --accent-orange: #FF9F0A;
+            --accent-pink: #FF375F;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.4;
+            -webkit-font-smoothing: antialiased;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100vh;
+        }
+
+        @media print {
+            body { background: #000; color: #fff; overflow: visible; height: auto; }
+            .slide { page-break-after: always; height: 100vh; display: flex; flex-direction: column; justify-content: center; scroll-snap-align: none; }
+            .phone-mockup { box-shadow: none; border: 1px solid #333; }
+        }
+
+        .slide {
+            min-height: 100vh;
+            padding: 8vh 10vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 1px solid #2C2C2E;
+            position: relative;
+            scroll-snap-align: start;
+        }
+
+        .slide:last-child { border-bottom: none; }
+
+        h1 {
+            font-size: clamp(3rem, 7vw, 6rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: var(--text-muted);
+            max-width: 900px;
+            margin-bottom: 1.2rem;
+        }
+
+        .accent-blue { color: var(--accent-blue); }
+        .accent-green { color: var(--accent-green); }
+        .accent-purple { color: var(--accent-purple); }
+        .accent-orange { color: var(--accent-orange); }
+        .accent-pink { color: var(--accent-pink); }
+
+        .content-layout {
+            display: flex;
+            align-items: center;
+            gap: 6vw;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .text-block { flex: 1; }
+
+        .image-block {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .phone-mockup {
+            max-width: 100%;
+            height: auto;
+            max-height: 70vh;
+            border-radius: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 8px #2C2C2E;
+            object-fit: contain;
+        }
+
+        .phone-mockup.small { max-height: 50vh; }
+
+        .roadmap-box {
+            background-color: var(--card);
+            padding: 3rem;
+            border-radius: 24px;
+            margin-bottom: 2rem;
+            border-left: 6px solid var(--accent-blue);
+        }
+
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .roadmap-item {
+            background: #2C2C2E;
+            padding: 1.8rem;
+            border-radius: 16px;
+            border-top: 3px solid var(--accent-blue);
+        }
+
+        .roadmap-item .month {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .roadmap-item .title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            color: #fff;
+        }
+
+        .roadmap-item .desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .tennis-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            margin-top: 1rem;
+            margin-right: 0.5rem;
+            transition: transform 0.2s;
+        }
+        .tennis-badge:hover { transform: scale(1.05); }
+
+        .tennis-badge.alt {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+        }
+
+        .flow-chart {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 3rem;
+        }
+        .flow-step {
+            background: var(--card);
+            padding: 1.3rem 1.8rem;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: 1px solid #333;
+        }
+        .flow-arrow {
+            color: var(--accent-blue);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .thank-you {
+            text-align: center;
+            background: linear-gradient(135deg, #0A0A0A 0%, #0a1a2e 100%);
+        }
+        .thank-you h1 {
+            font-size: clamp(4rem, 12vw, 9rem);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @media (max-width: 900px) {
+            .content-layout { flex-direction: column; text-align: center; }
+            .text-block, .image-block { flex: none; width: 100%; }
+            .phone-mockup { max-height: 50vh; margin-top: 2rem; }
+            .slide { padding: 6vh 6vw; }
+            .flow-chart { flex-direction: column; }
+            .flow-arrow { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Слайд 1: Обложка -->
+    <section class="slide" style="background: linear-gradient(135deg, #0A0A0A 0%, #1a1a2e 100%);">
+        <div class="text-block" style="text-align: center; margin: 0 auto;">
+            <h1 style="font-size: clamp(4rem, 10vw, 8rem); margin-bottom: 1rem;">Kazan Pulse</h1>
+            <p style="font-size: clamp(1.4rem, 3.5vw, 2.2rem); color: #fff; margin-bottom: 1rem; max-width: 900px;">
+                Экосистема городских активностей
+            </p>
+            <p style="font-size: clamp(1.2rem, 3vw, 1.8rem); color: var(--accent-blue); margin: 0 auto; max-width: 900px;">
+                А также социальная платформа мелкого бизнеса
+            </p>
+        </div>
+    </section>
+
+    <!-- Слайд 2: Две проблемы — два решения -->
+    <section class="slide">
+        <div class="content-layout">
+            <div class="text-block">
+                <h1>Две проблемы — <br>два решения.</h1>
+                <p style="color: #fff;"><strong class="accent-orange">Проблема 1.</strong> Люди не знают о событиях города и полезных бизнесах.</p>
+                <p style="color: #fff;"><strong class="accent-orange">Проблема 2.</strong> У людей нет желания и мотивации посещать события или идти в неизвестное кафе в одиночку.</p>
+                <p>Информация разбросана. Идти одному — скучно. Малый бизнес не может найти первых клиентов.</p>
+            </div>
+            <div class="image-block">
+                <!-- Скриншот 3: Лента событий -->
+                <img src="https://storage.googleapis.com/chat-image-bucket-14579/chat-images/6a3f25f0-0a9f-4a3b-8d4e-0c6c6c1b6e6e.jpeg" alt="Лента событий" class="phone-mockup">
+            </div>
+        </div>
+    </section>
+
+    <!-- Слайд 3: Два решения — одна экосистема -->
+    <section class="slide">
+        <div class="content-layout">
+            <div class="text-block">
+                <h1>Одна экосистема — <br>два продукта.</h1>
+                <p><strong class="accent-blue">Kazan Pulse</strong> — находи события и компанию.</p>
+                <p><strong class="accent-green">Tennis App</strong> — записывайся на продолжение вместе.</p>
+                <p>Нашёл событие → нажал «Пойду» → попал в чат → пошёл с компанией → увидел антикафе → записался на турнир всей группой.</p>
+                <a href="https://tennis.runsite.app/" target="_blank" class="tennis-badge">Tennis App — подписка</a>
+                <a href="https://tabletennis-backend-3ga1.onrender.com" target="_blank" class="tennis-badge alt">Массовая версия — бесплатно</a>
+            </div>
+            <div class="image-block">
+                <!-- Скриншот 5: Детали события -->
+                <img src="https://storage.googleapis.com/chat-image-bucket-14579/chat-images/8a3f25f0-0a9f-4a3b-8d4e-0c6c6c1b6e6e.jpeg" alt="Кнопка Пойду" class="phone-mockup">
+            </div>
+        </div>
+    </section>
+
+    <!-- Слайд 4: Как это работает -->
+    <section class="slide" style="text-align: center;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h1 style="margin-bottom: 3rem;">Как это работает.</h1>
+            <div class="flow-chart">
+                <div class="flow-step">Событие</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Чат</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Компания</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Бизнес рядом</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step" style="border-color: var(--accent-green);">Tennis App</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Запись</div>
+            </div>
+            <p style="margin: 3rem auto; text-align: center; max-width: 800px;">
+                Kazan Pulse приводит людей. Tennis App удерживает их после. Бизнес получает поток клиентов. Это замкнутый цикл.
+            </p>
+        </div>
+    </section>
+
+    <!-- Слайд 5: Социальная связь -->
+    <section class="slide">
+        <div class="content-layout">
+            <div class="text-block">
+                <h1>Незнакомцы — <br>не проблема.</h1>
+                <p>Чат события объединяет тех, кто уже идёт. Договорись о встрече, обсуди детали, найди друзей по интересам.</p>
+            </div>
+            <div class="image-block">
+                <!-- Скриншот 7: Чат -->
+                <img src="https://storage.googleapis.com/chat-image-bucket-14579/chat-images/9a3f25f0-0a9f-4a3b-8d4e-0c6c6c1b6e6e.jpeg" alt="Чат события" class="phone-mockup">
+            </div>
+        </div>
+    </section>
+
+    <!-- Слайд 6: Монетизация бизнеса -->
+    <section class="slide">
+        <div class="content-layout">
+            <div class="text-block">
+                <h1>Бизнесу — <br>поток, людям — опыт.</h1>
+                <p>Мелкий бизнес размещает карточки (рекламу) в обмен на поток пользователей.</p>
+                <p><strong class="accent-green">Потенциальные покупатели для бизнеса — это выручка.</strong></p>
+                <p>Антикафе, теннисные клубы, барбершопы, кофейни — все, кто рядом с событиями.</p>
+            </div>
+            <div class="image-block" style="gap: 2rem; display: flex;">
+                <img src="https://storage.googleapis.com/chat-image-bucket-14579/chat-images/3a3f25f0-0a9f-4a3b-8d4e-0c6c6c1b6e6e.jpeg" alt="Местный бизнес" class="phone-mockup small">
+                <img src="https://storage.googleapis.com/chat-image-bucket-14579/chat-images/4a3f25f0-0a9f-4a3b-8d4e-0c6c6c1b6e6e.jpeg" alt="Реклама бизнеса" class="phone-mockup small">
+            </div>
+        </div>
+    </section>
+
+    <!-- Слайд 7: Роадмап 9 месяцев -->
+    <section class="slide">
+        <div style="max-width: 1300px; margin: 0 auto; width: 100%;">
+            <h1 style="margin-bottom: 1rem;">План развития</h1>
+            <p style="margin-bottom: 2rem;">9 месяцев до масштабирования. От города — к региону и федерации.</p>
+
+            <div class="roadmap-box">
+                <div class="roadmap-grid">
+                    <div class="roadmap-item">
+                        <div class="month">Месяц 1–2</div>
+                        <div class="title">Запуск в Казани</div>
+                        <div class="desc">Упаковка, лендинг, 100 событий, 1000 пользователей. Партнёрства с антикафе, коворкингами, кофейнями.</div>
+                    </div>
+                    <div class="roadmap-item">
+                        <div class="month">Месяц 3–4</div>
+                        <div class="title">Монетизация и партнёры</div>
+                        <div class="desc">Платные размещения бизнеса. Интеграция с Tennis App. Аренда и прокат: корты, залы, инвентарь. 5000 пользователей.</div>
+                    </div>
+                    <div class="roadmap-item">
+                        <div class="month">Месяц 5–6</div>
+                        <div class="title">Недвижимость и аренда</div>
+                        <div class="desc">Партнёрства с арендодателями: коворкинги, лофты, спортзалы. Прокат оборудования и площадок через платформу.</div>
+                    </div>
+                    <div class="roadmap-item">
+                        <div class="month">Месяц 7</div>
+                        <div class="title">Android + веб-версия</div>
+                        <div class="desc">Запуск Android-приложения и веб-клиента. Мультиязычность: татарский, испанский, английский.</div>
+                    </div>
+                    <div class="roadmap-item">
+                        <div class="month">Месяц 8</div>
+                        <div class="title">Выход в Татарстан</div>
+                        <div class="desc">Набережные Челны, Альметьевск, Нижнекамск. Грант или акселератор IT Park / Пульсар.</div>
+                    </div>
+                    <div class="roadmap-item" style="border-top-color: var(--accent-green);">
+                        <div class="month" style="color: var(--accent-green);">Месяц 9</div>
+                        <div class="title" style="color: var(--accent-green);">Инвестиции и масштаб</div>
+                        <div class="desc">Раунд, выход в города-миллионники. 100 000+ пользователей. Экосистема аренды, проката и бронирования.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Слайд 8: Спасибо за внимание -->
+    <section class="slide thank-you">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h1>Спасибо<br>за внимание.</h1>
+            <p style="font-size: 1.4rem; color: #fff; margin: 2rem auto; max-width: 700px;">
+                Готовы обсуждать партнёрство, инвестиции и запуск.
+            </p>
+
+            <div style="display: flex; flex-direction: column; gap: 1.5rem; align-items: center; margin-top: 3rem;">
+                <div style="background: var(--card); padding: 1.8rem 2.5rem; border-radius: 16px; width: 100%; max-width: 600px; border-left: 4px solid var(--accent-blue); text-align: left;">
+                    <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 0.5rem;">Исходный код Kazan Pulse</p>
+                    <a href="https://github.com/onlymyrep/Kazan_pulse_all_versions" style="color: var(--accent-blue); font-size: 1.2rem; font-weight: 700; text-decoration: none; word-break: break-all;">github.com/onlymyrep/Kazan_pulse_all_versions</a>
+                </div>
+
+                <div style="background: var(--card); padding: 1.8rem 2.5rem; border-radius: 16px; width: 100%; max-width: 600px; border-left: 4px solid var(--accent-green); text-align: left;">
+                    <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 0.5rem;">Tennis App — подписка</p>
+                    <a href="https://tennis.runsite.app/" style="color: var(--accent-green); font-size: 1.2rem; font-weight: 700; text-decoration: none; word-break: break-all;">tennis.runsite.app</a>
+                </div>
+
+                <div style="background: var(--card); padding: 1.8rem 2.5rem; border-radius: 16px; width: 100%; max-width: 600px; border-left: 4px solid var(--accent-purple); text-align: left;">
+                    <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 0.5rem;">Tennis App — бесплатная версия с пробным периодом</p>
+                    <a href="https://tabletennis-backend-3ga1.onrender.com" style="color: var(--accent-purple); font-size: 1.2rem; font-weight: 700; text-decoration: none; word-break: break-all;">tabletennis-backend-3ga1.onrender.com</a>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Языки: татарский, испанский, английский</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
