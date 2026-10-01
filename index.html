@@ -31,9 +31,28 @@
         }
 
         @media print {
-            body { background: #000; color: #fff; overflow: visible; height: auto; }
-            .slide { page-break-after: always; height: 100vh; display: flex; flex-direction: column; justify-content: center; scroll-snap-align: none; }
-            .phone-mockup { box-shadow: none; border: 1px solid #333; }
+            body {
+                background: #000;
+                color: #fff;
+                overflow: visible;
+                height: auto;
+            }
+            .slide {
+                page-break-after: always;
+                min-height: auto;
+                height: 100vh;
+                padding: 4vh 6vw;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                scroll-snap-align: none;
+            }
+            .phone-mockup {
+                box-shadow: none;
+                border: 1px solid #333;
+                max-height: 40vh;
+            }
+            .phone-mockup.small { max-height: 30vh; }
         }
 
         .slide {
@@ -224,9 +243,9 @@
 
     <!-- Слайд 1: Обложка -->
     <section class="slide" style="background: linear-gradient(135deg, #0A0A0A 0%, #1a1a2e 100%);">
-        <div class="text-block" style="text-align: center; margin: 0 auto;">
+        <div style="text-align: center; margin: 0 auto;">
             <h1 style="font-size: clamp(4rem, 10vw, 8rem); margin-bottom: 1rem;">Kazan Pulse</h1>
-            <p style="font-size: clamp(1.4rem, 3.5vw, 2.2rem); color: #fff; margin-bottom: 1rem; max-width: 900px;">
+            <p style="font-size: clamp(1.4rem, 3.5vw, 2.2rem); color: #fff; margin-bottom: 1rem; max-width: 900px; margin-left: auto; margin-right: auto;">
                 Экосистема городских активностей
             </p>
             <p style="font-size: clamp(1.2rem, 3vw, 1.8rem); color: var(--accent-blue); margin: 0 auto 4rem; max-width: 900px;">
@@ -247,13 +266,12 @@
                 <p>Информация разбросана. Идти одному — скучно. Малый бизнес не может найти первых клиентов.</p>
             </div>
             <div class="image-block">
-                <!-- Скриншот 3: Лента событий -->
                 <img src="interface.png" alt="Лента событий" class="phone-mockup">
             </div>
         </div>
     </section>
 
-    <!-- Слайд 3: Два решения — одна экосистема -->
+    <!-- Слайд 3: Одна экосистема — два продукта -->
     <section class="slide">
         <div class="content-layout">
             <div class="text-block">
@@ -265,9 +283,7 @@
                 <a href="https://tabletennis-backend-3ga1.onrender.com" target="_blank" class="tennis-badge alt">Настольный теннис — бесплатно</a>
             </div>
             <div class="image-block">
-                <!-- Скриншот 5: Детали события -->
-                <img src="t.png" class="phone-mockup">
-                
+                <img src="t.png" alt="Детали события" class="phone-mockup">
             </div>
         </div>
     </section>
@@ -303,10 +319,9 @@
                 <h1>Незнакомцы — <br>не проблема.</h1>
                 <p>Чат события объединяет тех, кто уже идёт. Договорись о встрече, обсуди детали, найди друзей по интересам.</p>
             </div>
-            <div class="image-block">
-                <!-- Скриншот 7: Чат -->
-                <img src="chat.png" alt="Чат события" class="phone-mockup">
-                <img src="eventcard.png" alt="Чат события" class="phone-mockup">
+            <div class="image-block" style="gap: 1.5rem;">
+                <img src="chat.png" alt="Чат события" class="phone-mockup small">
+                <img src="eventcard.png" alt="Карточка события" class="phone-mockup small">
             </div>
         </div>
     </section>
@@ -320,11 +335,9 @@
                 <p><strong class="accent-green">Потенциальные покупатели для бизнеса — это выручка.</strong></p>
                 <p>Антикафе, теннисные клубы, барбершопы, кофейни — все, кто рядом с событиями.</p>
             </div>
-            <div class="image-block" style="gap: 2rem; display: flex;">
-
-                <img src="bisnes.png" alt="Реклама бизнеса" class="phone-mockup small">
-                <img src="bisnescard.png" alt="Местный бизнес" class="phone-mockup small">
-                
+            <div class="image-block" style="gap: 1.5rem;">
+                <img src="bisnes.png" alt="Лента бизнесов" class="phone-mockup small">
+                <img src="bisnescard.png" alt="Карточка бизнеса" class="phone-mockup small">
             </div>
         </div>
     </section>
