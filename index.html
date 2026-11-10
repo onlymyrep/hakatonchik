@@ -1,417 +1,690 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kazan Pulse — Экосистема городских активностей</title>
-    <style>
-        :root {
-            --bg: #0A0A0A;
-            --card: #1C1C1E;
-            --text: #FFFFFF;
-            --text-muted: #8E8E93;
-            --accent-blue: #0A84FF;
-            --accent-green: #30D158;
-            --accent-purple: #BF5AF2;
-            --accent-orange: #FF9F0A;
-            --accent-pink: #FF375F;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Kazan Pulse — Экосистема городских активностей</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   MATERIAL 3 TOKENS (dark)
+   ============================================================ */
+:root {
+    color-scheme: dark;
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+    --md-primary:              #D0BCFF;
+    --md-on-primary:           #381E72;
+    --md-primary-container:    #4F378B;
+    --md-on-primary-container: #EADDFF;
 
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.4;
-            -webkit-font-smoothing: antialiased;
-            scroll-snap-type: y mandatory;
-            overflow-y: scroll;
-            height: 100vh;
-        }
+    --md-secondary:              #CCC2DC;
+    --md-on-secondary:           #332D41;
+    --md-secondary-container:    #4A4458;
+    --md-on-secondary-container: #E8DEF8;
 
-        @media print {
-            body {
-                background: #000;
-                color: #fff;
-                overflow: visible;
-                height: auto;
-            }
-            .slide {
-                page-break-after: always;
-                min-height: auto;
-                height: 100vh;
-                padding: 4vh 6vw;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                scroll-snap-align: none;
-            }
-            .phone-mockup {
-                box-shadow: none;
-                border: 1px solid #333;
-                max-height: 40vh;
-            }
-            .phone-mockup.small { max-height: 30vh; }
-        }
+    --md-tertiary:              #B5CCBA;
+    --md-on-tertiary:           #0F3820;
+    --md-tertiary-container:    #30503B;
+    --md-on-tertiary-container: #D1E8D6;
 
-        .slide {
-            min-height: 100vh;
-            padding: 8vh 10vw;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border-bottom: 1px solid #2C2C2E;
-            position: relative;
-            scroll-snap-align: start;
-        }
+    --md-error:              #F2B8B5;
+    --md-on-error:           #601410;
+    --md-error-container:    #8C1D18;
 
-        .slide:last-child { border-bottom: none; }
+    --md-surface:                   #141218;
+    --md-on-surface:                #E6E0E9;
+    --md-on-surface-variant:        #CAC4D0;
+    --md-outline:                   #938F99;
+    --md-outline-variant:           #49454F;
 
-        h1 {
-            font-size: clamp(3rem, 7vw, 6rem);
-            font-weight: 800;
-            line-height: 1.05;
-            letter-spacing: -0.02em;
-            margin-bottom: 1.5rem;
-        }
+    --md-surface-container-lowest:  #0F0D13;
+    --md-surface-container-low:     #1D1B20;
+    --md-surface-container:         #211F26;
+    --md-surface-container-high:    #2B2930;
+    --md-surface-container-highest: #36343B;
 
-        h2 {
-            font-size: clamp(2rem, 5vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -0.01em;
-        }
+    --bg-primary:     var(--md-surface);
+    --bg-card:        var(--md-surface-container);
+    --text-primary:   var(--md-on-surface);
+    --text-secondary: var(--md-on-surface-variant);
+    --text-muted:     var(--md-outline);
 
-        h3 {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
+    --accent-blue:   #A8C7FA;
+    --accent-green:  var(--md-tertiary);
+    --accent-purple: var(--md-primary);
+    --accent-orange: var(--md-error);
+    --accent-pink:   var(--md-error);
 
-        p {
-            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-            color: var(--text-muted);
-            max-width: 900px;
-            margin-bottom: 1.2rem;
-        }
+    --ui-radius-sm: 8px;
+    --ui-radius-md: 12px;
+    --ui-radius-lg: 16px;
+    --ui-radius-xl: 28px;
 
-        .accent-blue { color: var(--accent-blue); }
-        .accent-green { color: var(--accent-green); }
-        .accent-purple { color: var(--accent-purple); }
-        .accent-orange { color: var(--accent-orange); }
-        .accent-pink { color: var(--accent-pink); }
+    --md-font: "Roboto", "Helvetica Neue", system-ui, -apple-system, sans-serif;
+    --md-ease-standard:   cubic-bezier(0.2, 0, 0, 1);
+    --md-ease-emphasized: cubic-bezier(0.05, 0.7, 0.1, 1);
+    --md-dur-short:       150ms;
+    --md-dur-medium:      250ms;
 
-        .content-layout {
-            display: flex;
-            align-items: center;
-            gap: 6vw;
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+    --md-elev-1: 0 1px 2px rgba(0,0,0,0.30), 0 1px 3px 1px rgba(0,0,0,0.15);
+    --md-elev-2: 0 1px 2px rgba(0,0,0,0.30), 0 2px 6px 2px rgba(0,0,0,0.15);
+    --md-elev-3: 0 1px 3px rgba(0,0,0,0.30), 0 4px 8px 3px rgba(0,0,0,0.15);
+    --md-elev-4: 0 2px 3px rgba(0,0,0,0.30), 0 6px 10px 4px rgba(0,0,0,0.15);
 
-        .text-block { flex: 1; }
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+    --space-8: 4rem;
 
-        .image-block {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-        }
+    --type-display: clamp(2.75rem, 6vw, 5rem);
+    --type-headline: clamp(1.75rem, 3.6vw, 2.5rem);
+    --type-title: clamp(1.25rem, 2vw, 1.5rem);
+    --type-body: 1rem;
+    --type-body-lg: clamp(1.0625rem, 1.6vw, 1.25rem);
+    --type-footnote: 0.875rem;
+    --type-caption: 0.75rem;
 
-        .phone-mockup {
-            max-width: 100%;
-            height: auto;
-            max-height: 70vh;
-            border-radius: 40px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 8px #2C2C2E;
-            object-fit: contain;
-        }
+    --focus-ring: 2px solid var(--md-primary);
+    --touch-min: 2.75rem;
+}
 
-        .phone-mockup.small { max-height: 50vh; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
-        .roadmap-box {
-            background-color: var(--card);
-            padding: 3rem;
-            border-radius: 24px;
-            margin-bottom: 2rem;
-            border-left: 6px solid var(--accent-blue);
-        }
+body {
+    background: var(--md-surface);
+    color: var(--md-on-surface);
+    font-family: var(--md-font);
+    font-size: var(--type-body);
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
-        .roadmap-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
+    scroll-snap-type: y proximity;
+    overflow-y: scroll;
+    height: 100vh;
 
-        .roadmap-item {
-            background: #2C2C2E;
-            padding: 1.8rem;
-            border-radius: 16px;
-            border-top: 3px solid var(--accent-blue);
-        }
+    padding-top:    max(1rem, env(safe-area-inset-top));
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    padding-left:   max(1rem, env(safe-area-inset-left));
+    padding-right:  max(1rem, env(safe-area-inset-right));
+}
 
-        .roadmap-item .month {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--accent-blue);
-            margin-bottom: 0.6rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+/* Focus */
+:where(a, button, [tabindex]):focus { outline: none; }
+:where(a, button, [tabindex]):focus-visible {
+    outline: var(--focus-ring) !important;
+    outline-offset: 3px !important;
+    box-shadow: none !important;
+}
 
-        .roadmap-item .title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.6rem;
-            color: #fff;
-        }
+/* Touch */
+:where(button, a) {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
 
-        .roadmap-item .desc {
-            font-size: 1rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        transition-duration: 0.001ms !important;
+        animation-duration: 0.001ms !important;
+    }
+}
 
-        .tennis-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
-            color: #fff;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-decoration: none;
-            margin-top: 1rem;
-            margin-right: 0.5rem;
-            transition: transform 0.2s;
-        }
-        .tennis-badge:hover { transform: scale(1.05); }
+/* ============================================================
+   SLIDES
+   ============================================================ */
+.slide {
+    min-height: 100vh;
+    padding: 8vh 8vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    scroll-snap-align: start;
+}
+.slide:last-child { border-bottom: none; }
 
-        .tennis-badge.alt {
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
-        }
+/* Typography */
+h1, h2, h3, p { font-family: var(--md-font); }
 
-        .flow-chart {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 3rem;
-        }
-        .flow-step {
-            background: var(--card);
-            padding: 1.3rem 1.8rem;
-            border-radius: 16px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border: 1px solid #333;
-        }
-        .flow-arrow {
-            color: var(--accent-blue);
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
+h1 {
+    font-size: var(--type-display);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: var(--space-4);
+    color: var(--md-on-surface);
+}
+h2 {
+    font-size: var(--type-headline);
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: var(--space-3);
+    color: var(--md-on-surface);
+}
+h3 {
+    font-size: var(--type-title);
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: var(--space-2);
+    color: var(--md-on-surface);
+}
 
-        .thank-you {
-            text-align: center;
-            background: linear-gradient(135deg, #0A0A0A 0%, #0a1a2e 100%);
-        }
-        .thank-you h1 {
-            font-size: clamp(4rem, 12vw, 9rem);
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+p {
+    font-size: var(--type-body-lg);
+    color: var(--md-on-surface-variant);
+    max-width: 62ch;
+    margin-bottom: var(--space-4);
+    line-height: 1.55;
+}
+p strong { color: var(--md-on-surface); font-weight: 500; }
 
-        @media (max-width: 900px) {
-            .content-layout { flex-direction: column; text-align: center; }
-            .text-block, .image-block { flex: none; width: 100%; }
-            .phone-mockup { max-height: 50vh; margin-top: 2rem; }
-            .slide { padding: 6vh 6vw; }
-            .flow-chart { flex-direction: column; }
-            .flow-arrow { transform: rotate(90deg); }
-        }
-    </style>
+.accent-blue   { color: var(--accent-blue); }
+.accent-green  { color: var(--md-tertiary); }
+.accent-purple { color: var(--md-primary); }
+.accent-orange { color: var(--md-error); }
+.accent-pink   { color: var(--md-error); }
+
+/* Layout */
+.content-layout {
+    display: flex;
+    align-items: center;
+    gap: 5vw;
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
+}
+.text-block { flex: 1; min-width: 0; }
+.image-block {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-5);
+    min-width: 0;
+}
+
+/* Phone mockups */
+.phone-mockup {
+    max-width: 100%;
+    height: auto;
+    max-height: 68vh;
+    border-radius: 32px;
+    box-shadow: var(--md-elev-3), 0 0 0 6px var(--md-surface-container-highest);
+    object-fit: contain;
+    display: block;
+}
+.phone-mockup.small { max-height: 46vh; }
+
+/* Material card */
+.card {
+    background: var(--md-surface-container);
+    border-radius: var(--ui-radius-lg);
+    padding: var(--space-5);
+    box-shadow: var(--md-elev-1);
+    transition: box-shadow var(--md-dur-medium) var(--md-ease-standard);
+    border: none;
+}
+.card:hover { box-shadow: var(--md-elev-2); }
+.card + .card { margin-top: var(--space-4); }
+
+/* Buttons — Material filled pill */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--touch-min);
+    padding: 0.65rem 1.5rem;
+    border-radius: 999px;
+    font-family: var(--md-font);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    color: var(--md-primary);
+    background: transparent;
+    border: 1px solid var(--md-outline);
+    transition: background-color var(--md-dur-short) var(--md-ease-standard);
+    cursor: pointer;
+}
+.btn:hover { background: color-mix(in srgb, var(--md-primary) 8%, transparent); }
+.btn-primary {
+    background: var(--md-primary);
+    border-color: var(--md-primary);
+    color: var(--md-on-primary);
+}
+.btn-primary:hover { box-shadow: var(--md-elev-1); }
+.btn + .btn { margin-left: var(--space-2); }
+
+/* ============================================================
+   ROADMAP
+   ============================================================ */
+.roadmap-box {
+    background: var(--md-surface-container);
+    padding: var(--space-6);
+    border-radius: var(--ui-radius-lg);
+    margin-bottom: var(--space-4);
+    box-shadow: var(--md-elev-1);
+}
+.roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+}
+.roadmap-item {
+    background: var(--md-surface-container-high);
+    padding: var(--space-4);
+    border-radius: var(--ui-radius-md);
+    transition: box-shadow var(--md-dur-medium) var(--md-ease-standard);
+}
+.roadmap-item:hover { box-shadow: var(--md-elev-2); }
+.roadmap-item .month {
+    font-size: var(--type-caption);
+    font-weight: 500;
+    color: var(--md-primary);
+    margin-bottom: var(--space-2);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+.roadmap-item .title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: var(--space-2);
+    color: var(--md-on-surface);
+    line-height: 1.35;
+}
+.roadmap-item .desc {
+    font-size: var(--type-footnote);
+    color: var(--md-on-surface-variant);
+    line-height: 1.5;
+}
+
+/* ============================================================
+   MONETIZATION SLIDE
+   ============================================================ */
+.monetization-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+.monetization-col {
+    background: var(--md-surface-container);
+    border-radius: var(--ui-radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--md-elev-1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+}
+.monetization-col h2 {
+    font-size: var(--type-title);
+    font-weight: 500;
+    margin-bottom: var(--space-4);
+    letter-spacing: 0;
+}
+.monetization-col h2.is-primary { color: var(--md-primary); }
+.monetization-col h2.is-tertiary { color: var(--md-tertiary); }
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-5);
+    width: 100%;
+    align-self: flex-start;
+}
+.feature-list li {
+    position: relative;
+    padding-left: var(--space-5);
+    margin-bottom: var(--space-3);
+    color: var(--md-on-surface-variant);
+    font-size: var(--type-body);
+    line-height: 1.55;
+}
+.feature-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--md-primary);
+}
+.monetization-col:nth-child(2) .feature-list li::before {
+    background: var(--md-tertiary);
+}
+.feature-list li strong { color: var(--md-on-surface); font-weight: 500; }
+
+.monetization-col .phone-mockup.small { max-height: 42vh; margin-top: auto; }
+
+.slide-subtitle {
+    font-size: var(--type-body-lg);
+    color: var(--md-primary);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    text-align: center;
+    margin: 0 auto var(--space-6);
+}
+
+/* ============================================================
+   THANK YOU
+   ============================================================ */
+.thank-you { text-align: center; }
+.thank-you h1 { margin-bottom: var(--space-5); }
+
+.link-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: center;
+    margin-top: var(--space-7);
+    width: 100%;
+}
+.link-card {
+    background: var(--md-surface-container);
+    padding: var(--space-5) var(--space-6);
+    border-radius: var(--ui-radius-lg);
+    width: 100%;
+    max-width: 620px;
+    box-shadow: var(--md-elev-1);
+    text-align: left;
+    transition: box-shadow var(--md-dur-medium) var(--md-ease-standard);
+}
+.link-card:hover { box-shadow: var(--md-elev-2); }
+.link-card .label {
+    font-size: var(--type-caption);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--md-on-surface-variant);
+    margin-bottom: var(--space-2);
+    font-weight: 500;
+}
+.link-card a {
+    color: var(--md-primary);
+    font-size: var(--type-body);
+    font-weight: 500;
+    text-decoration: none;
+    word-break: break-all;
+    transition: opacity var(--md-dur-short) var(--md-ease-standard);
+}
+.link-card a:hover { opacity: 0.8; text-decoration: underline; }
+.link-card.is-tertiary a { color: var(--md-tertiary); }
+.link-card .note {
+    font-size: var(--type-footnote);
+    color: var(--md-on-surface-variant);
+    margin-top: var(--space-2);
+    margin-bottom: 0;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+    .content-layout { flex-direction: column; text-align: center; }
+    .text-block, .image-block { flex: none; width: 100%; }
+    .image-block { flex-wrap: wrap; }
+    .phone-mockup { max-height: 46vh; margin-top: var(--space-4); }
+    .slide { padding: 6vh 5vw; }
+    .text-block p { margin-left: auto; margin-right: auto; }
+    .monetization-grid { grid-template-columns: 1fr; }
+    .monetization-col .phone-mockup.small { max-height: 40vh; }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --type-display: 2.25rem;
+        --type-headline: 1.625rem;
+        --type-title: 1.25rem;
+    }
+    .card { padding: var(--space-4); }
+    .link-card { padding: var(--space-4) var(--space-5); }
+    .roadmap-box { padding: var(--space-4); }
+}
+
+/* ============================================================
+   PRINT
+   ============================================================ */
+@media print {
+    body {
+        background: #fff;
+        color: #000;
+        overflow: visible;
+        height: auto;
+        padding: 0;
+    }
+    .slide {
+        page-break-after: always;
+        min-height: auto;
+        height: 100vh;
+        padding: 4vh 6vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        scroll-snap-align: none;
+        break-inside: avoid;
+    }
+    .phone-mockup { box-shadow: none; border: 1px solid #333; max-height: 38vh; }
+    .phone-mockup.small { max-height: 28vh; }
+    .card, .roadmap-box, .monetization-col, .link-card {
+        background: #f4f1f8 !important;
+        color: #000 !important;
+        box-shadow: none !important;
+    }
+    h1, h2, h3, p, li { color: #000 !important; }
+    .accent-blue, .accent-green, .accent-purple, .accent-orange, .accent-pink,
+    .monetization-col h2.is-primary, .monetization-col h2.is-tertiary {
+        color: #000 !important;
+    }
+    a { color: #000 !important; text-decoration: underline; }
+    .feature-list li::before { background: #000 !important; }
+}
+</style>
 </head>
 <body>
 
-    <!-- Слайд 1: Обложка -->
-    <section class="slide" style="background: linear-gradient(135deg, #0A0A0A 0%, #1a1a2e 100%);">
-        <div style="text-align: center; margin: 0 auto;">
-            <h1 style="font-size: clamp(4rem, 10vw, 8rem); margin-bottom: 1rem;">Kazan Pulse</h1>
-            <p style="font-size: clamp(1.4rem, 3.5vw, 2.2rem); color: #fff; margin-bottom: 1rem; max-width: 900px; margin-left: auto; margin-right: auto;">
-                Экосистема городских активностей
-            </p>
-            <p style="font-size: clamp(1.2rem, 3vw, 1.8rem); color: var(--accent-blue); margin: 0 auto 4rem; max-width: 900px;">
-                А также социальная платформа мелкого бизнеса
-            </p>
+<!-- ============================================================
+     Слайд 1 — Обложка
+     ============================================================ -->
+<section class="slide" style="text-align:center;">
+    <div style="max-width: 900px; margin: 0 auto;">
+        <h1>Kazan Pulse</h1>
+        <p style="font-size: var(--type-body-lg); color: var(--md-on-surface); margin-bottom: var(--space-3);">
+            Экосистема городских активностей
+        </p>
+        <p class="accent-purple" style="margin: 0 auto var(--space-7);">
+            А также социальная платформа мелкого бизнеса
+        </p>
+        <img src="bisnes.png" alt="Лента бизнесов" class="phone-mockup" style="margin: 0 auto; max-height: 52vh;">
+    </div>
+</section>
 
-            <img src="bisnes.png" alt="Лента событий" class="phone-mockup" style="display: block; margin: 0 auto; max-height: 55vh;">
+<!-- ============================================================
+     Слайд 2 — Две проблемы — два решения
+     ============================================================ -->
+<section class="slide">
+    <div class="content-layout">
+        <div class="text-block">
+            <h1>Две проблемы — <br>два решения.</h1>
+            <p style="color: var(--md-on-surface);"><strong class="accent-orange">Проблема 1.</strong> Люди не знают о событиях города и полезных бизнесах.</p>
+            <p style="color: var(--md-on-surface);"><strong class="accent-orange">Проблема 2.</strong> У людей нет желания и мотивации посещать события или идти в неизвестное кафе в одиночку.</p>
+            <p>Информация разбросана. Идти одному — скучно. Малый бизнес не может найти первых клиентов.</p>
         </div>
-    </section>
-
-    <!-- Слайд 2: Две проблемы — два решения -->
-    <section class="slide">
-        <div class="content-layout">
-            <div class="text-block">
-                <h1>Две проблемы — <br>два решения.</h1>
-                <p style="color: #fff;"><strong class="accent-orange">Проблема 1.</strong> Люди не знают о событиях города и полезных бизнесах.</p>
-                <p style="color: #fff;"><strong class="accent-orange">Проблема 2.</strong> У людей нет желания и мотивации посещать события или идти в неизвестное кафе в одиночку.</p>
-                <p>Информация разбросана. Идти одному — скучно. Малый бизнес не может найти первых клиентов.</p>
-            </div>
-            <div class="image-block">
-                <img src="interface.png" alt="Лента событий" class="phone-mockup">
-            </div>
+        <div class="image-block">
+            <img src="interface.png" alt="Лента событий" class="phone-mockup">
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Слайд 3: Одна экосистема — два продукта -->
-    <section class="slide">
-        <div class="content-layout">
-            <div class="text-block">
-                <h1>Одна экосистема — <br>два продукта.</h1>
-                <p><strong class="accent-blue">Kazan Pulse</strong> — находи события и компанию.</p>
-                <p><strong class="accent-green">Настольный теннис</strong> — записывайся на продолжение вместе.</p>
-                <p>Нашёл событие → нажал «Пойду» → попал в чат → пошёл с компанией → увидел антикафе → записался на турнир всей группой.</p>
-                <a href="https://tennis.runsite.app/" target="_blank" class="tennis-badge">Настольный теннис — с монетизацией</a>
-                <a href="https://tabletennis-backend-3ga1.onrender.com" target="_blank" class="tennis-badge alt">Настольный теннис — бесплатно</a>
-            </div>
-            <div class="image-block">
-                <img src="t.png" alt="Детали события" class="phone-mockup">
-            </div>
+<!-- ============================================================
+     Слайд 3 — Одна экосистема — два продукта
+     ============================================================ -->
+<section class="slide">
+    <div class="content-layout">
+        <div class="text-block">
+            <h1>Одна экосистема — <br>два продукта.</h1>
+            <p><strong class="accent-purple">Kazan Pulse</strong> — находи события и компанию.</p>
+            <p><strong class="accent-green">Настольный теннис</strong> — записывайся на продолжение вместе.</p>
+            <p>Нашёл событие → нажал «Пойду» → попал в чат → пошёл с компанией → увидел антикафе → записался на турнир всей группой.</p>
+            <a href="http://51.250.35.99:8001/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Настольный теннис</a>
         </div>
-    </section>
-
-    <!-- Слайд 4: Как это работает -->
-    <section class="slide" style="text-align: center;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <h1 style="margin-bottom: 3rem;">Как это работает.</h1>
-            <div class="flow-chart">
-                <div class="flow-step">Событие</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">Чат</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">Компания друзей</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">Бизнес рядом</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step" style="border-color: var(--accent-green);">Настольный теннис</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-step">Время с пользой</div>
-            </div>
-            <p style="margin: 3rem auto; text-align: center; max-width: 800px;">
-                Kazan Pulse приводит людей. Настольный теннис удерживает их после. Бизнес получает поток клиентов. Люди проводят время с пользой.
-            </p>
-            <img src="guide.png" alt="Гайд" class="phone-mockup" style="display: block; margin: 2rem auto 0; max-height: 55vh;">
+        <div class="image-block">
+            <img src="t.png" alt="Детали события" class="phone-mockup">
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Слайд 5: Социальная связь -->
-    <section class="slide">
-        <div class="content-layout">
-            <div class="text-block">
-                <h1>Незнакомцы — <br>не проблема.</h1>
-                <p>Чат события объединяет тех, кто уже идёт. Договорись о встрече, обсуди детали, найди друзей по интересам.</p>
-            </div>
-            <div class="image-block" style="gap: 1.5rem;">
-                <img src="chat.png" alt="Чат события" class="phone-mockup small">
-                <img src="eventcard.png" alt="Карточка события" class="phone-mockup small">
-            </div>
+<!-- ============================================================
+     Слайд 4 — Монетизация · Геймификация · Прогресс
+     ============================================================ -->
+<section class="slide">
+    <div style="max-width: 1200px; margin: 0 auto; width: 100%;">
+        <div style="text-align:center; margin-bottom: var(--space-6);">
+            <h1 style="margin-bottom: var(--space-3);">Монетизация · Геймификация · Прогресс</h1>
+            <p class="slide-subtitle">настольный теннис · рейтинг · развитие</p>
         </div>
-    </section>
 
-    <!-- Слайд 6: Монетизация бизнеса -->
-    <section class="slide">
-        <div class="content-layout">
-            <div class="text-block">
-                <h1>Бизнесу — <br>поток, людям — польза.</h1>
-                <p>Мелкий бизнес размещает карточки (платную рекламу) в обмен на поток пользователей.</p>
-                <p><strong class="accent-green">Потенциальные покупатели для бизнеса — это выручка.</strong></p>
-                <p>Антикафе, теннисные клубы, барбершопы, кофейни — все, кто рядом с событиями.</p>
+        <div class="monetization-grid">
+            <div class="monetization-col">
+                <h2 class="is-primary">Геймификация</h2>
+                <ul class="feature-list">
+                    <li>Личная статистика игр</li>
+                    <li>Визуализация динамики изменения рейтинга</li>
+                    <li>Скидки за рейтинг в заведениях-партнёрах</li>
+                    <li>Бесплатное развитие навыков игры без тренеров</li>
+                    <li>Играй с сильными — учись от сильных</li>
+                </ul>
+                <img src="game.png" alt="Геймификация и рейтинг" class="phone-mockup small">
             </div>
-            <div class="image-block" style="gap: 1.5rem;">
-                <img src="bisnes.png" alt="Лента бизнесов" class="phone-mockup small">
-                <img src="bisnescard.png" alt="Карточка бизнеса" class="phone-mockup small">
+
+            <div class="monetization-col">
+                <h2 class="is-tertiary">Кастомизация</h2>
+                <ul class="feature-list">
+                    <li>Тема оформления</li>
+                    <li>Музыка профиля</li>
+                    <li>Различные режимы игры</li>
+                </ul>
+                <img src="profile.png" alt="Кастомизация профиля" class="phone-mockup small">
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Слайд 7: Роадмап 9 месяцев -->
-    <section class="slide">
-        <div style="max-width: 1300px; margin: 0 auto; width: 100%;">
-            <h1 style="margin-bottom: 1rem;">План развития</h1>
-            <p style="margin-bottom: 2rem;">9 месяцев до масштабирования. От города — к региону и федерации.</p>
+<!-- ============================================================
+     Слайд 5 — Социальная связь
+     ============================================================ -->
+<section class="slide">
+    <div class="content-layout">
+        <div class="text-block">
+            <h1>Незнакомцы — <br>не проблема.</h1>
+            <p>Чат события объединяет тех, кто уже идёт. Договорись о встрече, обсуди детали, найди друзей по интересам.</p>
+        </div>
+        <div class="image-block" style="gap: var(--space-5);">
+            <img src="chat.png" alt="Чат события" class="phone-mockup small">
+            <img src="eventcard.png" alt="Карточка события" class="phone-mockup small">
+        </div>
+    </div>
+</section>
 
-            <div class="roadmap-box">
-                <div class="roadmap-grid">
-                    <div class="roadmap-item">
-                        <div class="month">Месяц 1–2</div>
-                        <div class="title">Запуск в Казани</div>
-                        <div class="desc">Партнёрства с антикафе, коворкингами, кофейнями.</div>
-                    </div>
-                    <div class="roadmap-item">
-                        <div class="month">Месяц 3–4</div>
-                        <div class="title">Монетизация и партнёры</div>
-                        <div class="desc">Платные размещения бизнеса. Аренда и прокат: корты, залы, инвентарь. 5000 пользователей.</div>
-                    </div>
-                    <div class="roadmap-item">
-                        <div class="month">Месяц 5–6</div>
-                        <div class="title">Недвижимость и аренда</div>
-                        <div class="desc">Партнёрства с арендодателями: коворкинги, лофты, спортзалы. Прокат оборудования и площадок через платформу.</div>
-                    </div>
-                    <div class="roadmap-item">
-                        <div class="month">Месяц 7</div>
-                        <div class="title">Android + веб-версия</div>
-                        <div class="desc">Запуск Android-приложения и веб-клиента. Мультиязычность: татарский, испанский, английский.</div>
-                    </div>
-                    <div class="roadmap-item">
-                        <div class="month">Месяц 8</div>
-                        <div class="title">Выход в Татарстан</div>
-                        <div class="desc">Набережные Челны, Альметьевск, Нижнекамск. Грант или акселератор IT Park.</div>
-                    </div>
-                    <div class="roadmap-item" style="border-top-color: var(--accent-green);">
-                        <div class="month" style="color: var(--accent-green);">Месяц 9</div>
-                        <div class="title" style="color: var(--accent-green);">Инвестиции и масштаб</div>
-                        <div class="desc">Экосистема аренды, проката и бронирования.</div>
-                    </div>
+<!-- ============================================================
+     Слайд 6 — Бизнесу поток, людям польза
+     ============================================================ -->
+<section class="slide">
+    <div class="content-layout">
+        <div class="text-block">
+            <h1>Бизнесу — <br>поток, людям — польза.</h1>
+            <p>Мелкий бизнес размещает карточки (платную рекламу) в обмен на поток пользователей.</p>
+            <p><strong class="accent-green">Потенциальные покупатели для бизнеса — это выручка.</strong></p>
+            <p>Антикафе, теннисные клубы, барбершопы, кофейни — все, кто рядом с событиями.</p>
+        </div>
+        <div class="image-block" style="gap: var(--space-5);">
+            <img src="bisnes.png" alt="Лента бизнесов" class="phone-mockup small">
+            <img src="bisnescard.png" alt="Карточка бизнеса" class="phone-mockup small">
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     Слайд 7 — План развития
+     ============================================================ -->
+<section class="slide">
+    <div style="max-width: 1300px; margin: 0 auto; width: 100%;">
+        <h1 style="margin-bottom: var(--space-3);">План развития</h1>
+        <p style="margin-bottom: var(--space-5);">9 месяцев до масштабирования. От города — к региону и федерации.</p>
+
+        <div class="roadmap-box">
+            <div class="roadmap-grid">
+                <div class="roadmap-item">
+                    <div class="month">Месяц 1–2</div>
+                    <div class="title">Запуск в Казани</div>
+                    <div class="desc">Партнёрства с антикафе, коворкингами, кофейнями.</div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="month">Месяц 3–4</div>
+                    <div class="title">Монетизация и партнёры</div>
+                    <div class="desc">Платные размещения бизнеса. Аренда и прокат: корты, залы, инвентарь. 5000 пользователей.</div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="month">Месяц 5–6</div>
+                    <div class="title">Недвижимость и аренда</div>
+                    <div class="desc">Партнёрства с арендодателями: коворкинги, лофты, спортзалы. Прокат оборудования и площадок через платформу.</div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="month">Месяц 7</div>
+                    <div class="title">Android + веб-версия</div>
+                    <div class="desc">Запуск Android-приложения и веб-клиента. Мультиязычность: татарский, испанский, английский.</div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="month">Месяц 8</div>
+                    <div class="title">Выход в Татарстан</div>
+                    <div class="desc">Набережные Челны, Альметьевск, Нижнекамск. Грант или акселератор IT Park.</div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="month">Месяц 9</div>
+                    <div class="title">Инвестиции и масштаб</div>
+                    <div class="desc">Экосистема аренды, проката и бронирования.</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Слайд 8: Спасибо за внимание -->
-    <section class="slide thank-you">
-        <div style="max-width: 900px; margin: 0 auto;">
-            <h1>Спасибо<br>за внимание.</h1>
-            <p style="font-size: 1.4rem; color: #fff; margin: 2rem auto; max-width: 700px;">
-                Готовы обсуждать партнёрство, инвестиции и запуск.
-            </p>
+<!-- ============================================================
+     Слайд 8 — Спасибо
+     ============================================================ -->
+<section class="slide thank-you">
+    <div style="max-width: 900px; margin: 0 auto;">
+        <h1>Спасибо за внимание.</h1>
+        <p style="font-size: var(--type-body-lg); color: var(--md-on-surface); margin: var(--space-5) auto; max-width: 640px;">
+            Готовы обсуждать партнёрство, инвестиции и запуск.
+        </p>
 
-            <div style="display: flex; flex-direction: column; gap: 1.5rem; align-items: center; margin-top: 3rem;">
-                <div style="background: var(--card); padding: 1.8rem 2.5rem; border-radius: 16px; width: 100%; max-width: 600px; border-left: 4px solid var(--accent-blue); text-align: left;">
-                    <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 0.5rem;">Исходный код Kazan Pulse</p>
-                    <a href="https://github.com/onlymyrep/Kazan_pulse_all_versions" style="color: var(--accent-blue); font-size: 1.2rem; font-weight: 700; text-decoration: none; word-break: break-all;">github.com/onlymyrep/Kazan_pulse_all_versions</a>
-                </div>
+        <div class="link-list">
+            <div class="link-card">
+                <p class="label">Исходный код Kazan Pulse</p>
+                <a href="https://github.com/onlymyrep/Kazan_pulse_all_versions" target="_blank" rel="noopener noreferrer">github.com/onlymyrep/Kazan_pulse_all_versions</a>
+            </div>
 
-                <div style="background: var(--card); padding: 1.8rem 2.5rem; border-radius: 16px; width: 100%; max-width: 600px; border-left: 4px solid var(--accent-green); text-align: left;">
-                    <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 0.5rem;">Настольный теннис с подпиской</p>
-                    <a href="https://tennis.runsite.app/" style="color: var(--accent-green); font-size: 1.2rem; font-weight: 700; text-decoration: none; word-break: break-all;">tennis.runsite.app</a>
-                </div>
-
-                <div style="background: var(--card); padding: 1.8rem 2.5rem; border-radius: 16px; width: 100%; max-width: 600px; border-left: 4px solid var(--accent-purple); text-align: left;">
-                    <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 0.5rem;">Настольный теннис — бесплатная версия с пробным периодом</p>
-                    <a href="https://tabletennis-backend-3ga1.onrender.com" style="color: var(--accent-purple); font-size: 1.2rem; font-weight: 700; text-decoration: none; word-break: break-all;">tabletennis-backend-3ga1.onrender.com</a>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Языки: татарский, испанский, английский</p>
-                </div>
+            <div class="link-card is-tertiary">
+                <p class="label">Настольный теннис</p>
+                <a href="http://51.250.35.99:8001/" target="_blank" rel="noopener noreferrer">51.250.35.99:8001</a>
+                <p class="note">Языки: татарский, испанский, английский</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 </body>
 </html>
