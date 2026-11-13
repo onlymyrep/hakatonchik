@@ -432,47 +432,170 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-@media (max-width: 900px) {
-    .content-layout { flex-direction: column; text-align: center; }
-    .text-block, .image-block { flex: none; width: 100%; }
-    .image-block { flex-wrap: wrap; }
-    .phone-mockup { max-height: 46vh; margin-top: var(--space-4); }
-    .slide { padding: 6vh 5vw; }
-    .text-block p { margin-left: auto; margin-right: auto; }
-    .monetization-grid { grid-template-columns: 1fr; }
-    .monetization-col .phone-mockup.small { max-height: 40vh; }
-}
-
-@media (max-width: 480px) {
-    :root {
-        --type-display: 2.25rem;
-        --type-headline: 1.625rem;
-        --type-title: 1.25rem;
-    }
-    .card { padding: var(--space-4); }
-    .link-card { padding: var(--space-4) var(--space-5); }
-    .roadmap-box { padding: var(--space-4); }
-}
-
-/* ============================================================
-   PRINT
-   ============================================================ */
 @media print {
-    @page { size: A4 landscape; margin: 8mm; }
-    body { background: #fff; color: #000; overflow: visible; height: auto; padding: 0; }
+    @page { size: A4 portrait; margin: 8mm; }
+
+    body {
+        background: #fff;
+        color: #000;
+        overflow: visible;
+        height: auto;
+        padding: 0;
+    }
+
+    /* Слайд = страница, контент по центру вертикально и горизонтально */
     .slide {
+        min-height: 265mm;
         height: auto !important;
-        min-height: auto !important;
-        padding: 4vh 4vw !important;
+        padding: 6mm 4mm !important;
         page-break-after: always;
         break-after: page;
+        scroll-snap-align: none;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;   /* вертикально по центру */
+        align-items: center !important;       /* горизонтально по центру */
+        text-align: center;
     }
-    .phone-mockup { max-height: 55vh !important; }
-    .phone-mockup.small { max-height: 45vh !important; }
-    .monetization-col .phone-mockup.small { max-height: 32vh !important; }
-    .image-block { flex-wrap: nowrap !important; }
-    .content-layout { flex-direction: row !important; }
-    .monetization-grid { grid-template-columns: 1fr 1fr !important; }
+
+    /* Текст сверху, картинки снизу — и всё по центру */
+    .content-layout {
+        flex-direction: column !important;
+        gap: 4vh !important;
+        text-align: center;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    .text-block {
+        flex: none !important;
+        width: 100% !important;
+        text-align: center;
+    }
+    .text-block p {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .image-block {
+        flex-wrap: nowrap !important;
+        gap: 1.5rem !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    /* ─── Картинки: разный размер для 1 и 2 в слайде ─── */
+    /* Одна картинка в слайде (2, 3) — крупная */
+    .image-block img:only-child {
+        max-height: 130mm !important;
+        max-width: 70% !important;
+        box-shadow: none !important;
+        border: 1px solid #333 !important;
+        object-fit: contain;
+    }
+    /* Две картинки рядом (5, 6) */
+    .image-block img:not(:only-child) {
+        max-height: 110mm !important;
+        max-width: 45% !important;
+        box-shadow: none !important;
+        border: 1px solid #333 !important;
+        object-fit: contain;
+    }
+    /* Обложка (slide 1) */
+    .slide:first-of-type .phone-mockup {
+        max-height: 110mm !important;
+        max-width: 70% !important;
+        box-shadow: none !important;
+        border: 1px solid #333 !important;
+    }
+
+    /* Монетизация (слайд 4) — 2 колонки, по центру */
+    .monetization-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 4vw !important;
+        align-items: start !important;
+        width: 100% !important;
+    }
+    .monetization-col {
+        align-items: center !important;
+        text-align: center !important;
+        padding: 1rem !important;
+    }
+    .monetization-col h2 { text-align: center !important; }
+    .monetization-col .phone-mockup.small {
+        max-height: 90mm !important;
+        max-width: 100% !important;
+    }
+    .feature-list {
+        align-self: center !important;
+        text-align: left !important;
+        max-width: 90% !important;
+    }
+
+    /* Roadmap (слайд 7) — 2 колонки, по центру */
+    .roadmap-box {
+        width: 100% !important;
+        padding: 1rem !important;
+    }
+    .roadmap-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1rem !important;
+    }
+    .roadmap-item {
+        text-align: center;
+        padding: 1rem !important;
+    }
+
+    /* Слайд 8 — карточки ссылок по центру */
+    .link-list {
+        align-items: center !important;
+        margin-top: 1.5rem !important;
+    }
+    .link-card {
+        text-align: center !important;
+        padding: 1.2rem 1.5rem !important;
+    }
+
+    /* ─── Шрифты: увеличены ─── */
+    h1 { font-size: 2.4rem !important; margin-bottom: 0.8rem !important; line-height: 1.15; }
+    h2 { font-size: 1.5rem !important; margin-bottom: 0.6rem !important; }
+    h3 { font-size: 1.2rem !important; }
+    p  {
+        font-size: 1.05rem !important;
+        margin-bottom: 0.8rem !important;
+        line-height: 1.55 !important;
+        max-width: 100% !important;
+    }
+    .slide-subtitle { font-size: 1.2rem !important; margin-bottom: 1rem !important; }
+
+    .feature-list li {
+        font-size: 0.95rem !important;
+        margin-bottom: 0.55rem !important;
+        line-height: 1.5 !important;
+    }
+
+    .roadmap-item .month { font-size: 0.85rem !important; }
+    .roadmap-item .title { font-size: 1.05rem !important; margin-bottom: 0.4rem !important; }
+    .roadmap-item .desc  { font-size: 0.9rem !important; line-height: 1.5 !important; }
+
+    .link-card .label { font-size: 0.85rem !important; }
+    .link-card a      { font-size: 1.05rem !important; }
+    .link-card .note  { font-size: 0.85rem !important; }
+
+    /* ─── Светлая тема для печати ─── */
+    .card, .roadmap-box, .monetization-col, .link-card {
+        background: #f4f1f8 !important;
+        color: #000 !important;
+        box-shadow: none !important;
+    }
+    h1, h2, h3, p, li, a { color: #000 !important; }
+    .accent-blue, .accent-green, .accent-purple, .accent-orange, .accent-pink,
+    .monetization-col h2.is-primary, .monetization-col h2.is-tertiary {
+        color: #000 !important;
+    }
+    a { text-decoration: underline; }
+    .feature-list li::before { background: #000 !important; }
 }
 </style>
 </head>
