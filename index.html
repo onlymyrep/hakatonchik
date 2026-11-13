@@ -458,38 +458,21 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
    PRINT
    ============================================================ */
 @media print {
-    body {
-        background: #fff;
-        color: #000;
-        overflow: visible;
-        height: auto;
-        padding: 0;
-    }
+    @page { size: A4 landscape; margin: 8mm; }
+    body { background: #fff; color: #000; overflow: visible; height: auto; padding: 0; }
     .slide {
+        height: auto !important;
+        min-height: auto !important;
+        padding: 4vh 4vw !important;
         page-break-after: always;
-        min-height: auto;
-        height: 100vh;
-        padding: 4vh 6vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        scroll-snap-align: none;
-        break-inside: avoid;
+        break-after: page;
     }
-    .phone-mockup { box-shadow: none; border: 1px solid #333; max-height: 38vh; }
-    .phone-mockup.small { max-height: 28vh; }
-    .card, .roadmap-box, .monetization-col, .link-card {
-        background: #f4f1f8 !important;
-        color: #000 !important;
-        box-shadow: none !important;
-    }
-    h1, h2, h3, p, li { color: #000 !important; }
-    .accent-blue, .accent-green, .accent-purple, .accent-orange, .accent-pink,
-    .monetization-col h2.is-primary, .monetization-col h2.is-tertiary {
-        color: #000 !important;
-    }
-    a { color: #000 !important; text-decoration: underline; }
-    .feature-list li::before { background: #000 !important; }
+    .phone-mockup { max-height: 55vh !important; }
+    .phone-mockup.small { max-height: 45vh !important; }
+    .monetization-col .phone-mockup.small { max-height: 32vh !important; }
+    .image-block { flex-wrap: nowrap !important; }
+    .content-layout { flex-direction: row !important; }
+    .monetization-grid { grid-template-columns: 1fr 1fr !important; }
 }
 </style>
 </head>
