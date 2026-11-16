@@ -205,6 +205,28 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
 .link-card .note { font-size: var(--type-footnote);
     color: var(--md-on-surface-variant); margin-top: var(--space-2); margin-bottom: 0; }
 
+
+
+/* ─── QR-коды в карточках ссылок ─────────────────────── */
+.link-card.with-qr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-5);
+}
+.link-card.with-qr .link-body { flex: 1; min-width: 0; }
+.link-card .qr {
+    flex-shrink: 0;
+    width: 96px;
+    height: 96px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 6px;
+    object-fit: contain;
+    display: block;
+}
+
+
 /* Print */
 @media print {
     @page { size: A4 portrait; margin: 8mm; }
@@ -509,32 +531,61 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
 
 <!-- ═══ 10. Спасибо ═══ -->
 <section class="slide thank-you">
-    <div style="max-width: 900px; margin: 0 auto;">
+    <div style="max-width: 900px; margin: 0 auto; width: 100%;">
         <h1>Спасибо за внимание.</h1>
         <p style="font-size: var(--type-body-lg); color: var(--md-on-surface); margin: var(--space-5) auto; max-width: 640px;">
             Готовы обсуждать партнёрство, инвестиции и запуск.
         </p>
+
         <div class="link-list">
-            <div class="link-card">
-                <p class="label">Исходный код Kazan Pulse</p>
-                <a href="https://github.com/onlymyrep/Kazan_pulse_all_versions" target="_blank" rel="noopener noreferrer">github.com/onlymyrep/Kazan_pulse_all_versions</a>
+
+            <!-- Исходный код -->
+            <div class="link-card with-qr">
+                <div class="link-body">
+                    <p class="label">Исходный код Kazan Pulse</p>
+                    <a href="https://github.com/onlymyrep/Kazan_pulse_all_versions"
+                       target="_blank" rel="noopener noreferrer">
+                        github.com/onlymyrep/Kazan_pulse_all_versions
+                    </a>
+                </div>
+                <img class="qr"
+                     src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&qzone=1&error_correction=M&data=https%3A%2F%2Fgithub.com%2Fonlymyrep%2FKazan_pulse_all_versions"
+                     alt="QR: исходный код">
             </div>
-            <div class="link-card is-tertiary">
-                <p class="label">Настольный теннис</p>
-                <a href="http://51.250.35.99:8001/" target="_blank" rel="noopener noreferrer">51.250.35.99:8001</a>
-                <p class="note">Языки: татарский, испанский, английский</p>
+
+            <!-- Теннис -->
+            <div class="link-card is-tertiary with-qr">
+                <div class="link-body">
+                    <p class="label">Настольный теннис</p>
+                    <a href="http://51.250.35.99:8001/"
+                       target="_blank" rel="noopener noreferrer">
+                        51.250.35.99:8001
+                    </a>
+                    <p class="note">Языки: татарский, испанский, английский</p>
+                </div>
+                <img class="qr"
+                     src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&qzone=1&error_correction=M&data=http%3A%2F%2F51.250.35.99%3A8001%2F"
+                     alt="QR: настольный теннис">
             </div>
-            <div class="link-card is-apk">
-                <p class="label">APK для тестирования (Android)</p>
-                <a href="https://drive.google.com/uc?export=download&id=1ABaHappZDmaFH1dp0FPMLGMZCVr12_gy" target="_blank" rel="noopener noreferrer">
-                    Скачать APK
-                </a>
-                <p class="note">
-                    Release-сборка · Android 7.0+ · оплата в тестовом режиме<br>
-                    При установке разрешите «Установка из неизвестных источников».<br>
-                    Если прямая ссылка не работает — <a href="https://drive.google.com/file/d/1ABaHappZDmaFH1dp0FPMLGMZCVr12_gy/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="font-size: inherit;">откройте страницу файла</a>.
-                </p>
+
+            <!-- APK -->
+            <div class="link-card is-apk with-qr">
+                <div class="link-body">
+                    <p class="label">APK для тестирования (Android)</p>
+                    <a href="https://drive.google.com/uc?export=download&id=1ABaHappZDmaFH1dp0FPMLGMZCVr12_gy"
+                       target="_blank" rel="noopener noreferrer">
+                        Скачать APK
+                    </a>
+                    <p class="note">
+                        Release-сборка · Android 7.0+ · оплата в тестовом режиме<br>
+                        При установке разрешите «Установка из неизвестных источников».
+                    </p>
+                </div>
+                <img class="qr"
+                     src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&qzone=1&error_correction=M&data=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D1ABaHappZDmaFH1dp0FPMLGMZCVr12_gy"
+                     alt="QR: APK">
             </div>
+
         </div>
     </div>
 </section>
