@@ -152,7 +152,6 @@ body {
 }
 .slide:last-child { border-bottom: none; }
 
-/* Typography */
 h1, h2, h3, p { font-family: var(--md-font); }
 
 h1 {
@@ -193,7 +192,6 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
 .accent-orange { color: var(--md-error); }
 .accent-pink   { color: var(--md-error); }
 
-/* Layout */
 .content-layout {
     display: flex;
     align-items: center;
@@ -212,7 +210,6 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
     min-width: 0;
 }
 
-/* Phone mockups */
 .phone-mockup {
     max-width: 100%;
     height: auto;
@@ -224,7 +221,6 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
 }
 .phone-mockup.small { max-height: 46vh; }
 
-/* Material card */
 .card {
     background: var(--md-surface-container);
     border-radius: var(--ui-radius-lg);
@@ -236,7 +232,6 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
 .card:hover { box-shadow: var(--md-elev-2); }
 .card + .card { margin-top: var(--space-4); }
 
-/* Buttons — Material filled pill */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -422,6 +417,7 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
 }
 .link-card a:hover { opacity: 0.8; text-decoration: underline; }
 .link-card.is-tertiary a { color: var(--md-tertiary); }
+.link-card.is-apk a { color: var(--accent-blue); }
 .link-card .note {
     font-size: var(--type-footnote);
     color: var(--md-on-surface-variant);
@@ -443,7 +439,6 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
         padding: 0;
     }
 
-    /* Слайд = страница, контент по центру вертикально и горизонтально */
     .slide {
         min-height: 265mm;
         height: auto !important;
@@ -453,12 +448,11 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
         scroll-snap-align: none;
         display: flex !important;
         flex-direction: column !important;
-        justify-content: center !important;   /* вертикально по центру */
-        align-items: center !important;       /* горизонтально по центру */
+        justify-content: center !important;
+        align-items: center !important;
         text-align: center;
     }
 
-    /* Текст сверху, картинки снизу — и всё по центру */
     .content-layout {
         flex-direction: column !important;
         gap: 4vh !important;
@@ -485,8 +479,6 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
         width: 100% !important;
     }
 
-    /* ─── Картинки: разный размер для 1 и 2 в слайде ─── */
-    /* Одна картинка в слайде (2, 3) — крупная */
     .image-block img:only-child {
         max-height: 130mm !important;
         max-width: 70% !important;
@@ -494,7 +486,6 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
         border: 1px solid #333 !important;
         object-fit: contain;
     }
-    /* Две картинки рядом (5, 6) */
     .image-block img:not(:only-child) {
         max-height: 110mm !important;
         max-width: 45% !important;
@@ -502,7 +493,6 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
         border: 1px solid #333 !important;
         object-fit: contain;
     }
-    /* Обложка (slide 1) */
     .slide:first-of-type .phone-mockup {
         max-height: 110mm !important;
         max-width: 70% !important;
@@ -510,7 +500,6 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
         border: 1px solid #333 !important;
     }
 
-    /* Монетизация (слайд 4) — 2 колонки, по центру */
     .monetization-grid {
         grid-template-columns: 1fr 1fr !important;
         gap: 4vw !important;
@@ -533,7 +522,6 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
         max-width: 90% !important;
     }
 
-    /* Roadmap (слайд 7) — 2 колонки, по центру */
     .roadmap-box {
         width: 100% !important;
         padding: 1rem !important;
@@ -547,7 +535,6 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
         padding: 1rem !important;
     }
 
-    /* Слайд 8 — карточки ссылок по центру */
     .link-list {
         align-items: center !important;
         margin-top: 1.5rem !important;
@@ -557,7 +544,6 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
         padding: 1.2rem 1.5rem !important;
     }
 
-    /* ─── Шрифты: увеличены ─── */
     h1 { font-size: 2.4rem !important; margin-bottom: 0.8rem !important; line-height: 1.15; }
     h2 { font-size: 1.5rem !important; margin-bottom: 0.6rem !important; }
     h3 { font-size: 1.2rem !important; }
@@ -583,7 +569,6 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
     .link-card a      { font-size: 1.05rem !important; }
     .link-card .note  { font-size: 0.85rem !important; }
 
-    /* ─── Светлая тема для печати ─── */
     .card, .roadmap-box, .monetization-col, .link-card {
         background: #f4f1f8 !important;
         color: #000 !important;
@@ -666,7 +651,6 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
             <div class="monetization-col">
                 <h2 class="is-primary">Геймификация</h2>
                 <ul class="feature-list">
-                    
                     <li>Визуализация динамики изменения рейтинга</li>
                     <li>Скидки за рейтинг в заведениях-партнёрах</li>
                     <li>Бесплатное развитие навыков игры без тренеров</li>
@@ -788,6 +772,20 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
                 <p class="label">Настольный теннис</p>
                 <a href="http://51.250.35.99:8001/" target="_blank" rel="noopener noreferrer">51.250.35.99:8001</a>
                 <p class="note">Языки: татарский, испанский, английский</p>
+            </div>
+
+            <!-- ⬇️ НОВАЯ КАРТОЧКА: APK для тестирования ⬇️ -->
+            <div class="link-card is-apk">
+                <p class="label">📱 APK для тестирования (Android)</p>
+                <a href="https://drive.google.com/uc?export=download&id=1RrfQOb9jiXbMLwxTQeHRJ-9SdEdUzw6e"
+                   target="_blank" rel="noopener noreferrer">
+                    Скачать APK
+                </a>
+                <p class="note">
+                    Debug-сборка · Android 7.0+ · оплата в тестовом режиме<br>
+                    При установке разрешите «Установка из неизвестных источников».<br>
+                    Если прямая ссылка не работает — <a href="https://drive.google.com/file/d/1RrfQOb9jiXbMLwxTQeHRJ-9SdEdUzw6e/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="font-size: inherit;">откройте страницу файла</a>.
+                </p>
             </div>
         </div>
     </div>
