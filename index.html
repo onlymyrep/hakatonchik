@@ -160,7 +160,13 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
 .itpark-card { background: var(--md-surface-container); border-radius: var(--ui-radius-lg);
     padding: var(--space-5); box-shadow: var(--md-elev-1);
     display: flex; flex-direction: column; gap: var(--space-2); }
-.itpark-card .icon { font-size: 1.75rem; margin-bottom: var(--space-1); }
+.itpark-card .index {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; border-radius: 10px;
+    background: color-mix(in srgb, var(--md-primary) 15%, transparent);
+    color: var(--md-primary); font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.05em; font-variant-numeric: tabular-nums;
+    margin-bottom: var(--space-2); }
 .itpark-card .title { font-size: 1rem; font-weight: 500; color: var(--md-on-surface); }
 .itpark-card .desc { font-size: var(--type-footnote);
     color: var(--md-on-surface-variant); line-height: 1.5; }
@@ -232,7 +238,8 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
     .itpark-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 2vw !important;
         width: 100% !important; }
     .itpark-card { text-align: center !important; padding: 0.8rem !important; }
-    .itpark-card .icon { font-size: 1.2rem !important; margin-bottom: 0.2rem !important; }
+    .itpark-card .index { width: 24px !important; height: 24px !important;
+        font-size: 0.65rem !important; margin-bottom: 0.2rem !important; }
     .itpark-card .title { font-size: 0.95rem !important; }
     .itpark-card .desc { font-size: 0.8rem !important; }
     .bizmodel-strip { width: 100% !important; justify-content: center !important;
@@ -467,32 +474,32 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
         </div>
         <div class="itpark-grid">
             <div class="itpark-card">
-                <div class="icon">💰</div>
+                <div class="index">01</div>
                 <div class="title">Гранты и льготы</div>
                 <div class="desc">Разработка и продвижение — за счёт господдержки</div>
             </div>
             <div class="itpark-card">
-                <div class="icon">🎓</div>
+                <div class="index">02</div>
                 <div class="title">Менторы</div>
                 <div class="desc">Экспертиза по продукту, маркетингу и бизнесу</div>
             </div>
             <div class="itpark-card">
-                <div class="icon">🏢</div>
+                <div class="index">03</div>
                 <div class="title">Инфраструктура</div>
                 <div class="desc">Офис, переговорные, технические ресурсы</div>
             </div>
             <div class="itpark-card">
-                <div class="icon">🤝</div>
+                <div class="index">04</div>
                 <div class="title">Нетворкинг</div>
                 <div class="desc">Инвесторы, партнёры, другие стартапы</div>
             </div>
             <div class="itpark-card">
-                <div class="icon">📋</div>
+                <div class="index">05</div>
                 <div class="title">Юр. и бух. помощь</div>
                 <div class="desc">Документы, налоги, отчётность</div>
             </div>
             <div class="itpark-card">
-                <div class="icon">⭐</div>
+                <div class="index">06</div>
                 <div class="title">Знак качества</div>
                 <div class="desc">Доверие инвесторов и крупных клиентов</div>
             </div>
@@ -519,13 +526,13 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
             </div>
             <div class="link-card is-apk">
                 <p class="label">APK для тестирования (Android)</p>
-                <a href="https://drive.google.com/uc?export=download&id=1rnuMd3QsDL_wTQ2ETkGwlu5ofKDYOG7S" target="_blank" rel="noopener noreferrer">
+                <a href="https://drive.google.com/uc?export=download&id=1NT242sQPXqDgpFzmKNUlwNdWYxvxaT3p" target="_blank" rel="noopener noreferrer">
                     Скачать APK
                 </a>
                 <p class="note">
                     Release-сборка · Android 7.0+ · оплата в тестовом режиме<br>
                     При установке разрешите «Установка из неизвестных источников».<br>
-                    Если прямая ссылка не работает — <a href="https://drive.google.com/file/d/1rnuMd3QsDL_wTQ2ETkGwlu5ofKDYOG7S/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="font-size: inherit;">откройте страницу файла</a>.
+                    Если прямая ссылка не работает — <a href="https://drive.google.com/file/d/1NT242sQPXqDgpFzmKNUlwNdWYxvxaT3p/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="font-size: inherit;">откройте страницу файла</a>.
                 </p>
             </div>
         </div>
