@@ -294,6 +294,31 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
     .result-card .stat, .itpark-card .icon { color: #000 !important; }
     a { text-decoration: underline; }
     .feature-list li::before { background: #000 !important; }
+
+        /* ─── QR в карточках при печати ─── */
+    .link-card.with-qr {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        text-align: left !important;
+        padding: 1rem 1.2rem !important;
+        gap: 1rem !important;
+    }
+    .link-card.with-qr .link-body {
+        text-align: left !important;
+        flex: 1 !important;
+        min-width: 0 !important;
+    }
+    .link-card.with-qr .link-body .label,
+    .link-card.with-qr .link-body a,
+    .link-card.with-qr .link-body .note {
+        text-align: left !important;
+    }
+    .link-card .qr {
+        width: 70px !important;
+        height: 70px !important;
+        padding: 4px !important;
+    }
 }
 </style>
 </head>
