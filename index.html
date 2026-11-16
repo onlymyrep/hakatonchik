@@ -8,577 +8,261 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-   MATERIAL 3 TOKENS (dark)
-   ============================================================ */
 :root {
     color-scheme: dark;
-
-    --md-primary:              #D0BCFF;
-    --md-on-primary:           #381E72;
-    --md-primary-container:    #4F378B;
-    --md-on-primary-container: #EADDFF;
-
-    --md-secondary:              #CCC2DC;
-    --md-on-secondary:           #332D41;
-    --md-secondary-container:    #4A4458;
+    --md-primary: #D0BCFF; --md-on-primary: #381E72;
+    --md-primary-container: #4F378B; --md-on-primary-container: #EADDFF;
+    --md-secondary: #CCC2DC; --md-secondary-container: #4A4458;
     --md-on-secondary-container: #E8DEF8;
-
-    --md-tertiary:              #B5CCBA;
-    --md-on-tertiary:           #0F3820;
-    --md-tertiary-container:    #30503B;
+    --md-tertiary: #B5CCBA; --md-tertiary-container: #30503B;
     --md-on-tertiary-container: #D1E8D6;
-
-    --md-error:              #F2B8B5;
-    --md-on-error:           #601410;
-    --md-error-container:    #8C1D18;
-
-    --md-surface:                   #141218;
-    --md-on-surface:                #E6E0E9;
-    --md-on-surface-variant:        #CAC4D0;
-    --md-outline:                   #938F99;
-    --md-outline-variant:           #49454F;
-
-    --md-surface-container-lowest:  #0F0D13;
-    --md-surface-container-low:     #1D1B20;
-    --md-surface-container:         #211F26;
-    --md-surface-container-high:    #2B2930;
+    --md-error: #F2B8B5;
+    --md-surface: #141218; --md-on-surface: #E6E0E9;
+    --md-on-surface-variant: #CAC4D0; --md-outline: #938F99;
+    --md-outline-variant: #49454F;
+    --md-surface-container-lowest: #0F0D13; --md-surface-container-low: #1D1B20;
+    --md-surface-container: #211F26; --md-surface-container-high: #2B2930;
     --md-surface-container-highest: #36343B;
-
-    --bg-primary:     var(--md-surface);
-    --bg-card:        var(--md-surface-container);
-    --text-primary:   var(--md-on-surface);
-    --text-secondary: var(--md-on-surface-variant);
-    --text-muted:     var(--md-outline);
-
-    --accent-blue:   #A8C7FA;
-    --accent-green:  var(--md-tertiary);
-    --accent-purple: var(--md-primary);
-    --accent-orange: var(--md-error);
-    --accent-pink:   var(--md-error);
-
-    --ui-radius-sm: 8px;
-    --ui-radius-md: 12px;
-    --ui-radius-lg: 16px;
-    --ui-radius-xl: 28px;
-
+    --accent-blue: #A8C7FA;
+    --ui-radius-md: 12px; --ui-radius-lg: 16px;
     --md-font: "Roboto", "Helvetica Neue", system-ui, -apple-system, sans-serif;
-    --md-ease-standard:   cubic-bezier(0.2, 0, 0, 1);
-    --md-ease-emphasized: cubic-bezier(0.05, 0.7, 0.1, 1);
-    --md-dur-short:       150ms;
-    --md-dur-medium:      250ms;
-
+    --md-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+    --md-dur-short: 150ms; --md-dur-medium: 250ms;
     --md-elev-1: 0 1px 2px rgba(0,0,0,0.30), 0 1px 3px 1px rgba(0,0,0,0.15);
     --md-elev-2: 0 1px 2px rgba(0,0,0,0.30), 0 2px 6px 2px rgba(0,0,0,0.15);
     --md-elev-3: 0 1px 3px rgba(0,0,0,0.30), 0 4px 8px 3px rgba(0,0,0,0.15);
-    --md-elev-4: 0 2px 3px rgba(0,0,0,0.30), 0 6px 10px 4px rgba(0,0,0,0.15);
-
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-3: 0.75rem;
-    --space-4: 1rem;
-    --space-5: 1.5rem;
-    --space-6: 2rem;
-    --space-7: 3rem;
-    --space-8: 4rem;
-
+    --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+    --space-5: 1.5rem; --space-6: 2rem; --space-7: 3rem;
     --type-display: clamp(2.75rem, 6vw, 5rem);
     --type-headline: clamp(1.75rem, 3.6vw, 2.5rem);
     --type-title: clamp(1.25rem, 2vw, 1.5rem);
-    --type-body: 1rem;
-    --type-body-lg: clamp(1.0625rem, 1.6vw, 1.25rem);
-    --type-footnote: 0.875rem;
-    --type-caption: 0.75rem;
-
-    --focus-ring: 2px solid var(--md-primary);
-    --touch-min: 2.75rem;
+    --type-body: 1rem; --type-body-lg: clamp(1.0625rem, 1.6vw, 1.25rem);
+    --type-footnote: 0.875rem; --type-caption: 0.75rem;
+    --focus-ring: 2px solid var(--md-primary); --touch-min: 2.75rem;
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-
 body {
-    background: var(--md-surface);
-    color: var(--md-on-surface);
-    font-family: var(--md-font);
-    font-size: var(--type-body);
-    line-height: 1.5;
-    letter-spacing: 0.01em;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
-    scroll-snap-type: y proximity;
-    overflow-y: scroll;
-    height: 100vh;
-
-    padding-top:    max(1rem, env(safe-area-inset-top));
+    background: var(--md-surface); color: var(--md-on-surface);
+    font-family: var(--md-font); font-size: var(--type-body);
+    line-height: 1.5; letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    scroll-snap-type: y proximity; overflow-y: scroll; height: 100vh;
+    padding-top: max(1rem, env(safe-area-inset-top));
     padding-bottom: max(1rem, env(safe-area-inset-bottom));
-    padding-left:   max(1rem, env(safe-area-inset-left));
-    padding-right:  max(1rem, env(safe-area-inset-right));
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
 }
-
-/* Focus */
 :where(a, button, [tabindex]):focus { outline: none; }
 :where(a, button, [tabindex]):focus-visible {
-    outline: var(--focus-ring) !important;
-    outline-offset: 3px !important;
-    box-shadow: none !important;
+    outline: var(--focus-ring) !important; outline-offset: 3px !important; box-shadow: none !important;
 }
-
-/* Touch */
-:where(button, a) {
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-}
-
+:where(button, a) { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        transition-duration: 0.001ms !important;
-        animation-duration: 0.001ms !important;
-    }
+    *, *::before, *::after { transition-duration: 0.001ms !important; animation-duration: 0.001ms !important; }
 }
-
-/* ============================================================
-   SLIDES
-   ============================================================ */
 .slide {
-    min-height: 100vh;
-    padding: 8vh 8vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    scroll-snap-align: start;
+    min-height: 100vh; padding: 8vh 8vw;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; scroll-snap-align: start;
 }
-.slide:last-child { border-bottom: none; }
-
 h1, h2, h3, p { font-family: var(--md-font); }
-
-h1 {
-    font-size: var(--type-display);
-    font-weight: 500;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    margin-bottom: var(--space-4);
-    color: var(--md-on-surface);
-}
-h2 {
-    font-size: var(--type-headline);
-    font-weight: 500;
-    line-height: 1.2;
-    margin-bottom: var(--space-3);
-    color: var(--md-on-surface);
-}
-h3 {
-    font-size: var(--type-title);
-    font-weight: 500;
-    line-height: 1.3;
-    margin-bottom: var(--space-2);
-    color: var(--md-on-surface);
-}
-
-p {
-    font-size: var(--type-body-lg);
-    color: var(--md-on-surface-variant);
-    max-width: 62ch;
-    margin-bottom: var(--space-4);
-    line-height: 1.55;
-}
+h1 { font-size: var(--type-display); font-weight: 500; line-height: 1.15;
+     letter-spacing: -0.01em; margin-bottom: var(--space-4); color: var(--md-on-surface); }
+h2 { font-size: var(--type-headline); font-weight: 500; line-height: 1.2;
+     margin-bottom: var(--space-3); color: var(--md-on-surface); }
+h3 { font-size: var(--type-title); font-weight: 500; line-height: 1.3;
+     margin-bottom: var(--space-2); color: var(--md-on-surface); }
+p { font-size: var(--type-body-lg); color: var(--md-on-surface-variant);
+    max-width: 62ch; margin-bottom: var(--space-4); line-height: 1.55; }
 p strong { color: var(--md-on-surface); font-weight: 500; }
-
-.accent-blue   { color: var(--accent-blue); }
-.accent-green  { color: var(--md-tertiary); }
+.accent-blue { color: var(--accent-blue); }
+.accent-green { color: var(--md-tertiary); }
 .accent-purple { color: var(--md-primary); }
 .accent-orange { color: var(--md-error); }
-.accent-pink   { color: var(--md-error); }
-
-.content-layout {
-    display: flex;
-    align-items: center;
-    gap: 5vw;
-    width: 100%;
-    max-width: 1360px;
-    margin: 0 auto;
-}
+.content-layout { display: flex; align-items: center; gap: 5vw;
+    width: 100%; max-width: 1360px; margin: 0 auto; }
 .text-block { flex: 1; min-width: 0; }
-.image-block {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-5);
-    min-width: 0;
-}
-
-.phone-mockup {
-    max-width: 100%;
-    height: auto;
-    max-height: 68vh;
-    border-radius: 32px;
-    box-shadow: var(--md-elev-3), 0 0 0 6px var(--md-surface-container-highest);
-    object-fit: contain;
-    display: block;
-}
+.image-block { flex: 1; display: flex; justify-content: center;
+    align-items: center; gap: var(--space-5); min-width: 0; }
+.phone-mockup { max-width: 100%; height: auto; max-height: 68vh;
+    border-radius: 32px; box-shadow: var(--md-elev-3), 0 0 0 6px var(--md-surface-container-highest);
+    object-fit: contain; display: block; }
 .phone-mockup.small { max-height: 46vh; }
-
-.card {
-    background: var(--md-surface-container);
-    border-radius: var(--ui-radius-lg);
-    padding: var(--space-5);
-    box-shadow: var(--md-elev-1);
-    transition: box-shadow var(--md-dur-medium) var(--md-ease-standard);
-    border: none;
-}
-.card:hover { box-shadow: var(--md-elev-2); }
-.card + .card { margin-top: var(--space-4); }
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: var(--touch-min);
-    padding: 0.65rem 1.5rem;
-    border-radius: 999px;
-    font-family: var(--md-font);
-    font-size: 0.875rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    text-decoration: none;
-    color: var(--md-primary);
-    background: transparent;
-    border: 1px solid var(--md-outline);
-    transition: background-color var(--md-dur-short) var(--md-ease-standard);
-    cursor: pointer;
-}
+.btn { display: inline-flex; align-items: center; justify-content: center;
+    min-height: var(--touch-min); padding: 0.65rem 1.5rem; border-radius: 999px;
+    font-family: var(--md-font); font-size: 0.875rem; font-weight: 500;
+    letter-spacing: 0.02em; text-decoration: none; color: var(--md-primary);
+    background: transparent; border: 1px solid var(--md-outline);
+    transition: background-color var(--md-dur-short) var(--md-ease-standard); cursor: pointer; }
 .btn:hover { background: color-mix(in srgb, var(--md-primary) 8%, transparent); }
-.btn-primary {
-    background: var(--md-primary);
-    border-color: var(--md-primary);
-    color: var(--md-on-primary);
-}
+.btn-primary { background: var(--md-primary); border-color: var(--md-primary); color: var(--md-on-primary); }
 .btn-primary:hover { box-shadow: var(--md-elev-1); }
-.btn + .btn { margin-left: var(--space-2); }
 
-/* ============================================================
-   ROADMAP
-   ============================================================ */
-.roadmap-box {
-    background: var(--md-surface-container);
-    padding: var(--space-6);
-    border-radius: var(--ui-radius-lg);
-    margin-bottom: var(--space-4);
-    box-shadow: var(--md-elev-1);
-}
-.roadmap-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: var(--space-4);
-    margin-top: var(--space-4);
-}
-.roadmap-item {
-    background: var(--md-surface-container-high);
-    padding: var(--space-4);
-    border-radius: var(--ui-radius-md);
-    transition: box-shadow var(--md-dur-medium) var(--md-ease-standard);
-}
+/* Roadmap */
+.roadmap-box { background: var(--md-surface-container); padding: var(--space-6);
+    border-radius: var(--ui-radius-lg); margin-bottom: var(--space-4); box-shadow: var(--md-elev-1); }
+.roadmap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: var(--space-4); margin-top: var(--space-4); }
+.roadmap-item { background: var(--md-surface-container-high); padding: var(--space-4);
+    border-radius: var(--ui-radius-md); transition: box-shadow var(--md-dur-medium) var(--md-ease-standard); }
 .roadmap-item:hover { box-shadow: var(--md-elev-2); }
-.roadmap-item .month {
-    font-size: var(--type-caption);
-    font-weight: 500;
-    color: var(--md-primary);
-    margin-bottom: var(--space-2);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-}
-.roadmap-item .title {
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: var(--space-2);
-    color: var(--md-on-surface);
-    line-height: 1.35;
-}
-.roadmap-item .desc {
-    font-size: var(--type-footnote);
-    color: var(--md-on-surface-variant);
-    line-height: 1.5;
-}
+.roadmap-item .month { font-size: var(--type-caption); font-weight: 500;
+    color: var(--md-primary); margin-bottom: var(--space-2); text-transform: uppercase;
+    letter-spacing: 0.08em; }
+.roadmap-item .title { font-size: 1rem; font-weight: 500; margin-bottom: var(--space-2);
+    color: var(--md-on-surface); line-height: 1.35; }
+.roadmap-item .desc { font-size: var(--type-footnote);
+    color: var(--md-on-surface-variant); line-height: 1.5; }
 
-/* ============================================================
-   MONETIZATION SLIDE
-   ============================================================ */
-.monetization-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-6);
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-}
-.monetization-col {
-    background: var(--md-surface-container);
-    border-radius: var(--ui-radius-lg);
-    padding: var(--space-6);
-    box-shadow: var(--md-elev-1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: left;
-}
-.monetization-col h2 {
-    font-size: var(--type-title);
-    font-weight: 500;
-    margin-bottom: var(--space-4);
-    letter-spacing: 0;
-}
+/* Monetization / two columns */
+.monetization-grid { display: grid; grid-template-columns: 1fr 1fr;
+    gap: var(--space-6); max-width: 1200px; margin: 0 auto; width: 100%; }
+.monetization-col { background: var(--md-surface-container); border-radius: var(--ui-radius-lg);
+    padding: var(--space-6); box-shadow: var(--md-elev-1);
+    display: flex; flex-direction: column; align-items: center; text-align: left; }
+.monetization-col h2 { font-size: var(--type-title); font-weight: 500;
+    margin-bottom: var(--space-4); letter-spacing: 0; }
 .monetization-col h2.is-primary { color: var(--md-primary); }
 .monetization-col h2.is-tertiary { color: var(--md-tertiary); }
-
-.feature-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 var(--space-5);
-    width: 100%;
-    align-self: flex-start;
-}
-.feature-list li {
-    position: relative;
-    padding-left: var(--space-5);
-    margin-bottom: var(--space-3);
-    color: var(--md-on-surface-variant);
-    font-size: var(--type-body);
-    line-height: 1.55;
-}
-.feature-list li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.6em;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--md-primary);
-}
-.monetization-col:nth-child(2) .feature-list li::before {
-    background: var(--md-tertiary);
-}
+.feature-list { list-style: none; padding: 0; margin: 0 0 var(--space-5);
+    width: 100%; align-self: flex-start; }
+.feature-list li { position: relative; padding-left: var(--space-5);
+    margin-bottom: var(--space-3); color: var(--md-on-surface-variant);
+    font-size: var(--type-body); line-height: 1.55; }
+.feature-list li::before { content: ""; position: absolute; left: 0; top: 0.6em;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--md-primary); }
+.monetization-col:nth-child(2) .feature-list li::before { background: var(--md-tertiary); }
 .feature-list li strong { color: var(--md-on-surface); font-weight: 500; }
-
 .monetization-col .phone-mockup.small { max-height: 42vh; margin-top: auto; }
+.slide-subtitle { font-size: var(--type-body-lg); color: var(--md-primary);
+    font-weight: 400; letter-spacing: 0.03em; text-align: center;
+    margin: 0 auto var(--space-6); }
 
-.slide-subtitle {
-    font-size: var(--type-body-lg);
-    color: var(--md-primary);
-    font-weight: 400;
-    letter-spacing: 0.03em;
-    text-align: center;
-    margin: 0 auto var(--space-6);
-}
+/* Results grid */
+.results-grid { display: grid; grid-template-columns: 1fr 1fr;
+    gap: var(--space-5); max-width: 1100px; margin: 0 auto; width: 100%; }
+.result-card { background: var(--md-surface-container); border-radius: var(--ui-radius-lg);
+    padding: var(--space-5); box-shadow: var(--md-elev-1); }
+.result-card .stat { font-size: var(--type-headline); font-weight: 500;
+    color: var(--md-primary); margin-bottom: var(--space-2); }
+.result-card .label { font-size: var(--type-caption); text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--md-on-surface-variant);
+    font-weight: 500; margin-bottom: var(--space-2); }
+.result-card .desc { font-size: var(--type-body); color: var(--md-on-surface-variant);
+    line-height: 1.5; }
+.result-card.is-tertiary .stat { color: var(--md-tertiary); }
+.result-card.is-blue .stat { color: var(--accent-blue); }
 
-/* ============================================================
-   THANK YOU
-   ============================================================ */
+/* IT Park */
+.itpark-grid { display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4); max-width: 1200px; margin: 0 auto; width: 100%; }
+.itpark-card { background: var(--md-surface-container); border-radius: var(--ui-radius-lg);
+    padding: var(--space-5); box-shadow: var(--md-elev-1);
+    display: flex; flex-direction: column; gap: var(--space-2); }
+.itpark-card .icon { font-size: 1.75rem; margin-bottom: var(--space-1); }
+.itpark-card .title { font-size: 1rem; font-weight: 500; color: var(--md-on-surface); }
+.itpark-card .desc { font-size: var(--type-footnote);
+    color: var(--md-on-surface-variant); line-height: 1.5; }
+
+/* Business model strip */
+.bizmodel-strip { max-width: 1100px; margin: var(--space-6) auto 0;
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: var(--space-2) var(--space-3); padding: var(--space-4);
+    background: var(--md-surface-container); border-radius: var(--ui-radius-lg);
+    box-shadow: var(--md-elev-1); }
+.bizmodel-strip .pill { font-size: var(--type-footnote);
+    padding: 0.4rem 0.9rem; border-radius: 999px;
+    background: var(--md-surface-container-high); color: var(--md-on-surface-variant); }
+.bizmodel-strip .pill.is-primary { color: var(--md-primary); }
+.bizmodel-strip .pill.is-tertiary { color: var(--md-tertiary); }
+
+/* Thank you */
 .thank-you { text-align: center; }
 .thank-you h1 { margin-bottom: var(--space-5); }
-
-.link-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-    align-items: center;
-    margin-top: var(--space-7);
-    width: 100%;
-}
-.link-card {
-    background: var(--md-surface-container);
-    padding: var(--space-5) var(--space-6);
-    border-radius: var(--ui-radius-lg);
-    width: 100%;
-    max-width: 620px;
-    box-shadow: var(--md-elev-1);
-    text-align: left;
-    transition: box-shadow var(--md-dur-medium) var(--md-ease-standard);
-}
+.link-list { display: flex; flex-direction: column; gap: var(--space-4);
+    align-items: center; margin-top: var(--space-7); width: 100%; }
+.link-card { background: var(--md-surface-container); padding: var(--space-5) var(--space-6);
+    border-radius: var(--ui-radius-lg); width: 100%; max-width: 620px;
+    box-shadow: var(--md-elev-1); text-align: left;
+    transition: box-shadow var(--md-dur-medium) var(--md-ease-standard); }
 .link-card:hover { box-shadow: var(--md-elev-2); }
-.link-card .label {
-    font-size: var(--type-caption);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--md-on-surface-variant);
-    margin-bottom: var(--space-2);
-    font-weight: 500;
-}
-.link-card a {
-    color: var(--md-primary);
-    font-size: var(--type-body);
-    font-weight: 500;
-    text-decoration: none;
-    word-break: break-all;
-    transition: opacity var(--md-dur-short) var(--md-ease-standard);
-}
+.link-card .label { font-size: var(--type-caption); text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--md-on-surface-variant);
+    margin-bottom: var(--space-2); font-weight: 500; }
+.link-card a { color: var(--md-primary); font-size: var(--type-body);
+    font-weight: 500; text-decoration: none; word-break: break-all;
+    transition: opacity var(--md-dur-short) var(--md-ease-standard); }
 .link-card a:hover { opacity: 0.8; text-decoration: underline; }
 .link-card.is-tertiary a { color: var(--md-tertiary); }
 .link-card.is-apk a { color: var(--accent-blue); }
-.link-card .note {
-    font-size: var(--type-footnote);
-    color: var(--md-on-surface-variant);
-    margin-top: var(--space-2);
-    margin-bottom: 0;
-}
+.link-card .note { font-size: var(--type-footnote);
+    color: var(--md-on-surface-variant); margin-top: var(--space-2); margin-bottom: 0; }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
+/* Print */
 @media print {
     @page { size: A4 portrait; margin: 8mm; }
-
-    body {
-        background: #fff;
-        color: #000;
-        overflow: visible;
-        height: auto;
-        padding: 0;
-    }
-
-    .slide {
-        min-height: 265mm;
-        height: auto !important;
-        padding: 6mm 4mm !important;
-        page-break-after: always;
-        break-after: page;
-        scroll-snap-align: none;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        text-align: center;
-    }
-
-    .content-layout {
-        flex-direction: column !important;
-        gap: 4vh !important;
-        text-align: center;
-        align-items: center !important;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-    .text-block {
-        flex: none !important;
-        width: 100% !important;
-        text-align: center;
-    }
-    .text-block p {
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-
-    .image-block {
-        flex-wrap: nowrap !important;
-        gap: 1.5rem !important;
-        justify-content: center !important;
-        align-items: center !important;
-        width: 100% !important;
-    }
-
-    .image-block img:only-child {
-        max-height: 130mm !important;
-        max-width: 70% !important;
-        box-shadow: none !important;
-        border: 1px solid #333 !important;
-        object-fit: contain;
-    }
-    .image-block img:not(:only-child) {
-        max-height: 110mm !important;
-        max-width: 45% !important;
-        box-shadow: none !important;
-        border: 1px solid #333 !important;
-        object-fit: contain;
-    }
-    .slide:first-of-type .phone-mockup {
-        max-height: 110mm !important;
-        max-width: 70% !important;
-        box-shadow: none !important;
-        border: 1px solid #333 !important;
-    }
-
-    .monetization-grid {
-        grid-template-columns: 1fr 1fr !important;
-        gap: 4vw !important;
-        align-items: start !important;
-        width: 100% !important;
-    }
-    .monetization-col {
-        align-items: center !important;
-        text-align: center !important;
-        padding: 1rem !important;
-    }
+    body { background: #fff; color: #000; overflow: visible; height: auto; padding: 0; }
+    .slide { min-height: 265mm; height: auto !important; padding: 6mm 4mm !important;
+        page-break-after: always; break-after: page; scroll-snap-align: none;
+        display: flex !important; flex-direction: column !important;
+        justify-content: center !important; align-items: center !important; text-align: center; }
+    .content-layout { flex-direction: column !important; gap: 4vh !important;
+        text-align: center; align-items: center !important; width: 100% !important; max-width: 100% !important; }
+    .text-block { flex: none !important; width: 100% !important; text-align: center; }
+    .text-block p { margin-left: auto !important; margin-right: auto !important; }
+    .image-block { flex-wrap: nowrap !important; gap: 1.5rem !important;
+        justify-content: center !important; align-items: center !important; width: 100% !important; }
+    .image-block img:only-child { max-height: 130mm !important; max-width: 70% !important;
+        box-shadow: none !important; border: 1px solid #333 !important; object-fit: contain; }
+    .image-block img:not(:only-child) { max-height: 110mm !important; max-width: 45% !important;
+        box-shadow: none !important; border: 1px solid #333 !important; object-fit: contain; }
+    .slide:first-of-type .phone-mockup { max-height: 110mm !important; max-width: 70% !important;
+        box-shadow: none !important; border: 1px solid #333 !important; }
+    .monetization-grid { grid-template-columns: 1fr 1fr !important; gap: 4vw !important;
+        align-items: start !important; width: 100% !important; }
+    .monetization-col { align-items: center !important; text-align: center !important; padding: 1rem !important; }
     .monetization-col h2 { text-align: center !important; }
-    .monetization-col .phone-mockup.small {
-        max-height: 90mm !important;
-        max-width: 100% !important;
-    }
-    .feature-list {
-        align-self: center !important;
-        text-align: left !important;
-        max-width: 90% !important;
-    }
-
-    .roadmap-box {
-        width: 100% !important;
-        padding: 1rem !important;
-    }
-    .roadmap-grid {
-        grid-template-columns: 1fr 1fr !important;
-        gap: 1rem !important;
-    }
-    .roadmap-item {
-        text-align: center;
-        padding: 1rem !important;
-    }
-
-    .link-list {
-        align-items: center !important;
-        margin-top: 1.5rem !important;
-    }
-    .link-card {
-        text-align: center !important;
-        padding: 1.2rem 1.5rem !important;
-    }
-
+    .monetization-col .phone-mockup.small { max-height: 90mm !important; max-width: 100% !important; }
+    .feature-list { align-self: center !important; text-align: left !important; max-width: 90% !important; }
+    .results-grid { grid-template-columns: 1fr 1fr !important; gap: 4vw !important;
+        width: 100% !important; max-width: 100% !important; }
+    .result-card { text-align: center !important; padding: 0.8rem !important; }
+    .result-card .stat { font-size: 1.4rem !important; }
+    .itpark-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 2vw !important;
+        width: 100% !important; }
+    .itpark-card { text-align: center !important; padding: 0.8rem !important; }
+    .itpark-card .icon { font-size: 1.2rem !important; margin-bottom: 0.2rem !important; }
+    .itpark-card .title { font-size: 0.95rem !important; }
+    .itpark-card .desc { font-size: 0.8rem !important; }
+    .bizmodel-strip { width: 100% !important; justify-content: center !important;
+        padding: 0.8rem !important; gap: 0.4rem !important; }
+    .bizmodel-strip .pill { font-size: 0.8rem !important; padding: 0.3rem 0.7rem !important; }
+    .roadmap-box { width: 100% !important; padding: 1rem !important; }
+    .roadmap-grid { grid-template-columns: 1fr 1fr !important; gap: 1rem !important; }
+    .roadmap-item { text-align: center; padding: 1rem !important; }
+    .link-list { align-items: center !important; margin-top: 1.5rem !important; }
+    .link-card { text-align: center !important; padding: 1.2rem 1.5rem !important; }
     h1 { font-size: 2.4rem !important; margin-bottom: 0.8rem !important; line-height: 1.15; }
     h2 { font-size: 1.5rem !important; margin-bottom: 0.6rem !important; }
     h3 { font-size: 1.2rem !important; }
-    p  {
-        font-size: 1.05rem !important;
-        margin-bottom: 0.8rem !important;
-        line-height: 1.55 !important;
-        max-width: 100% !important;
-    }
+    p { font-size: 1.05rem !important; margin-bottom: 0.8rem !important;
+        line-height: 1.55 !important; max-width: 100% !important; }
     .slide-subtitle { font-size: 1.2rem !important; margin-bottom: 1rem !important; }
-
-    .feature-list li {
-        font-size: 0.95rem !important;
-        margin-bottom: 0.55rem !important;
-        line-height: 1.5 !important;
-    }
-
+    .feature-list li { font-size: 0.95rem !important; margin-bottom: 0.55rem !important; line-height: 1.5 !important; }
     .roadmap-item .month { font-size: 0.85rem !important; }
     .roadmap-item .title { font-size: 1.05rem !important; margin-bottom: 0.4rem !important; }
-    .roadmap-item .desc  { font-size: 0.9rem !important; line-height: 1.5 !important; }
-
+    .roadmap-item .desc { font-size: 0.9rem !important; line-height: 1.5 !important; }
     .link-card .label { font-size: 0.85rem !important; }
-    .link-card a      { font-size: 1.05rem !important; }
-    .link-card .note  { font-size: 0.85rem !important; }
-
-    .card, .roadmap-box, .monetization-col, .link-card {
-        background: #f4f1f8 !important;
-        color: #000 !important;
-        box-shadow: none !important;
-    }
+    .link-card a { font-size: 1.05rem !important; }
+    .link-card .note { font-size: 0.85rem !important; }
+    .card, .roadmap-box, .monetization-col, .link-card,
+    .result-card, .itpark-card, .bizmodel-strip {
+        background: #f4f1f8 !important; color: #000 !important; box-shadow: none !important; }
     h1, h2, h3, p, li, a { color: #000 !important; }
-    .accent-blue, .accent-green, .accent-purple, .accent-orange, .accent-pink,
-    .monetization-col h2.is-primary, .monetization-col h2.is-tertiary {
-        color: #000 !important;
-    }
+    .accent-blue, .accent-green, .accent-purple, .accent-orange,
+    .monetization-col h2.is-primary, .monetization-col h2.is-tertiary,
+    .result-card .stat, .itpark-card .icon { color: #000 !important; }
     a { text-decoration: underline; }
     .feature-list li::before { background: #000 !important; }
 }
@@ -586,9 +270,7 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
 </head>
 <body>
 
-<!-- ============================================================
-     Слайд 1 — Обложка
-     ============================================================ -->
+<!-- ═══ 1. Обложка ═══ -->
 <section class="slide" style="text-align:center;">
     <div style="max-width: 900px; margin: 0 auto;">
         <h1>Kazan Pulse</h1>
@@ -602,9 +284,7 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
     </div>
 </section>
 
-<!-- ============================================================
-     Слайд 2 — Две проблемы — два решения
-     ============================================================ -->
+<!-- ═══ 2. Две проблемы ═══ -->
 <section class="slide">
     <div class="content-layout">
         <div class="text-block">
@@ -619,15 +299,13 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
     </div>
 </section>
 
-<!-- ============================================================
-     Слайд 3 — Одна экосистема — два продукта
-     ============================================================ -->
+<!-- ═══ 3. Одна экосистема ═══ -->
 <section class="slide">
     <div class="content-layout">
         <div class="text-block">
             <h1>Одна экосистема — <br>два продукта.</h1>
             <p><strong class="accent-purple">Kazan Pulse</strong> — находи события и компанию.</p>
-            <p><strong class="accent-green">Настольный теннис</strong> — записывайся на продолжение вместе.</p>
+            <p><strong class="accent-green">Настольный теннис</strong> — 5 игровых режимов, поиск партнёров по уровню, турниры и рейтинги.</p>
             <p>Нашёл событие → нажал «Пойду» → попал в чат → пошёл с компанией → увидел антикафе → записался на турнир всей группой.</p>
             <a href="http://51.250.35.99:8001/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Настольный теннис</a>
         </div>
@@ -637,16 +315,13 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
     </div>
 </section>
 
-<!-- ============================================================
-     Слайд 4 — Монетизация · Геймификация · Прогресс
-     ============================================================ -->
+<!-- ═══ 4. Монетизация · Геймификация ═══ -->
 <section class="slide">
     <div style="max-width: 1200px; margin: 0 auto; width: 100%;">
         <div style="text-align:center; margin-bottom: var(--space-6);">
             <h1 style="margin-bottom: var(--space-3);">Монетизация · Геймификация · Прогресс</h1>
             <p class="slide-subtitle">настольный теннис · рейтинг · развитие</p>
         </div>
-
         <div class="monetization-grid">
             <div class="monetization-col">
                 <h2 class="is-primary">Геймификация</h2>
@@ -658,7 +333,6 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
                 </ul>
                 <img src="game.png" alt="Геймификация и рейтинг" class="phone-mockup small">
             </div>
-
             <div class="monetization-col">
                 <h2 class="is-tertiary">Кастомизация</h2>
                 <ul class="feature-list">
@@ -673,9 +347,7 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
     </div>
 </section>
 
-<!-- ============================================================
-     Слайд 5 — Социальная связь
-     ============================================================ -->
+<!-- ═══ 5. Социальная связь ═══ -->
 <section class="slide">
     <div class="content-layout">
         <div class="text-block">
@@ -689,11 +361,9 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
     </div>
 </section>
 
-<!-- ============================================================
-     Слайд 6 — Бизнесу поток, людям польза
-     ============================================================ -->
+<!-- ═══ 6. Бизнесу поток + Бизнес-модель ═══ -->
 <section class="slide">
-    <div class="content-layout">
+    <div class="content-layout" style="margin-bottom: var(--space-6);">
         <div class="text-block">
             <h1>Бизнесу — <br>поток, людям — польза.</h1>
             <p>Мелкий бизнес размещает карточки (платную рекламу) в обмен на поток пользователей.</p>
@@ -705,37 +375,73 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
             <img src="bisnescard.png" alt="Карточка бизнеса" class="phone-mockup small">
         </div>
     </div>
+    <div class="bizmodel-strip">
+        <span class="pill is-primary">Партнёрства с бизнесом</span>
+        <span class="pill is-primary">Реклама в приложении</span>
+        <span class="pill is-primary">Премиум-подписка</span>
+        <span class="pill is-tertiary">Комиссия с брони</span>
+        <span class="pill is-tertiary">B2B для клубов</span>
+    </div>
 </section>
 
-<!-- ============================================================
-     Слайд 7 — План развития
-     ============================================================ -->
+<!-- ═══ 7. Что уже сделано ═══ -->
+<section class="slide">
+    <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
+        <div style="text-align:center; margin-bottom: var(--space-6);">
+            <h1 style="margin-bottom: var(--space-3);">Что уже сделано</h1>
+            <p class="slide-subtitle">не прототип, а работающий продукт</p>
+        </div>
+        <div class="results-grid">
+            <div class="result-card">
+                <div class="stat">iOS · Android · Web</div>
+                <div class="label">Приложение</div>
+                <div class="desc">Kazan Pulse с полным функционалом: афиша, чаты, аудиогид, рекомендации, карта, бизнес-предложения. Готово к публикации.</div>
+            </div>
+            <div class="result-card is-blue">
+                <div class="stat">ЮKassa</div>
+                <div class="label">Оплата</div>
+                <div class="desc">Интеграция готова. Полный цикл: выбор события → оплата → билет в профиле.</div>
+            </div>
+            <div class="result-card is-tertiary">
+                <div class="stat">Теннис</div>
+                <div class="label">Веб-версия в продакшене</div>
+                <div class="desc">Запущено, первые пользователи и партнёры среди клубов настольного тенниса.</div>
+            </div>
+            <div class="result-card">
+                <div class="stat">Команда</div>
+                <div class="label">Сформирована</div>
+                <div class="desc">Ведёт оба проекта — от дизайна до бэкенда и маркетинга.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ 8. План развития ═══ -->
 <section class="slide">
     <div style="max-width: 1300px; margin: 0 auto; width: 100%;">
         <h1 style="margin-bottom: var(--space-3);">План развития</h1>
         <p style="margin-bottom: var(--space-5);">9 месяцев до масштабирования. От города — к региону и федерации.</p>
-
         <div class="roadmap-box">
             <div class="roadmap-grid">
                 <div class="roadmap-item">
                     <div class="month">Месяц 1–2</div>
-                    <div class="title">Запуск в Казани</div>
-                    <div class="desc">Партнёрства с антикафе, коворкингами, кофейнями.</div>
+                    <div class="title">App Store + Google Play</div>
+                    <div class="desc">Публикация, маркетинг в Казани, партнёрства с антикафе и кофейнями.</div>
                 </div>
                 <div class="roadmap-item">
                     <div class="month">Месяц 3–4</div>
-                    <div class="title">Монетизация и партнёры</div>
-                    <div class="desc">Платные размещения бизнеса. Аренда и прокат: корты, залы, инвентарь. 5000 пользователей.</div>
+                    <div class="title">Приведи друга</div>
+                    <div class="desc">Месяц подписки в теннисе или бесплатная карточка бизнеса в Kazan Pulse.</div>
                 </div>
                 <div class="roadmap-item">
                     <div class="month">Месяц 5–6</div>
-                    <div class="title">Недвижимость и аренда</div>
-                    <div class="desc">Партнёрства с арендодателями: коворкинги, лофты, спортзалы. Прокат оборудования и площадок через платформу.</div>
+                    <div class="title">Кэшбэк + аудиогид</div>
+                    <div class="desc">Кэшбэк на основе рейтинга в теннисе. Расширение аудиогида на новые города.</div>
                 </div>
                 <div class="roadmap-item">
                     <div class="month">Месяц 7</div>
-                    <div class="title">Android + веб-версия</div>
-                    <div class="desc">Запуск Android-приложения и веб-клиента. Мультиязычность: татарский, испанский, английский.</div>
+                    <div class="title">Мобильный теннис</div>
+                    <div class="desc">iOS- и Android-версия приложения для настольного тенниса.</div>
                 </div>
                 <div class="roadmap-item">
                     <div class="month">Месяц 8</div>
@@ -752,40 +458,74 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
     </div>
 </section>
 
-<!-- ============================================================
-     Слайд 8 — Спасибо
-     ============================================================ -->
+<!-- ═══ 9. Зачем нам ИТ-парк ═══ -->
+<section class="slide">
+    <div style="max-width: 1200px; margin: 0 auto; width: 100%;">
+        <div style="text-align:center; margin-bottom: var(--space-6);">
+            <h1 style="margin-bottom: var(--space-3);">Зачем нам ИТ-парк</h1>
+            <p class="slide-subtitle">ускорить запуск и снизить издержки</p>
+        </div>
+        <div class="itpark-grid">
+            <div class="itpark-card">
+                <div class="icon">💰</div>
+                <div class="title">Гранты и льготы</div>
+                <div class="desc">Разработка и продвижение — за счёт господдержки</div>
+            </div>
+            <div class="itpark-card">
+                <div class="icon">🎓</div>
+                <div class="title">Менторы</div>
+                <div class="desc">Экспертиза по продукту, маркетингу и бизнесу</div>
+            </div>
+            <div class="itpark-card">
+                <div class="icon">🏢</div>
+                <div class="title">Инфраструктура</div>
+                <div class="desc">Офис, переговорные, технические ресурсы</div>
+            </div>
+            <div class="itpark-card">
+                <div class="icon">🤝</div>
+                <div class="title">Нетворкинг</div>
+                <div class="desc">Инвесторы, партнёры, другие стартапы</div>
+            </div>
+            <div class="itpark-card">
+                <div class="icon">📋</div>
+                <div class="title">Юр. и бух. помощь</div>
+                <div class="desc">Документы, налоги, отчётность</div>
+            </div>
+            <div class="itpark-card">
+                <div class="icon">⭐</div>
+                <div class="title">Знак качества</div>
+                <div class="desc">Доверие инвесторов и крупных клиентов</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ 10. Спасибо ═══ -->
 <section class="slide thank-you">
     <div style="max-width: 900px; margin: 0 auto;">
         <h1>Спасибо за внимание.</h1>
         <p style="font-size: var(--type-body-lg); color: var(--md-on-surface); margin: var(--space-5) auto; max-width: 640px;">
             Готовы обсуждать партнёрство, инвестиции и запуск.
         </p>
-
         <div class="link-list">
             <div class="link-card">
                 <p class="label">Исходный код Kazan Pulse</p>
                 <a href="https://github.com/onlymyrep/Kazan_pulse_all_versions" target="_blank" rel="noopener noreferrer">github.com/onlymyrep/Kazan_pulse_all_versions</a>
             </div>
-
             <div class="link-card is-tertiary">
                 <p class="label">Настольный теннис</p>
                 <a href="http://51.250.35.99:8001/" target="_blank" rel="noopener noreferrer">51.250.35.99:8001</a>
                 <p class="note">Языки: татарский, испанский, английский</p>
             </div>
-
-            
-            
             <div class="link-card is-apk">
                 <p class="label">APK для тестирования (Android)</p>
-                <a href="https://drive.google.com/uc?export=download&id=1hJtMnbzPFqa8VWtzrDSctY1H9LJCf87_"
-                target="_blank" rel="noopener noreferrer">
+                <a href="https://drive.google.com/uc?export=download&id=1rnuMd3QsDL_wTQ2ETkGwlu5ofKDYOG7S" target="_blank" rel="noopener noreferrer">
                     Скачать APK
                 </a>
                 <p class="note">
                     Release-сборка · Android 7.0+ · оплата в тестовом режиме<br>
                     При установке разрешите «Установка из неизвестных источников».<br>
-                    Если прямая ссылка не работает — <a href="https://drive.google.com/file/d/1hJtMnbzPFqa8VWtzrDSctY1H9LJCf87_/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="font-size: inherit;">откройте страницу файла</a>.
+                    Если прямая ссылка не работает — <a href="https://drive.google.com/file/d/1rnuMd3QsDL_wTQ2ETkGwlu5ofKDYOG7S/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="font-size: inherit;">откройте страницу файла</a>.
                 </p>
             </div>
         </div>
