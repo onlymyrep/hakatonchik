@@ -217,11 +217,11 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
 .link-card.with-qr .link-body { flex: 1; min-width: 0; }
 .link-card .qr {
     flex-shrink: 0;
-    width: 96px;
-    height: 96px;
+    width: min(58vh, 100%);
+    height: min(58vh, 100%);
     background: #fff;
-    border-radius: 8px;
-    padding: 6px;
+    border-radius: 16px;
+    padding: 12px;
     object-fit: contain;
     display: block;
 }
@@ -627,26 +627,45 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
             <h1 style="margin-bottom: var(--space-3);">Что уже сделано</h1>
             <p class="slide-subtitle">не прототип, а работающий продукт</p>
         </div>
+
         <div class="results-grid">
             <div class="result-card">
                 <div class="stat">iOS · Android · Web</div>
                 <div class="label">Приложение</div>
-                <div class="desc">Kazan Pulse с полным функционалом: афиша, чаты, аудиогид, рекомендации, карта, бизнес-предложения. Готово к публикации.</div>
+                <div class="desc">
+                    Kazan Pulse: лента бизнесов с настольным теннисом и без,
+                    карточки заведений, чаты «Кто идёт» и турнирные чаты,
+                    профиль с календарём турниров, настройки и Google-вход.
+                </div>
             </div>
+
             <div class="result-card is-blue">
-                <div class="stat">ЮKassa</div>
-                <div class="label">Оплата</div>
-                <div class="desc">Интеграция готова. Полный цикл: выбор события → оплата → билет в профиле.</div>
-            </div>
-            <div class="result-card is-tertiary">
                 <div class="stat">Теннис</div>
                 <div class="label">Веб-версия в продакшене</div>
-                <div class="desc">Запущено, первые пользователи и партнёры среди клубов настольного тенниса.</div>
+                <div class="desc">
+                    Веб-приложение для настольного тенниса запущено.
+                    В Kazan Pulse бизнесы с теннисом ведут пользователей
+                    на игровой сервис и турнирные чаты.
+                </div>
             </div>
+
+            <div class="result-card is-tertiary">
+                <div class="stat">16 бизнесов</div>
+                <div class="label">Демо-каталог</div>
+                <div class="desc">
+                    Подключены 5 теннисных и 11 обычных бизнесов:
+                    антикафе, фитнес, бар, кофейни, барбершопы, спа,
+                    ресторан, магазин и коворкинг.
+                </div>
+            </div>
+
             <div class="result-card">
                 <div class="stat">Команда</div>
                 <div class="label">Сформирована</div>
-                <div class="desc">Ведёт оба проекта — от дизайна до бэкенда и маркетинга.</div>
+                <div class="desc">
+                    Ведёт оба проекта — от дизайна и Flutter-разработки
+                    до бэкенда, веб-версии тенниса и маркетинга.
+                </div>
             </div>
         </div>
     </div>
@@ -744,55 +763,24 @@ p strong { color: var(--md-on-surface); font-weight: 500; }
             Готовы обсуждать партнёрство, инвестиции и запуск.
         </p>
 
-        <div class="link-list">
+        <div style="display:flex; flex-direction:column; align-items:center; gap: var(--space-5); margin-top: var(--space-6);">
+            <img class="qr"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=900x900&qzone=2&error_correction=M&data=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D1C5Fu4vIMJ2AofWZm7MQ3-pNypIEgS2g4"
+                alt="QR: скачать APK"
+                style="width:min(58vh, 100%); height:min(58vh, 100%); padding: 12px; border-radius: 16px;">
 
-            <!-- Исходный код -->
-            <div class="link-card with-qr">
-                <div class="link-body">
-                    <p class="label">Исходный код Kazan Pulse</p>
-                    <a href="https://github.com/onlymyrep/Kazan_pulse_all_versions"
-                       target="_blank" rel="noopener noreferrer">
-                        github.com/onlymyrep/Kazan_pulse_all_versions
-                    </a>
-                </div>
-                <img class="qr"
-                     src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&qzone=1&error_correction=M&data=https%3A%2F%2Fgithub.com%2Fonlymyrep%2FKazan_pulse_all_versions"
-                     alt="QR: исходный код">
+            <div class="link-card is-apk" style="max-width: 640px; width: 100%;">
+                <p class="label">APK для тестирования (Android)</p>
+                <a href="https://drive.google.com/uc?export=download&id=1C5Fu4vIMJ2AofWZm7MQ3-pNypIEgS2g4"
+                target="_blank"
+                rel="noopener noreferrer">
+                    Скачать APK
+                </a>
+                <p class="note">
+                    Release-сборка · Android 7.0+<br>
+                    При установке разрешите «Установка из неизвестных источников».
+                </p>
             </div>
-
-            <!-- Теннис -->
-            <div class="link-card is-tertiary with-qr">
-                <div class="link-body">
-                    <p class="label">Настольный теннис</p>
-                    <a href="http://51.250.35.99:8001/"
-                       target="_blank" rel="noopener noreferrer">
-                        51.250.35.99:8001
-                    </a>
-                    <p class="note">Языки: татарский, испанский, английский</p>
-                </div>
-                <img class="qr"
-                     src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&qzone=1&error_correction=M&data=http%3A%2F%2F51.250.35.99%3A8001%2F"
-                     alt="QR: настольный теннис">
-            </div>
-
-            <!-- APK -->
-            <div class="link-card is-apk with-qr">
-                <div class="link-body">
-                    <p class="label">APK для тестирования (Android)</p>
-                    <a href="https://drive.google.com/uc?export=download&id=1C5Fu4vIMJ2AofWZm7MQ3-pNypIEgS2g4"
-                    target="_blank" rel="noopener noreferrer">
-                        Скачать APK
-                    </a>
-                    <p class="note">
-                        Release-сборка · Android 7.0+ · оплата в тестовом режиме<br>
-                        При установке разрешите «Установка из неизвестных источников».
-                    </p>
-                </div>
-                <img class="qr"
-                    src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&qzone=1&error_correction=M&data=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D1C5Fu4vIMJ2AofWZm7MQ3-pNypIEgS2g4"
-                    alt="QR: APK">
-            </div>
-
         </div>
     </div>
 </section>
