@@ -3,779 +3,792 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Kazan Pulse — Экосистема городских активностей</title>
+<title>Мой город — презентация</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
     color-scheme: dark;
-    --md-primary: #D0BCFF; --md-on-primary: #381E72;
-    --md-primary-container: #4F378B; --md-on-primary-container: #EADDFF;
-    --md-secondary: #CCC2DC; --md-secondary-container: #4A4458;
-    --md-on-secondary-container: #E8DEF8;
-    --md-tertiary: #B5CCBA; --md-tertiary-container: #30503B;
+    --md-primary: #D0BCFF;
+    --md-on-primary: #381E72;
+    --md-tertiary: #B5CCBA;
     --md-on-tertiary-container: #D1E8D6;
-    --md-error: #F2B8B5;
-    --md-surface: #141218; --md-on-surface: #E6E0E9;
-    --md-on-surface-variant: #CAC4D0; --md-outline: #938F99;
-    --md-outline-variant: #49454F;
-    --md-surface-container-lowest: #0F0D13; --md-surface-container-low: #1D1B20;
-    --md-surface-container: #211F26; --md-surface-container-high: #2B2930;
+    --md-surface: #141218;
+    --md-on-surface: #E6E0E9;
+    --md-on-surface-variant: #CAC4D0;
+    --md-outline: #938F99;
+    --md-surface-container: #211F26;
+    --md-surface-container-high: #2B2930;
     --md-surface-container-highest: #36343B;
     --accent-blue: #A8C7FA;
-    --ui-radius-md: 12px; --ui-radius-lg: 16px;
-    --md-font: "Roboto", "Helvetica Neue", system-ui, -apple-system, sans-serif;
-    --md-ease-standard: cubic-bezier(0.2, 0, 0, 1);
-    --md-dur-short: 150ms; --md-dur-medium: 250ms;
+    --ui-radius-md: 12px;
+    --ui-radius-lg: 16px;
+    --md-font: "Roboto", "Helvetica Neue", system-ui, sans-serif;
     --md-elev-1: 0 1px 2px rgba(0,0,0,0.30), 0 1px 3px 1px rgba(0,0,0,0.15);
     --md-elev-2: 0 1px 2px rgba(0,0,0,0.30), 0 2px 6px 2px rgba(0,0,0,0.15);
-    --md-elev-3: 0 1px 3px rgba(0,0,0,0.30), 0 4px 8px 3px rgba(0,0,0,0.15);
-    --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
-    --space-5: 1.5rem; --space-6: 2rem; --space-7: 3rem;
-    --type-display: clamp(2.75rem, 6vw, 5rem);
-    --type-headline: clamp(1.75rem, 3.6vw, 2.5rem);
-    --type-title: clamp(1.25rem, 2vw, 1.5rem);
-    --type-body: 1rem; --type-body-lg: clamp(1.0625rem, 1.6vw, 1.25rem);
-    --type-footnote: 0.875rem; --type-caption: 0.75rem;
-    --focus-ring: 2px solid var(--md-primary); --touch-min: 2.75rem;
+    --type-display: clamp(2.5rem, 6vw, 4.5rem);
+    --type-headline: clamp(1.6rem, 3.4vw, 2.3rem);
+    --type-title: clamp(1.2rem, 2vw, 1.45rem);
+    --type-body: 1rem;
+    --type-body-lg: clamp(1.05rem, 1.6vw, 1.2rem);
+    --type-footnote: 0.875rem;
+    --type-caption: 0.75rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+html, body {
+    background: var(--md-surface);
+    color: var(--md-on-surface);
+    font-family: var(--md-font);
+    font-size: var(--type-body);
+    line-height: 1.5;
+}
 body {
-    background: var(--md-surface); color: var(--md-on-surface);
-    font-family: var(--md-font); font-size: var(--type-body);
-    line-height: 1.5; letter-spacing: 0.01em;
-    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-    scroll-snap-type: y proximity; overflow-y: scroll; height: 100vh;
-    padding-top: max(1rem, env(safe-area-inset-top));
-    padding-bottom: max(1rem, env(safe-area-inset-bottom));
-    padding-left: max(1rem, env(safe-area-inset-left));
-    padding-right: max(1rem, env(safe-area-inset-right));
-}
-:where(a, button, [tabindex]):focus { outline: none; }
-:where(a, button, [tabindex]):focus-visible {
-    outline: var(--focus-ring) !important; outline-offset: 3px !important; box-shadow: none !important;
-}
-:where(button, a) { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { transition-duration: 0.001ms !important; animation-duration: 0.001ms !important; }
+    overflow-y: scroll;
+    height: 100vh;
+    scroll-snap-type: y proximity;
+    padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
 }
 .slide {
-    min-height: 100vh; padding: 8vh 8vw;
-    display: flex; flex-direction: column; justify-content: center;
-    position: relative; scroll-snap-align: start;
-}
-h1, h2, h3, p { font-family: var(--md-font); }
-h1 { font-size: var(--type-display); font-weight: 500; line-height: 1.15;
-     letter-spacing: -0.01em; margin-bottom: var(--space-4); color: var(--md-on-surface); }
-h2 { font-size: var(--type-headline); font-weight: 500; line-height: 1.2;
-     margin-bottom: var(--space-3); color: var(--md-on-surface); }
-h3 { font-size: var(--type-title); font-weight: 500; line-height: 1.3;
-     margin-bottom: var(--space-2); color: var(--md-on-surface); }
-p { font-size: var(--type-body-lg); color: var(--md-on-surface-variant);
-    max-width: 62ch; margin-bottom: var(--space-4); line-height: 1.55; }
-p strong { color: var(--md-on-surface); font-weight: 500; }
-.accent-blue { color: var(--accent-blue); }
-.accent-green { color: var(--md-tertiary); }
-.accent-purple { color: var(--md-primary); }
-.accent-orange { color: var(--md-error); }
-.content-layout { display: flex; align-items: center; gap: 5vw;
-    width: 100%; max-width: 1360px; margin: 0 auto; }
-.text-block { flex: 1; min-width: 0; }
-.image-block { flex: 1; display: flex; justify-content: center;
-    align-items: center; gap: var(--space-5); min-width: 0; }
-.phone-mockup { max-width: 100%; height: auto; max-height: 68vh;
-    border-radius: 32px; box-shadow: var(--md-elev-3), 0 0 0 6px var(--md-surface-container-highest);
-    object-fit: contain; display: block; }
-.phone-mockup.small { max-height: 46vh; }
-.btn { display: inline-flex; align-items: center; justify-content: center;
-    min-height: var(--touch-min); padding: 0.65rem 1.5rem; border-radius: 999px;
-    font-family: var(--md-font); font-size: 0.875rem; font-weight: 500;
-    letter-spacing: 0.02em; text-decoration: none; color: var(--md-primary);
-    background: transparent; border: 1px solid var(--md-outline);
-    transition: background-color var(--md-dur-short) var(--md-ease-standard); cursor: pointer; }
-.btn:hover { background: color-mix(in srgb, var(--md-primary) 8%, transparent); }
-.btn-primary { background: var(--md-primary); border-color: var(--md-primary); color: var(--md-on-primary); }
-.btn-primary:hover { box-shadow: var(--md-elev-1); }
-
-/* Roadmap */
-.roadmap-box { background: var(--md-surface-container); padding: var(--space-6);
-    border-radius: var(--ui-radius-lg); margin-bottom: var(--space-4); box-shadow: var(--md-elev-1); }
-.roadmap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: var(--space-4); margin-top: var(--space-4); }
-.roadmap-item { background: var(--md-surface-container-high); padding: var(--space-4);
-    border-radius: var(--ui-radius-md); transition: box-shadow var(--md-dur-medium) var(--md-ease-standard); }
-.roadmap-item:hover { box-shadow: var(--md-elev-2); }
-.roadmap-item .month { font-size: var(--type-caption); font-weight: 500;
-    color: var(--md-primary); margin-bottom: var(--space-2); text-transform: uppercase;
-    letter-spacing: 0.08em; }
-.roadmap-item .title { font-size: 1rem; font-weight: 500; margin-bottom: var(--space-2);
-    color: var(--md-on-surface); line-height: 1.35; }
-.roadmap-item .desc { font-size: var(--type-footnote);
-    color: var(--md-on-surface-variant); line-height: 1.5; }
-
-/* Monetization / two columns */
-.monetization-grid { display: grid; grid-template-columns: 1fr 1fr;
-    gap: var(--space-6); max-width: 1200px; margin: 0 auto; width: 100%; }
-.monetization-col { background: var(--md-surface-container); border-radius: var(--ui-radius-lg);
-    padding: var(--space-6); box-shadow: var(--md-elev-1);
-    display: flex; flex-direction: column; align-items: center; text-align: left; }
-.monetization-col h2 { font-size: var(--type-title); font-weight: 500;
-    margin-bottom: var(--space-4); letter-spacing: 0; }
-.monetization-col h2.is-primary { color: var(--md-primary); }
-.monetization-col h2.is-tertiary { color: var(--md-tertiary); }
-.feature-list { list-style: none; padding: 0; margin: 0 0 var(--space-5);
-    width: 100%; align-self: flex-start; }
-.feature-list li { position: relative; padding-left: var(--space-5);
-    margin-bottom: var(--space-3); color: var(--md-on-surface-variant);
-    font-size: var(--type-body); line-height: 1.55; }
-.feature-list li::before { content: ""; position: absolute; left: 0; top: 0.6em;
-    width: 6px; height: 6px; border-radius: 50%; background: var(--md-primary); }
-.monetization-col:nth-child(2) .feature-list li::before { background: var(--md-tertiary); }
-.feature-list li strong { color: var(--md-on-surface); font-weight: 500; }
-.monetization-col .phone-mockup.small { max-height: 42vh; margin-top: auto; }
-.slide-subtitle { font-size: var(--type-body-lg); color: var(--md-primary);
-    font-weight: 400; letter-spacing: 0.03em; text-align: center;
-    margin: 0 auto var(--space-6); }
-
-/* Results grid */
-.results-grid { display: grid; grid-template-columns: 1fr 1fr;
-    gap: var(--space-5); max-width: 1100px; margin: 0 auto; width: 100%; }
-.result-card { background: var(--md-surface-container); border-radius: var(--ui-radius-lg);
-    padding: var(--space-5); box-shadow: var(--md-elev-1); }
-.result-card .stat { font-size: var(--type-headline); font-weight: 500;
-    color: var(--md-primary); margin-bottom: var(--space-2); }
-.result-card .label { font-size: var(--type-caption); text-transform: uppercase;
-    letter-spacing: 0.08em; color: var(--md-on-surface-variant);
-    font-weight: 500; margin-bottom: var(--space-2); }
-.result-card .desc { font-size: var(--type-body); color: var(--md-on-surface-variant);
-    line-height: 1.5; }
-.result-card.is-tertiary .stat { color: var(--md-tertiary); }
-.result-card.is-blue .stat { color: var(--accent-blue); }
-
-/* IT Park */
-.itpark-grid { display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-4); max-width: 1200px; margin: 0 auto; width: 100%; }
-.itpark-card { background: var(--md-surface-container); border-radius: var(--ui-radius-lg);
-    padding: var(--space-5); box-shadow: var(--md-elev-1);
-    display: flex; flex-direction: column; gap: var(--space-2); }
-.itpark-card .index {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 32px; height: 32px; border-radius: 10px;
-    background: color-mix(in srgb, var(--md-primary) 15%, transparent);
-    color: var(--md-primary); font-size: 0.75rem; font-weight: 600;
-    letter-spacing: 0.05em; font-variant-numeric: tabular-nums;
-    margin-bottom: var(--space-2); }
-.itpark-card .title { font-size: 1rem; font-weight: 500; color: var(--md-on-surface); }
-.itpark-card .desc { font-size: var(--type-footnote);
-    color: var(--md-on-surface-variant); line-height: 1.5; }
-
-/* Business model strip */
-.bizmodel-strip { max-width: 1100px; margin: var(--space-6) auto 0;
-    display: flex; flex-wrap: wrap; justify-content: center;
-    gap: var(--space-2) var(--space-3); padding: var(--space-4);
-    background: var(--md-surface-container); border-radius: var(--ui-radius-lg);
-    box-shadow: var(--md-elev-1); }
-.bizmodel-strip .pill { font-size: var(--type-footnote);
-    padding: 0.4rem 0.9rem; border-radius: 999px;
-    background: var(--md-surface-container-high); color: var(--md-on-surface-variant); }
-.bizmodel-strip .pill.is-primary { color: var(--md-primary); }
-.bizmodel-strip .pill.is-tertiary { color: var(--md-tertiary); }
-
-/* Thank you */
-.thank-you { text-align: center; }
-.thank-you h1 { margin-bottom: var(--space-5); }
-.link-list { display: flex; flex-direction: column; gap: var(--space-4);
-    align-items: center; margin-top: var(--space-7); width: 100%; }
-.link-card { background: var(--md-surface-container); padding: var(--space-5) var(--space-6);
-    border-radius: var(--ui-radius-lg); width: 100%; max-width: 620px;
-    box-shadow: var(--md-elev-1); text-align: left;
-    transition: box-shadow var(--md-dur-medium) var(--md-ease-standard); }
-.link-card:hover { box-shadow: var(--md-elev-2); }
-.link-card .label { font-size: var(--type-caption); text-transform: uppercase;
-    letter-spacing: 0.08em; color: var(--md-on-surface-variant);
-    margin-bottom: var(--space-2); font-weight: 500; }
-.link-card a { color: var(--md-primary); font-size: var(--type-body);
-    font-weight: 500; text-decoration: none; word-break: break-all;
-    transition: opacity var(--md-dur-short) var(--md-ease-standard); }
-.link-card a:hover { opacity: 0.8; text-decoration: underline; }
-.link-card.is-tertiary a { color: var(--md-tertiary); }
-.link-card.is-apk a { color: var(--accent-blue); }
-.link-card .note { font-size: var(--type-footnote);
-    color: var(--md-on-surface-variant); margin-top: var(--space-2); margin-bottom: 0; }
-
-
-
-/* ─── QR-коды в карточках ссылок ─────────────────────── */
-.link-card.with-qr {
+    min-height: 100vh;
+    padding: 8vh 8vw;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    scroll-snap-align: start;
+}
+h1, h2, h3, p {
+    font-family: var(--md-font);
+}
+h1 {
+    font-size: var(--type-display);
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: var(--space-4);
+}
+h2 {
+    font-size: var(--type-headline);
+    font-weight: 500;
+    margin-bottom: var(--space-3);
+}
+h3 {
+    font-size: var(--type-title);
+    font-weight: 500;
+    margin-bottom: var(--space-2);
+}
+p {
+    font-size: var(--type-body-lg);
+    color: var(--md-on-surface-variant);
+    max-width: 62ch;
+    margin-bottom: var(--space-4);
+    line-height: 1.55;
+}
+p strong {
+    color: var(--md-on-surface);
+    font-weight: 500;
+}
+.accent-purple { color: var(--md-primary); }
+.accent-green { color: var(--md-tertiary); }
+.accent-blue { color: var(--accent-blue); }
+.content-layout {
+    display: flex;
+    align-items: center;
+    gap: 5vw;
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
+}
+.text-block { flex: 1; min-width: 0; }
+.image-block {
+    flex: 1;
+    display: flex;
+    justify-content: center;
     align-items: center;
     gap: var(--space-5);
+    min-width: 0;
 }
-.link-card.with-qr .link-body { flex: 1; min-width: 0; }
-.link-card .qr {
-    flex-shrink: 0;
-    width: min(58vh, 100%);
-    height: min(58vh, 100%);
-    background: #fff;
-    border-radius: 16px;
-    padding: 12px;
+.phone-mockup {
+    max-width: 100%;
+    height: auto;
+    max-height: 68vh;
+    border-radius: 32px;
+    box-shadow: var(--md-elev-2), 0 0 0 6px var(--md-surface-container-highest);
     object-fit: contain;
     display: block;
 }
-
-
-@media print {
-    /* ══════════════════════════════════════════════════════════
-       PAGE + DOCUMENT RESET
-       ══════════════════════════════════════════════════════════ */
-    @page { size: A4 portrait; margin: 8mm; }
-
-    html, body {
-        height: auto !important;
-        min-height: 0 !important;
-        overflow: visible !important;
-        scroll-snap-type: none !important;
-        display: block !important;
-        background: #fff !important;
-        color: #000 !important;
-        padding: 0 !important;
-    }
-
-    /* ══════════════════════════════════════════════════════════
-       SLIDES — page break per slide
-       ══════════════════════════════════════════════════════════ */
-    .slide {
-        min-height: auto !important;
-        height: auto !important;
-        padding: 6mm 4mm !important;
-        page-break-after: always;
-        break-after: page;
-        break-inside: avoid;
-        scroll-snap-align: none;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        text-align: center;
-    }
-    .slide:last-child {
-        page-break-after: auto;
-        break-after: auto;
-    }
-
-    /* ══════════════════════════════════════════════════════════
-       LAYOUTS — content, images, grids
-       ══════════════════════════════════════════════════════════ */
-    .content-layout {
-        flex-direction: column !important;
-        gap: 4vh !important;
-        text-align: center;
-        align-items: center !important;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-    .text-block {
-        flex: none !important;
-        width: 100% !important;
-        text-align: center;
-    }
-    .text-block p {
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-    .image-block {
-        flex-wrap: nowrap !important;
-        gap: 1.5rem !important;
-        justify-content: center !important;
-        align-items: center !important;
-        width: 100% !important;
-    }
-    .image-block img:only-child {
-        max-height: 130mm !important;
-        max-width: 70% !important;
-        box-shadow: none !important;
-        border: 1px solid #333 !important;
-        object-fit: contain;
-    }
-    .image-block img:not(:only-child) {
-        max-height: 110mm !important;
-        max-width: 45% !important;
-        box-shadow: none !important;
-        border: 1px solid #333 !important;
-        object-fit: contain;
-    }
-    .slide:first-of-type .phone-mockup {
-        max-height: 110mm !important;
-        max-width: 70% !important;
-        box-shadow: none !important;
-        border: 1px solid #333 !important;
-    }
-
-    .monetization-grid {
-        grid-template-columns: 1fr 1fr !important;
-        gap: 4vw !important;
-        align-items: start !important;
-        width: 100% !important;
-    }
-    .monetization-col {
-        align-items: center !important;
-        text-align: center !important;
-        padding: 1rem !important;
-    }
-    .monetization-col h2 { text-align: center !important; }
-    .monetization-col .phone-mockup.small {
-        max-height: 90mm !important;
-        max-width: 100% !important;
-    }
-    .feature-list {
-        align-self: center !important;
-        text-align: left !important;
-        max-width: 90% !important;
-    }
-
-    .results-grid {
-        grid-template-columns: 1fr 1fr !important;
-        gap: 4vw !important;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-    .result-card {
-        text-align: center !important;
-        padding: 0.8rem !important;
-    }
-    .result-card .stat { font-size: 1.4rem !important; }
-
-    .itpark-grid {
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 2vw !important;
-        width: 100% !important;
-    }
-    .itpark-card {
-        text-align: center !important;
-        padding: 0.8rem !important;
-    }
-    .itpark-card .index {
-        width: 24px !important;
-        height: 24px !important;
-        font-size: 0.65rem !important;
-        margin-bottom: 0.2rem !important;
-    }
-    .itpark-card .title { font-size: 0.95rem !important; }
-    .itpark-card .desc { font-size: 0.8rem !important; }
-
-    .bizmodel-strip {
-        width: 100% !important;
-        justify-content: center !important;
-        padding: 0.8rem !important;
-        gap: 0.4rem !important;
-    }
-    .bizmodel-strip .pill {
-        font-size: 0.8rem !important;
-        padding: 0.3rem 0.7rem !important;
-    }
-
-    .roadmap-box {
-        width: 100% !important;
-        padding: 1rem !important;
-    }
-    .roadmap-grid {
-        grid-template-columns: 1fr 1fr !important;
-        gap: 1rem !important;
-    }
-    .roadmap-item {
-        text-align: center;
-        padding: 1rem !important;
-    }
-
-    /* ══════════════════════════════════════════════════════════
-       TYPOGRAPHY
-       ══════════════════════════════════════════════════════════ */
-    h1 { font-size: 2.4rem !important; margin-bottom: 0.8rem !important; line-height: 1.15; }
-    h2 { font-size: 1.5rem !important; margin-bottom: 0.6rem !important; }
-    h3 { font-size: 1.2rem !important; }
-    p {
-        font-size: 1.05rem !important;
-        margin-bottom: 0.8rem !important;
-        line-height: 1.55 !important;
-        max-width: 100% !important;
-    }
-    .slide-subtitle { font-size: 1.2rem !important; margin-bottom: 1rem !important; }
-    .feature-list li { font-size: 0.95rem !important; margin-bottom: 0.55rem !important; line-height: 1.5 !important; }
-
-    .roadmap-item .month { font-size: 0.85rem !important; }
-    .roadmap-item .title { font-size: 1.05rem !important; margin-bottom: 0.4rem !important; }
-    .roadmap-item .desc  { font-size: 0.9rem !important; line-height: 1.5 !important; }
-
-    .link-card .label { font-size: 0.85rem !important; }
-    .link-card a      { font-size: 1.05rem !important; }
-    .link-card .note  { font-size: 0.85rem !important; }
-
-    /* ══════════════════════════════════════════════════════════
-       COLORS — текст всегда чёрный
-       ══════════════════════════════════════════════════════════ */
-    h1, h2, h3, p, li, a,
-    .result-card .stat,
-    .result-card .label,
-    .result-card .desc,
-    .itpark-card .index,
-    .itpark-card .title,
-    .itpark-card .desc,
-    .link-card .label,
-    .link-card .note,
-    .roadmap-item .month,
-    .roadmap-item .title,
-    .roadmap-item .desc,
-    .bizmodel-strip .pill,
-    .slide-subtitle,
-    .monetization-col h2,
-    .feature-list li,
-    .accent-blue, .accent-green, .accent-purple, .accent-orange {
-        color: #000 !important;
-    }
-    a { text-decoration: underline; }
-    .feature-list li::before { background: #000 !important; }
-
-    /* ══════════════════════════════════════════════════════════
-       SURFACES — светлые фоны контейнеров
-       ══════════════════════════════════════════════════════════ */
-    .card, .roadmap-box, .monetization-col, .link-card,
-    .result-card, .itpark-card, .bizmodel-strip {
-        background: #f4f1f8 !important;
-        color: #000 !important;
-        box-shadow: none !important;
-        border: none !important;
-    }
-
-    /* Вложенные карточки — БЕЛЫЕ с обводкой, чтобы не сливались */
-    .roadmap-item,
-    .bizmodel-strip .pill {
-        background: #ffffff !important;
-        color: #000 !important;
-        border: 1px solid #d0c9e0 !important;
-        box-shadow: none !important;
-    }
-
-    /* Акценты в карточках — тёмные версии для контраста */
-    .roadmap-item .month { color: #5b4b8a !important; }
-    .bizmodel-strip .pill.is-primary  { color: #5b4b8a !important; }
-    .bizmodel-strip .pill.is-tertiary { color: #2d5a3d !important; }
-
-    /* ══════════════════════════════════════════════════════════
-       QR CARDS — крупные, на всю ширину
-       ══════════════════════════════════════════════════════════ */
-    .link-list {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 1.2rem !important;
-        margin-top: 1.5rem !important;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-    .link-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 1rem 1.4rem !important;
-        min-height: 150px !important;
-        text-align: left !important;
-    }
-    .link-card.with-qr {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        text-align: left !important;
-        gap: 1.5rem !important;
-    }
-    .link-card.with-qr .link-body {
-        text-align: left !important;
-        flex: 1 !important;
-        min-width: 0 !important;
-    }
-    .link-card .qr {
-        width: 130px !important;
-        height: 130px !important;
-        padding: 6px !important;
-        flex-shrink: 0 !important;
-    }
+.phone-mockup.small { max-height: 46vh; }
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0.65rem 1.5rem;
+    border-radius: 999px;
+    font-family: var(--md-font);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--md-primary);
+    background: transparent;
+    border: 1px solid var(--md-outline);
+    cursor: pointer;
+}
+.btn-primary {
+    background: var(--md-primary);
+    border-color: var(--md-primary);
+    color: var(--md-on-primary);
+}
+.unit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-4);
+    max-width: 1200px;
+    margin: var(--space-5) auto 0;
+    width: 100%;
+}
+.unit-card {
+    background: var(--md-surface-container);
+    border-radius: var(--ui-radius-lg);
+    padding: var(--space-5);
+    box-shadow: var(--md-elev-1);
+}
+.unit-card .label {
+    font-size: var(--type-caption);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--md-on-surface-variant);
+    font-weight: 500;
+    margin-bottom: var(--space-2);
+}
+.unit-card .value {
+    font-size: var(--type-headline);
+    font-weight: 500;
+    color: var(--md-primary);
+    margin-bottom: var(--space-2);
+}
+.unit-card p {
+    font-size: var(--type-footnote);
+    margin-bottom: 0;
+}
+.revenue-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-4);
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
+}
+.revenue-card {
+    background: var(--md-surface-container);
+    border-radius: var(--ui-radius-lg);
+    padding: var(--space-5);
+    box-shadow: var(--md-elev-1);
+}
+.revenue-card .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    font-size: var(--type-caption);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+}
+.revenue-card .tag.primary {
+    background: color-mix(in srgb, var(--md-primary) 18%, transparent);
+    color: var(--md-primary);
+}
+.revenue-card .tag.tertiary {
+    background: color-mix(in srgb, var(--md-tertiary) 18%, transparent);
+    color: var(--md-tertiary);
+}
+.revenue-card .tag.blue {
+    background: color-mix(in srgb, var(--accent-blue) 18%, transparent);
+    color: var(--accent-blue);
+}
+.revenue-card h3 { margin-bottom: var(--space-2); }
+.revenue-card p {
+    font-size: var(--type-footnote);
+    margin-bottom: var(--space-2);
+}
+.revenue-card .metric {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--md-on-surface);
+}
+.revenue-card .metric-note {
+    font-size: var(--type-caption);
+    color: var(--md-on-surface-variant);
+}
+.results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-5);
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+}
+.result-card {
+    background: var(--md-surface-container);
+    border-radius: var(--ui-radius-lg);
+    padding: var(--space-5);
+    box-shadow: var(--md-elev-1);
+}
+.result-card .stat {
+    font-size: var(--type-headline);
+    font-weight: 500;
+    color: var(--md-primary);
+    margin-bottom: var(--space-2);
+}
+.result-card .label {
+    font-size: var(--type-caption);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--md-on-surface-variant);
+    font-weight: 500;
+    margin-bottom: var(--space-2);
+}
+.result-card .desc {
+    font-size: var(--type-body);
+    color: var(--md-on-surface-variant);
+    line-height: 1.5;
+}
+.result-card.is-tertiary .stat { color: var(--md-tertiary); }
+.result-card.is-blue .stat { color: var(--accent-blue); }
+.slide-subtitle {
+    font-size: var(--type-body-lg);
+    color: var(--md-primary);
+    text-align: center;
+    margin: 0 auto var(--space-6);
+}
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-5);
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+}
+.team-card {
+    background: var(--md-surface-container);
+    border-radius: var(--ui-radius-lg);
+    padding: var(--space-5);
+    box-shadow: var(--md-elev-1);
+    text-align: center;
+}
+.team-photo {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto var(--space-4);
+    border-radius: 50%;
+    background: var(--md-surface-container-high);
+    border: 2px dashed var(--md-outline);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--md-on-surface-variant);
+    font-size: var(--type-footnote);
+    overflow: hidden;
+}
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.team-card h3 { margin-bottom: var(--space-2); }
+.team-card p {
+    font-size: var(--type-footnote);
+    margin-bottom: 0;
+}
+.link-card {
+    background: var(--md-surface-container);
+    padding: var(--space-5) var(--space-6);
+    border-radius: var(--ui-radius-lg);
+    width: 100%;
+    max-width: 620px;
+    box-shadow: var(--md-elev-1);
+    text-align: left;
+}
+.link-card .label {
+    font-size: var(--type-caption);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--md-on-surface-variant);
+    margin-bottom: var(--space-2);
+    font-weight: 500;
+}
+.link-card a {
+    color: var(--md-primary);
+    font-size: var(--type-body);
+    font-weight: 500;
+    text-decoration: none;
+    word-break: break-all;
+}
+.link-card .note {
+    font-size: var(--type-footnote);
+    color: var(--md-on-surface-variant);
+    margin-top: var(--space-2);
+    margin-bottom: 0;
+}
+.thank-you { text-align: center; }
+.thank-you h1 { margin-bottom: var(--space-5); }
+@media (max-width: 900px) {
+    .content-layout { flex-direction: column; text-align: center; }
+    .results-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
-<!-- ═══ 1. Обложка ═══ -->
+<!-- 1. Обложка -->
 <section class="slide" style="text-align:center;">
-    <div style="max-width: 900px; margin: 0 auto;">
-        <h1>Kazan Pulse</h1>
+    <div style="max-width: 950px; margin: 0 auto;">
+        <h1>Мой город</h1>
+
         <p style="font-size: var(--type-body-lg); color: var(--md-on-surface); margin-bottom: var(--space-3);">
-            Экосистема городских активностей
+            Стартап в сфере туризма и спорта, развития городской инфраструктуры,
+            улучшения качества жизни и здоровья населения.
         </p>
-        <p class="accent-purple" style="margin: 0 auto var(--space-7);">
-            А также социальная платформа мелкого бизнеса
+
+        <p class="accent-purple" style="margin: 0 auto var(--space-7); max-width: 720px;">
+            Связь виртуального с реальным.<br>
+            Экосистема, объединяющая жителей и заведения города.
         </p>
-        <img src="bisnes.png" alt="Лента бизнесов" class="phone-mockup" style="margin: 0 auto; max-height: 52vh;">
+
+        <img src="bisnes.png" alt="Лента бизнесов" class="phone-mockup" style="margin: 0 auto; max-height: 48vh;">
     </div>
 </section>
 
-<!-- ═══ 2. Две проблемы ═══ -->
+<!-- 2. Что это -->
 <section class="slide">
     <div class="content-layout">
         <div class="text-block">
-            <h1>Две проблемы — <br>два решения.</h1>
-            <p style="color: var(--md-on-surface);"><strong class="accent-orange">Проблема 1.</strong> Люди не знают о событиях города и полезных бизнесах.</p>
-            <p style="color: var(--md-on-surface);"><strong class="accent-orange">Проблема 2.</strong> У людей нет желания и мотивации посещать события или идти в неизвестное кафе в одиночку.</p>
-            <p>Информация разбросана. Идти одному — скучно. Малый бизнес не может найти первых клиентов.</p>
+            <h1>Мой город — <br>программное обеспечение.</h1>
+
+            <p>
+                Мобильное приложение <strong>Арена</strong> и веб-приложение
+                <strong>Теннис</strong>. Вместе их можно называть «Мой город».
+            </p>
+
+            <p>
+                Жители находят заведения, события, компанию и спортивные активности.
+                Заведения рассказывают о себе, проводят турниры и получают клиентов.
+            </p>
+
+            <p>
+                Решение можно применять в любом городе и любой стране.
+            </p>
         </div>
+
         <div class="image-block">
-            <img src="interface.png" alt="Лента событий" class="phone-mockup">
+            <img src="interface.jpg" alt="Лента событий" class="phone-mockup">
         </div>
     </div>
 </section>
 
-<!-- ═══ 3. Одна экосистема ═══ -->
+<!-- 3. Как это работает -->
 <section class="slide">
     <div class="content-layout">
         <div class="text-block">
-            <h1>Одна экосистема — <br>два продукта.</h1>
-            <p><strong class="accent-purple">Kazan Pulse</strong> — находи события и компанию.</p>
-            <p><strong class="accent-green">Настольный теннис</strong> — 5 игровых режимов, поиск партнёров по уровню, турниры и рейтинги.</p>
-            <p>Нашёл событие → нажал «Пойду» → попал в чат → пошёл с компанией → увидел антикафе → записался на турнир всей группой.</p>
-            <a href="http://51.250.35.99:8001/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Настольный теннис</a>
+            <h1>От приложения — <br>к реальной встрече.</h1>
+
+            <p>
+                Житель видит заведение или событие, находит компанию,
+                идёт в заведение, играет в теннис или участвует в турнире.
+            </p>
+
+            <p>
+                Заведение получает посетителей, а турниры создают повод
+                приходить снова и снова.
+            </p>
+
+            <a href="http://51.250.35.99:8001/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                Теннис
+            </a>
         </div>
+
         <div class="image-block">
             <img src="t.png" alt="Детали события" class="phone-mockup">
         </div>
     </div>
 </section>
 
-<!-- ═══ 4. Монетизация · Геймификация ═══ -->
+<!-- 4. Бизнес-модель -->
 <section class="slide">
     <div style="max-width: 1200px; margin: 0 auto; width: 100%;">
-        <div style="text-align:center; margin-bottom: var(--space-6);">
-            <h1 style="margin-bottom: var(--space-3);">Монетизация · Геймификация · Прогресс</h1>
-            <p class="slide-subtitle">настольный теннис · рейтинг · развитие</p>
-        </div>
-        <div class="monetization-grid">
-            <div class="monetization-col">
-                <h2 class="is-primary">Геймификация</h2>
-                <ul class="feature-list">
-                    <li>Визуализация динамики изменения рейтинга</li>
-                    <li>Скидки за рейтинг в заведениях-партнёрах</li>
-                    <li>Бесплатное развитие навыков игры без тренеров</li>
-                    <li>Играй с сильными — учись от сильных</li>
-                </ul>
-                <img src="game.png" alt="Геймификация и рейтинг" class="phone-mockup small">
+        <h1 style="margin-bottom: var(--space-5);">Бизнес-модель</h1>
+
+        <div class="revenue-grid">
+            <div class="revenue-card">
+                <span class="tag primary">Теннис</span>
+                <h3>Бесплатный турнир</h3>
+                <p>
+                    Пользователь может создать один бесплатный турнир
+                    формата «сингл элиминейшн» в месяц.
+                </p>
             </div>
-            <div class="monetization-col">
-                <h2 class="is-tertiary">Кастомизация</h2>
-                <ul class="feature-list">
-                    <li>Тема оформления</li>
-                    <li>Музыка профиля</li>
-                    <li>Различные режимы игры</li>
-                    <li>Личная статистика игр</li>
-                </ul>
-                <img src="profile.png" alt="Кастомизация профиля" class="phone-mockup small">
+
+            <div class="revenue-card">
+                <span class="tag primary">Теннис · Премиум</span>
+                <h3>Премиум</h3>
+                <p>
+                    Любые 5 форматов турниров без ограничения количества.
+                </p>
+                <div class="metric">21 000 ₽ / год</div>
+                <div class="metric-note">Скидка зависит от активности игрока</div>
+            </div>
+
+            <div class="revenue-card">
+                <span class="tag tertiary">Арена</span>
+                <h3>Реклама заведений</h3>
+                <p>
+                    Заведения размещают рекламу бесплатно.
+                </p>
+            </div>
+
+            <div class="revenue-card">
+                <span class="tag tertiary">Арена · Премиум</span>
+                <h3>Турниры с призами</h3>
+                <p>
+                    Заведения анонсируют турниры с денежными призами или мерчем
+                    и получают часть взносов участников.
+                </p>
+                <div class="metric">5 000 ₽ / год</div>
+                <div class="metric-note">Сейчас тестовый Премиум — 100 ₽</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ═══ 5. Социальная связь ═══ -->
+<!-- 5. Скидка -->
 <section class="slide">
-    <div class="content-layout">
-        <div class="text-block">
-            <h1>Незнакомцы — <br>не проблема.</h1>
-            <p>Чат события объединяет тех, кто уже идёт. Договорись о встрече, обсуди детали, найди друзей по интересам.</p>
-        </div>
-        <div class="image-block" style="gap: var(--space-5);">
-            <img src="chat.png" alt="Чат события" class="phone-mockup small">
-            <img src="eventcard.png" alt="Карточка события" class="phone-mockup small">
+    <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
+        <h1 style="margin-bottom: var(--space-4);">Скидка на Премиум</h1>
+
+        <p style="margin-bottom: var(--space-5);">
+            Чем активнее игрок, тем больше его скидка.
+            При регистрации у каждого игрока рейтинг — 1000,
+            поэтому небольшая скидка доступна сразу.
+        </p>
+
+        <div class="unit-grid">
+            <div class="unit-card">
+                <div class="label">Что влияет</div>
+                <div class="value">Активность</div>
+                <p>
+                    Рейтинг, количество сыгранных игр, проведённых турниров
+                    и среднее место.
+                </p>
+            </div>
+
+            <div class="unit-card">
+                <div class="label">Премиум</div>
+                <div class="value">21 000 ₽ / год</div>
+                <p>Максимальная скидка — 96%.</p>
+            </div>
+
+            <div class="unit-card">
+                <div class="label">Зачем игроку</div>
+                <div class="value">Больше турниров</div>
+                <p>Доступ к любым 5 форматам без ограничения количества.</p>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- ═══ 6. Бизнесу поток + Бизнес-модель ═══ -->
+<!-- 6. Турниры -->
 <section class="slide">
-    <div class="content-layout" style="margin-bottom: var(--space-6);">
-        <div class="text-block">
-            <h1>Бизнесу — <br>поток, людям — польза.</h1>
-            <p>Мелкий бизнес размещает карточки (платную рекламу) в обмен на поток пользователей.</p>
-            <p><strong class="accent-green">Потенциальные покупатели для бизнеса — это выручка.</strong></p>
-            <p>Антикафе, теннисные клубы, барбершопы, кофейни — все, кто рядом с событиями.</p>
+    <div style="max-width: 1200px; margin: 0 auto; width: 100%;">
+        <h1 style="margin-bottom: var(--space-4);">Турниры в Теннисе</h1>
+
+        <p style="margin-bottom: var(--space-5);">
+            Заведение создаёт турнир, игроки платят взнос,
+            а призовые рассчитываются автоматически.
+        </p>
+
+        <div class="unit-grid">
+            <div class="unit-card">
+                <div class="label">Количество призовых мест</div>
+                <div class="value">До 20 участников</div>
+                <p>5 призовых мест.</p>
+            </div>
+
+            <div class="unit-card">
+                <div class="label">Количество призовых мест</div>
+                <div class="value">До 40 участников</div>
+                <p>7 призовых мест.</p>
+            </div>
+
+            <div class="unit-card">
+                <div class="label">Количество призовых мест</div>
+                <div class="value">Более 40 участников</div>
+                <p>9 призовых мест.</p>
+            </div>
         </div>
-        <div class="image-block" style="gap: var(--space-5);">
-            <img src="bisnes.png" alt="Лента бизнесов" class="phone-mockup small">
-            <img src="bisnescard.png" alt="Карточка бизнеса" class="phone-mockup small">
-        </div>
-    </div>
-    <div class="bizmodel-strip">
-        <span class="pill is-primary">Партнёрства с бизнесом</span>
-        <span class="pill is-primary">Реклама в приложении</span>
-        <span class="pill is-primary">Премиум-подписка</span>
-        <span class="pill is-tertiary">Комиссия с брони</span>
-        <span class="pill is-tertiary">B2B для клубов</span>
+
+        <p style="margin-top: var(--space-5);">
+            Призовые зависят от рейтинга игрока.
+            Рейтинг рассчитывается автоматически в приложении Теннис.
+        </p>
     </div>
 </section>
 
-<!-- ═══ 7. Что уже сделано ═══ -->
+<!-- 7. Что уже есть -->
 <section class="slide">
     <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
         <div style="text-align:center; margin-bottom: var(--space-6);">
-            <h1 style="margin-bottom: var(--space-3);">Что уже сделано</h1>
-            <p class="slide-subtitle">не прототип, а работающий продукт</p>
+            <h1 style="margin-bottom: var(--space-3);">Что уже есть</h1>
+            <p class="slide-subtitle">Приложение работает, загрузка в магазины — в процессе</p>
         </div>
 
         <div class="results-grid">
             <div class="result-card">
-                <div class="stat">iOS · Android · Web</div>
-                <div class="label">Приложение</div>
+                <div class="stat">Арена</div>
+                <div class="label">Мобильное приложение</div>
                 <div class="desc">
-                    Kazan Pulse: лента бизнесов с настольным теннисом и без,
-                    карточки заведений, чаты «Кто идёт» и турнирные чаты,
-                    профиль с календарём турниров, настройки и Google-вход.
+                    Лента заведений, карточки бизнесов, события,
+                    чаты «Кто идёт», профиль и календарь.
                 </div>
             </div>
 
             <div class="result-card is-blue">
                 <div class="stat">Теннис</div>
-                <div class="label">Веб-версия в продакшене</div>
+                <div class="label">Веб-приложение</div>
                 <div class="desc">
-                    Веб-приложение для настольного тенниса запущено.
-                    В Kazan Pulse бизнесы с теннисом ведут пользователей
-                    на игровой сервис и турнирные чаты.
+                    Поиск партнёров, игровые режимы, рейтинг,
+                    турниры, статистика и чаты.
                 </div>
             </div>
 
             <div class="result-card is-tertiary">
-                <div class="stat">16 бизнесов</div>
-                <div class="label">Демо-каталог</div>
+                <div class="stat">Тестовый Премиум</div>
+                <div class="label">100 ₽</div>
                 <div class="desc">
-                    Подключены 5 теннисных и 11 обычных бизнесов:
-                    антикафе, фитнес, бар, кофейни, барбершопы, спа,
-                    ресторан, магазин и коворкинг.
+                    Любой пользователь может протестировать все возможности сервиса.
                 </div>
             </div>
 
             <div class="result-card">
-                <div class="stat">Команда</div>
-                <div class="label">Сформирована</div>
+                <div class="stat">Первые продажи</div>
+                <div class="label">Начало</div>
                 <div class="desc">
-                    Ведёт оба проекта — от дизайна и Flutter-разработки
-                    до бэкенда, веб-версии тенниса и маркетинга.
+                    Загрузка приложений в App Store и Google Play — в процессе.
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ═══ 8. План развития ═══ -->
+<!-- 8. Польза для заведений -->
 <section class="slide">
-    <div style="max-width: 1300px; margin: 0 auto; width: 100%;">
-        <h1 style="margin-bottom: var(--space-3);">План развития</h1>
-        <p style="margin-bottom: var(--space-5);">9 месяцев до масштабирования. От города — к региону и федерации.</p>
-        <div class="roadmap-box">
-            <div class="roadmap-grid">
-                <div class="roadmap-item">
-                    <div class="month">Месяц 1–2</div>
-                    <div class="title">App Store + Google Play</div>
-                    <div class="desc">Публикация, маркетинг в Казани, партнёрства с антикафе и кофейнями.</div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="month">Месяц 3–4</div>
-                    <div class="title">Приведи друга</div>
-                    <div class="desc">Месяц подписки в теннисе или бесплатная карточка бизнеса в Kazan Pulse.</div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="month">Месяц 5–6</div>
-                    <div class="title">Кэшбэк + аудиогид</div>
-                    <div class="desc">Кэшбэк на основе рейтинга в теннисе. Расширение аудиогида на новые города.</div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="month">Месяц 7</div>
-                    <div class="title">Мобильный теннис</div>
-                    <div class="desc">iOS- и Android-версия приложения для настольного тенниса.</div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="month">Месяц 8</div>
-                    <div class="title">Выход в Татарстан</div>
-                    <div class="desc">Набережные Челны, Альметьевск, Нижнекамск. Грант или акселератор IT Park.</div>
-                </div>
-                <div class="roadmap-item">
-                    <div class="month">Месяц 9</div>
-                    <div class="title">Инвестиции и масштаб</div>
-                    <div class="desc">Экосистема аренды, проката и бронирования.</div>
-                </div>
-            </div>
+    <div class="content-layout">
+        <div class="text-block">
+            <h1>Заведению — <br>клиенты и турниры.</h1>
+
+            <p>
+                Заведение бесплатно размещает рекламу и рассказывает о себе жителям города.
+            </p>
+
+            <p>
+                Турниры приводят людей в заведение, а призовые и активность игроков
+                помогают удерживать их.
+            </p>
+
+            <p>
+                Заведение получает часть взносов с турниров.
+            </p>
+        </div>
+
+        <div class="image-block" style="gap: var(--space-5);">
+            <img src="bisnes.jpg" alt="Лента бизнесов" class="phone-mockup small">
+            <img src="bisnescard.jpg" alt="Карточка бизнеса" class="phone-mockup small">
         </div>
     </div>
 </section>
 
-<!-- ═══ 9. Зачем нам ИТ-парк ═══ -->
+<!-- 9. Теннис -->
 <section class="slide">
     <div style="max-width: 1200px; margin: 0 auto; width: 100%;">
-        <div style="text-align:center; margin-bottom: var(--space-6);">
-            <h1 style="margin-bottom: var(--space-3);">Зачем нам ИТ-парк</h1>
-            <p class="slide-subtitle">ускорить запуск и снизить издержки</p>
+        <h1 style="margin-bottom: var(--space-4);">Теннис</h1>
+
+        <p style="margin-bottom: var(--space-5);">
+            Игровой процесс сбалансирован. Игрок видит свой прогресс,
+            может играть в разных режимах и получать советы по игре.
+        </p>
+
+        <div class="unit-grid">
+            <div class="unit-card">
+                <div class="label">Рейтинг</div>
+                <div class="value">Прогресс</div>
+                <p>Визуализация изменения рейтинга.</p>
+            </div>
+
+            <div class="unit-card">
+                <div class="label">Режимы</div>
+                <div class="value">5 режимов</div>
+                <p>Разные форматы игры.</p>
+            </div>
+
+            <div class="unit-card">
+                <div class="label">Профиль</div>
+                <div class="value">Статистика</div>
+                <p>Личный профиль с игровой статистикой.</p>
+            </div>
+
+            <div class="unit-card">
+                <div class="label">Советы</div>
+                <div class="value">От игроков</div>
+                <p>Советы по игре от известных игроков.</p>
+            </div>
         </div>
-        <div class="itpark-grid">
-            <div class="itpark-card">
-                <div class="index">01</div>
-                <div class="title">Гранты и льготы</div>
-                <div class="desc">Разработка и продвижение — за счёт господдержки</div>
+
+        <p style="margin-top: var(--space-5);">
+            Предиктивные алгоритмы рассчитывают призовые места по личным встречам,
+            победам в сетах и количеству забитых и пропущенных мячей.
+            Это помогает снизить разногласия и недопонимание между игроками.
+        </p>
+    </div>
+</section>
+
+<!-- 10. Команда -->
+<section class="slide">
+    <div style="max-width: 1000px; margin: 0 auto; width: 100%;">
+        <div style="text-align:center; margin-bottom: var(--space-6);">
+            <h1 style="margin-bottom: var(--space-3);">Команда</h1>
+        </div>
+
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-photo">
+                    Фото Ильяса
+                </div>
+
+                <h3>Ильяс</h3>
+                <p>
+                    Основатель.<br>
+                    Fullstack-разработчик и DevOps-инженер.
+                </p>
             </div>
-            <div class="itpark-card">
-                <div class="index">02</div>
-                <div class="title">Менторы</div>
-                <div class="desc">Экспертиза по продукту, маркетингу и бизнесу</div>
-            </div>
-            <div class="itpark-card">
-                <div class="index">03</div>
-                <div class="title">Инфраструктура</div>
-                <div class="desc">Офис, переговорные, технические ресурсы</div>
-            </div>
-            <div class="itpark-card">
-                <div class="index">04</div>
-                <div class="title">Нетворкинг</div>
-                <div class="desc">Инвесторы, партнёры, другие стартапы</div>
-            </div>
-            <div class="itpark-card">
-                <div class="index">05</div>
-                <div class="title">Юр. и бух. помощь</div>
-                <div class="desc">Документы, налоги, отчётность</div>
-            </div>
-            <div class="itpark-card">
-                <div class="index">06</div>
-                <div class="title">Знак качества</div>
-                <div class="desc">Доверие инвесторов и крупных клиентов</div>
+
+            <div class="team-card">
+                <div class="team-photo">
+                    Фото Нэли
+                </div>
+
+                <h3>Нэля</h3>
+                <p>
+                    Бизнес- и системный аналитик.<br>
+                    Тестировщица.
+                </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ═══ 10. Спасибо ═══ -->
+<!-- 11. Компания -->
+<section class="slide">
+    <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
+        <h1 style="margin-bottom: var(--space-4);">Компания</h1>
+
+        <p style="margin-bottom: var(--space-5);">
+            Сейчас проект развивается как ИП.
+            При расширении команды планируется создание ООО.
+        </p>
+
+        <div class="unit-grid">
+            <div class="unit-card">
+                <div class="label">Нужно</div>
+                <div class="value">Команда</div>
+                <p>
+                    HR-специалист, бизнес- и системный аналитик,
+                    ведущий турниров, торговый представитель
+                    и специалист техподдержки.
+                </p>
+            </div>
+
+            <div class="unit-card">
+                <div class="label">Инвестиции</div>
+                <div class="value">4 млн ₽</div>
+                <p>На масштабирование и выплату зарплат.</p>
+            </div>
+
+            <div class="unit-card">
+                <div class="label">Эффект</div>
+                <div class="value">Рабочие места</div>
+                <p>Создание рабочих мест и налоговые отчисления в бюджет.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 12. Выгода инвестору -->
+<section class="slide">
+    <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
+        <h1 style="margin-bottom: var(--space-4);">Выгода для инвестора</h1>
+
+        <p style="margin-bottom: var(--space-5);">
+            Инвестиции направляются на масштабирование и развитие команды.
+        </p>
+
+        <div class="unit-grid">
+            <div class="unit-card">
+                <div class="label">Премиум заведения</div>
+                <div class="value">5 000 ₽ / год</div>
+                <p>10 заведений — 50 000 ₽.</p>
+            </div>
+
+            <div class="unit-card">
+                <div class="label">Турнир</div>
+                <div class="value">10 000 ₽</div>
+                <p>При 40 участниках общий объём взносов — 400 000 ₽.</p>
+            </div>
+
+            <div class="unit-card">
+                <div class="label">Доход сервиса</div>
+                <div class="value">Комиссия</div>
+                <p>Сервис получает процент с каждого турнира.</p>
+            </div>
+        </div>
+
+        <p style="margin-top: var(--space-5);">
+            Дополнительно планируется магазин мерча: за 4–9 места игроки получают мерч,
+            остальным — бесплатная дегустация блюд с возможностью купить их на гастромаркете.
+        </p>
+    </div>
+</section>
+
+<!-- 13. Спасибо -->
 <section class="slide thank-you">
     <div style="max-width: 900px; margin: 0 auto; width: 100%;">
         <h1>Спасибо за внимание.</h1>
+
         <p style="font-size: var(--type-body-lg); color: var(--md-on-surface); margin: var(--space-5) auto; max-width: 640px;">
-            Готовы обсуждать партнёрство, инвестиции и запуск.
+            Готовы обсудить партнёрство, инвестиции и запуск.
         </p>
 
         <div style="display:flex; flex-direction:column; align-items:center; gap: var(--space-5); margin-top: var(--space-6);">
             <img class="qr"
-                src="https://api.qrserver.com/v1/create-qr-code/?size=900x900&qzone=2&error_correction=M&data=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D1cgwNrPECEbvOlYsMb6Q02nP0XPD8dAUl"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=900x900&qzone=2&error_correction=M&data=https%3A%2F%2Fdrive.google.com%2Fuc%3Fexport%3Ddownload%26id%3D1_GtxUhVRgealfbqHjgSyzan4bDI2Q1Ox"
                 alt="QR: скачать APK"
                 style="width:min(58vh, 100%); height:min(58vh, 100%); padding: 12px; border-radius: 16px;">
 
-            <div class="link-card is-apk" style="max-width: 640px; width: 100%;">
+            <div class="link-card" style="max-width: 640px; width: 100%;">
                 <p class="label">APK для тестирования (Android)</p>
-                <a href="https://drive.google.com/uc?export=download&id=1cgwNrPECEbvOlYsMb6Q02nP0XPD8dAUl"
+
+                <a href="https://drive.google.com/uc?export=download&id=1_GtxUhVRgealfbqHjgSyzan4bDI2Q1Ox"
                    target="_blank"
                    rel="noopener noreferrer">
                     Скачать APK
                 </a>
+
                 <p class="note">
                     Release-сборка · Android 7.0+<br>
                     При установке разрешите «Установка из неизвестных источников».
