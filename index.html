@@ -4,12 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Мой город — презентация</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
 <style>
 :root {
     color-scheme: dark;
+
     --md-primary: #D0BCFF;
     --md-on-primary: #381E72;
     --md-tertiary: #B5CCBA;
@@ -21,19 +24,28 @@
     --md-surface-container: #211F26;
     --md-surface-container-high: #2B2930;
     --md-surface-container-highest: #36343B;
+
     --accent-blue: #A8C7FA;
+
     --ui-radius-md: 12px;
     --ui-radius-lg: 16px;
+
     --md-font: "Roboto", "Helvetica Neue", system-ui, sans-serif;
-    --md-elev-1: 0 1px 2px rgba(0,0,0,0.30), 0 1px 3px 1px rgba(0,0,0,0.15);
-    --md-elev-2: 0 1px 2px rgba(0,0,0,0.30), 0 2px 6px 2px rgba(0,0,0,0.15);
-    --type-display: clamp(2.5rem, 6vw, 4.5rem);
-    --type-headline: clamp(1.6rem, 3.4vw, 2.3rem);
-    --type-title: clamp(1.2rem, 2vw, 1.45rem);
-    --type-body: 1rem;
-    --type-body-lg: clamp(1.05rem, 1.6vw, 1.2rem);
-    --type-footnote: 0.875rem;
-    --type-caption: 0.75rem;
+
+    --md-elev-1: 0 1px 2px rgba(0, 0, 0, 0.30),
+                 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+
+    --md-elev-2: 0 1px 2px rgba(0, 0, 0, 0.30),
+                 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+
+    --type-display: clamp(2.6rem, 5.5vw, 4.6rem);
+    --type-headline: clamp(1.8rem, 3.4vw, 2.6rem);
+    --type-title: clamp(1.4rem, 2.3vw, 1.8rem);
+    --type-body: 1.15rem;
+    --type-body-lg: clamp(1.15rem, 1.7vw, 1.45rem);
+    --type-footnote: 1.05rem;
+    --type-caption: 0.95rem;
+
     --space-2: 0.5rem;
     --space-3: 0.75rem;
     --space-4: 1rem;
@@ -41,98 +53,143 @@
     --space-6: 2rem;
     --space-7: 3rem;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body {
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
     background: var(--md-surface);
     color: var(--md-on-surface);
     font-family: var(--md-font);
     font-size: var(--type-body);
-    line-height: 1.5;
+    line-height: 1.55;
 }
+
 body {
     overflow-y: scroll;
-    height: 100vh;
+    min-height: 100vh;
     scroll-snap-type: y proximity;
-    padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+    padding:
+        max(1rem, env(safe-area-inset-top))
+        max(1rem, env(safe-area-inset-right))
+        max(1rem, env(safe-area-inset-bottom))
+        max(1rem, env(safe-area-inset-left));
 }
+
 .slide {
     min-height: 100vh;
-    padding: 8vh 8vw;
+    padding: 6vh 6vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     position: relative;
     scroll-snap-align: start;
 }
-h1, h2, h3, p {
+
+h1,
+h2,
+h3,
+p {
     font-family: var(--md-font);
 }
+
 h1 {
     font-size: var(--type-display);
     font-weight: 500;
-    line-height: 1.15;
-    margin-bottom: var(--space-4);
+    line-height: 1.1;
+    margin-bottom: var(--space-5);
 }
+
 h2 {
     font-size: var(--type-headline);
     font-weight: 500;
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-4);
 }
+
 h3 {
     font-size: var(--type-title);
     font-weight: 500;
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-3);
 }
+
 p {
     font-size: var(--type-body-lg);
     color: var(--md-on-surface-variant);
-    max-width: 62ch;
+    max-width: 68ch;
     margin-bottom: var(--space-4);
     line-height: 1.55;
 }
+
 p strong {
     color: var(--md-on-surface);
     font-weight: 500;
 }
-.accent-purple { color: var(--md-primary); }
-.accent-green { color: var(--md-tertiary); }
-.accent-blue { color: var(--accent-blue); }
+
+.accent-purple {
+    color: var(--md-primary);
+}
+
+.accent-green {
+    color: var(--md-tertiary);
+}
+
+.accent-blue {
+    color: var(--accent-blue);
+}
+
 .content-layout {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
     align-items: center;
-    gap: 5vw;
+    gap: clamp(1.5rem, 4vw, 4rem);
     width: 100%;
     max-width: 1360px;
     margin: 0 auto;
 }
-.text-block { flex: 1; min-width: 0; }
+
+.text-block {
+    min-width: 0;
+}
+
 .image-block {
-    flex: 1;
+    min-width: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: var(--space-5);
-    min-width: 0;
+    gap: clamp(0.75rem, 2vw, 1.5rem);
 }
+
 .phone-mockup {
-    max-width: 100%;
+    width: 100%;
+    max-width: 380px;
     height: auto;
-    max-height: 68vh;
-    border-radius: 32px;
-    box-shadow: var(--md-elev-2), 0 0 0 6px var(--md-surface-container-highest);
+    max-height: 62vh;
+    border-radius: 28px;
+    box-shadow:
+        var(--md-elev-2),
+        0 0 0 6px var(--md-surface-container-highest);
     object-fit: contain;
     display: block;
 }
-.phone-mockup.small { max-height: 46vh; }
+
+.phone-mockup.small {
+    max-width: 300px;
+    max-height: 48vh;
+}
+
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 2.75rem;
-    padding: 0.65rem 1.5rem;
+    min-height: 3rem;
+    padding: 0.7rem 1.8rem;
     border-radius: 999px;
     font-family: var(--md-font);
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 500;
     text-decoration: none;
     color: var(--md-primary);
@@ -140,25 +197,29 @@ p strong {
     border: 1px solid var(--md-outline);
     cursor: pointer;
 }
+
 .btn-primary {
     background: var(--md-primary);
     border-color: var(--md-primary);
     color: var(--md-on-primary);
 }
+
 .unit-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: var(--space-4);
     max-width: 1200px;
-    margin: var(--space-5) auto 0;
+    margin-top: var(--space-5);
     width: 100%;
 }
+
 .unit-card {
     background: var(--md-surface-container);
     border-radius: var(--ui-radius-lg);
     padding: var(--space-5);
     box-shadow: var(--md-elev-1);
 }
+
 .unit-card .label {
     font-size: var(--type-caption);
     text-transform: uppercase;
@@ -167,34 +228,39 @@ p strong {
     font-weight: 500;
     margin-bottom: var(--space-2);
 }
+
 .unit-card .value {
-    font-size: var(--type-headline);
+    font-size: var(--type-title);
     font-weight: 500;
     color: var(--md-primary);
     margin-bottom: var(--space-2);
 }
+
 .unit-card p {
     font-size: var(--type-footnote);
     margin-bottom: 0;
 }
+
 .revenue-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--space-4);
-    max-width: 1300px;
+    max-width: 1360px;
     margin: 0 auto;
     width: 100%;
 }
+
 .revenue-card {
     background: var(--md-surface-container);
     border-radius: var(--ui-radius-lg);
     padding: var(--space-5);
     box-shadow: var(--md-elev-1);
 }
+
 .revenue-card .tag {
     display: inline-flex;
     align-items: center;
-    padding: 0.25rem 0.7rem;
+    padding: 0.3rem 0.8rem;
     border-radius: 999px;
     font-size: var(--type-caption);
     font-weight: 600;
@@ -202,52 +268,68 @@ p strong {
     text-transform: uppercase;
     margin-bottom: var(--space-3);
 }
+
 .revenue-card .tag.primary {
-    background: color-mix(in srgb, var(--md-primary) 18%, transparent);
+    background: color-mix(
+        in srgb,
+        var(--md-primary) 18%,
+        transparent
+    );
     color: var(--md-primary);
 }
+
 .revenue-card .tag.tertiary {
-    background: color-mix(in srgb, var(--md-tertiary) 18%, transparent);
+    background: color-mix(
+        in srgb,
+        var(--md-tertiary) 18%,
+        transparent
+    );
     color: var(--md-tertiary);
 }
-.revenue-card .tag.blue {
-    background: color-mix(in srgb, var(--accent-blue) 18%, transparent);
-    color: var(--accent-blue);
-}
-.revenue-card h3 { margin-bottom: var(--space-2); }
-.revenue-card p {
-    font-size: var(--type-footnote);
+
+.revenue-card h3 {
     margin-bottom: var(--space-2);
 }
+
+.revenue-card p {
+    font-size: var(--type-footnote);
+    margin-bottom: var(--space-3);
+}
+
 .revenue-card .metric {
-    font-size: 1.1rem;
+    font-size: 1.35rem;
     font-weight: 500;
     color: var(--md-on-surface);
 }
+
 .revenue-card .metric-note {
     font-size: var(--type-caption);
     color: var(--md-on-surface-variant);
 }
+
 .results-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: var(--space-5);
-    max-width: 1100px;
+    max-width: 1300px;
     margin: 0 auto;
     width: 100%;
 }
+
 .result-card {
     background: var(--md-surface-container);
     border-radius: var(--ui-radius-lg);
     padding: var(--space-5);
     box-shadow: var(--md-elev-1);
 }
+
 .result-card .stat {
-    font-size: var(--type-headline);
+    font-size: var(--type-title);
     font-weight: 500;
     color: var(--md-primary);
     margin-bottom: var(--space-2);
 }
+
 .result-card .label {
     font-size: var(--type-caption);
     text-transform: uppercase;
@@ -256,27 +338,37 @@ p strong {
     font-weight: 500;
     margin-bottom: var(--space-2);
 }
+
 .result-card .desc {
-    font-size: var(--type-body);
+    font-size: var(--type-footnote);
     color: var(--md-on-surface-variant);
-    line-height: 1.5;
+    line-height: 1.55;
 }
-.result-card.is-tertiary .stat { color: var(--md-tertiary); }
-.result-card.is-blue .stat { color: var(--accent-blue); }
+
+.result-card.is-tertiary .stat {
+    color: var(--md-tertiary);
+}
+
+.result-card.is-blue .stat {
+    color: var(--accent-blue);
+}
+
 .slide-subtitle {
     font-size: var(--type-body-lg);
     color: var(--md-primary);
     text-align: center;
     margin: 0 auto var(--space-6);
 }
+
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--space-5);
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     width: 100%;
 }
+
 .team-card {
     background: var(--md-surface-container);
     border-radius: var(--ui-radius-lg);
@@ -284,9 +376,10 @@ p strong {
     box-shadow: var(--md-elev-1);
     text-align: center;
 }
+
 .team-photo {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     margin: 0 auto var(--space-4);
     border-radius: 50%;
     background: var(--md-surface-container-high);
@@ -298,25 +391,32 @@ p strong {
     font-size: var(--type-footnote);
     overflow: hidden;
 }
+
 .team-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.team-card h3 { margin-bottom: var(--space-2); }
+
+.team-card h3 {
+    margin-bottom: var(--space-2);
+}
+
 .team-card p {
     font-size: var(--type-footnote);
     margin-bottom: 0;
 }
+
 .link-card {
     background: var(--md-surface-container);
     padding: var(--space-5) var(--space-6);
     border-radius: var(--ui-radius-lg);
     width: 100%;
-    max-width: 620px;
+    max-width: 700px;
     box-shadow: var(--md-elev-1);
     text-align: left;
 }
+
 .link-card .label {
     font-size: var(--type-caption);
     text-transform: uppercase;
@@ -325,53 +425,100 @@ p strong {
     margin-bottom: var(--space-2);
     font-weight: 500;
 }
+
 .link-card a {
     color: var(--md-primary);
-    font-size: var(--type-body);
+    font-size: var(--type-body-lg);
     font-weight: 500;
     text-decoration: none;
     word-break: break-all;
 }
+
 .link-card .note {
     font-size: var(--type-footnote);
     color: var(--md-on-surface-variant);
     margin-top: var(--space-2);
     margin-bottom: 0;
 }
-.thank-you { text-align: center; }
-.thank-you h1 { margin-bottom: var(--space-5); }
-@media (max-width: 900px) {
-    .content-layout { flex-direction: column; text-align: center; }
-    .results-grid { grid-template-columns: 1fr; }
+
+.thank-you {
+    text-align: center;
+}
+
+.thank-you h1 {
+    margin-bottom: var(--space-5);
+}
+
+@media (max-width: 1150px) {
+    .content-layout {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .text-block p,
+    .text-block .unit-grid {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .image-block {
+        flex-wrap: wrap;
+    }
+
+    .phone-mockup {
+        max-height: 52vh;
+    }
+}
+
+@media (max-width: 700px) {
+    .slide {
+        padding: 5vh 5vw;
+    }
+
+    .phone-mockup {
+        max-width: 300px;
+    }
+
+    .phone-mockup.small {
+        max-width: 240px;
+    }
 }
 </style>
 </head>
+
 <body>
+
 
 <!-- 1. Обложка -->
 <section class="slide" style="text-align:center;">
-    <div style="max-width: 950px; margin: 0 auto;">
+    <div style="max-width: 980px; margin: 0 auto;">
         <h1>Мой город</h1>
 
-        <p style="font-size: var(--type-body-lg); color: var(--md-on-surface); margin-bottom: var(--space-3);">
+        <p style="color: var(--md-on-surface);">
             Стартап в сфере туризма и спорта, развития городской инфраструктуры,
             улучшения качества жизни и здоровья населения.
         </p>
 
-        <p class="accent-purple" style="margin: 0 auto var(--space-7); max-width: 720px;">
+        <p class="accent-purple" style="max-width: 780px; margin: 0 auto var(--space-6);">
             Связь виртуального с реальным.<br>
             Экосистема, объединяющая жителей и заведения города.
         </p>
 
-        <img src="1.jpg" alt="Лента бизнесов" class="phone-mockup" style="margin: 0 auto; max-height: 48vh;">
+        <img
+            src="1.jpg"
+            alt="Лента бизнесов"
+            class="phone-mockup"
+            style="margin: 0 auto; max-height: 48vh;"
+        >
     </div>
 </section>
+
 
 <!-- 2. Что это -->
 <section class="slide">
     <div class="content-layout">
         <div class="text-block">
-            <h1>Мой город — <br>программное обеспечение.</h1>
+            <h1>Мой город —<br>программное обеспечение.</h1>
 
             <p>
                 Мобильное приложение <strong>Арена</strong> и веб-приложение
@@ -389,16 +536,21 @@ p strong {
         </div>
 
         <div class="image-block">
-            <img src="interface.jpg" alt="Лента событий" class="phone-mockup">
+            <img
+                src="interface.jpg"
+                alt="Лента событий"
+                class="phone-mockup"
+            >
         </div>
     </div>
 </section>
+
 
 <!-- 3. Как это работает -->
 <section class="slide">
     <div class="content-layout">
         <div class="text-block">
-            <h1>От приложения — <br>к реальной встрече.</h1>
+            <h1>От приложения —<br>к реальной встрече.</h1>
 
             <p>
                 Житель видит заведение или событие, находит компанию,
@@ -410,26 +562,38 @@ p strong {
                 приходить снова и снова.
             </p>
 
-            <a href="http://51.250.35.99:8001/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <a
+                href="http://51.250.35.99:8001/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+            >
                 Теннис
             </a>
         </div>
 
         <div class="image-block">
-            <img src="t.png" alt="Детали события" class="phone-mockup">
+            <img
+                src="t.png"
+                alt="Детали события"
+                class="phone-mockup"
+            >
         </div>
     </div>
 </section>
 
+
 <!-- 4. Бизнес-модель -->
 <section class="slide">
-    <div style="max-width: 1200px; margin: 0 auto; width: 100%;">
+    <div style="max-width: 1360px; margin: 0 auto; width: 100%;">
         <h1 style="margin-bottom: var(--space-5);">Бизнес-модель</h1>
 
         <div class="revenue-grid">
             <div class="revenue-card">
                 <span class="tag primary">Теннис</span>
+
                 <h3>Бесплатный турнир</h3>
+
                 <p>
                     Пользователь может создать один бесплатный турнир
                     формата «сингл элиминейшн» в месяц.
@@ -438,17 +602,25 @@ p strong {
 
             <div class="revenue-card">
                 <span class="tag primary">Теннис · Премиум</span>
+
                 <h3>Премиум</h3>
+
                 <p>
-                    Любые 5 форматов турниров без ограничения количества.
+                    Любые 5 форматов турниров
+                    без ограничения количества.
                 </p>
+
                 <div class="metric">21 000 ₽ / год</div>
-                <div class="metric-note">Скидка зависит от активности игрока</div>
+                <div class="metric-note">
+                    Скидка зависит от активности игрока
+                </div>
             </div>
 
             <div class="revenue-card">
                 <span class="tag tertiary">Арена</span>
+
                 <h3>Реклама заведений</h3>
+
                 <p>
                     Заведения размещают рекламу бесплатно.
                 </p>
@@ -456,112 +628,227 @@ p strong {
 
             <div class="revenue-card">
                 <span class="tag tertiary">Арена · Премиум</span>
+
                 <h3>Турниры с призами</h3>
+
                 <p>
                     Заведения анонсируют турниры с денежными призами или мерчем
                     и получают часть взносов участников.
                 </p>
+
                 <div class="metric">5 000 ₽ / год</div>
-                <div class="metric-note">Сейчас тестовый Премиум — 100 ₽</div>
+                <div class="metric-note">
+                    Сейчас тестовый Премиум — 100 ₽
+                </div>
             </div>
         </div>
     </div>
 </section>
+
 
 <!-- 5. Скидка -->
 <section class="slide">
-    <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
-        <h1 style="margin-bottom: var(--space-4);">Скидка на Премиум</h1>
+    <div class="content-layout">
+        <div class="text-block">
+            <h1>Скидка на Премиум<br>в Теннисе</h1>
 
-        <p style="margin-bottom: var(--space-5);">
-            Чем активнее игрок, тем больше его скидка.
-            При регистрации у каждого игрока рейтинг — 1000,
-            поэтому небольшая скидка доступна сразу.
-        </p>
+            <p>
+                Чем активнее игрок, тем больше его скидка.
+                При регистрации у каждого игрока рейтинг — 1000,
+                поэтому небольшая скидка доступна сразу.
+            </p>
 
-        <div class="unit-grid">
-            <div class="unit-card">
-                <div class="label">Что влияет</div>
-                <div class="value">Активность</div>
-                <p>
-                    Рейтинг, количество сыгранных игр, проведённых турниров
-                    и среднее место.
-                </p>
+            <div class="unit-grid">
+                <div class="unit-card">
+                    <div class="label">Что влияет</div>
+                    <div class="value">Активность</div>
+
+                    <p>
+                        Рейтинг, количество сыгранных игр,
+                        проведённых турниров и среднее место.
+                    </p>
+                </div>
+
+                <div class="unit-card">
+                    <div class="label">Премиум</div>
+                    <div class="value">21 000 ₽ / год</div>
+
+                    <p>
+                        Максимальная скидка — 96%.
+                    </p>
+                </div>
+
+                <div class="unit-card">
+                    <div class="label">Зачем игроку</div>
+                    <div class="value">Больше турниров</div>
+
+                    <p>
+                        Доступ к любым 5 форматам
+                        без ограничения количества.
+                    </p>
+                </div>
             </div>
+        </div>
 
-            <div class="unit-card">
-                <div class="label">Премиум</div>
-                <div class="value">21 000 ₽ / год</div>
-                <p>Максимальная скидка — 96%.</p>
-            </div>
+        <div class="image-block">
 
-            <div class="unit-card">
-                <div class="label">Зачем игроку</div>
-                <div class="value">Больше турниров</div>
-                <p>Доступ к любым 5 форматам без ограничения количества.</p>
-            </div>
+
+            <img
+                src="premium-discount-2.png"
+                alt="Скидка на Премиум — экран 2"
+                class="phone-mockup"
+            >
         </div>
     </div>
 </section>
+
 
 <!-- 6. Турниры -->
 <section class="slide">
-    <div style="max-width: 1200px; margin: 0 auto; width: 100%;">
-        <h1 style="margin-bottom: var(--space-4);">Турниры в Теннисе</h1>
+    <div class="content-layout">
+        <div class="text-block">
+            <h1>Турниры<br>в Теннисе</h1>
 
-        <p style="margin-bottom: var(--space-5);">
-            Заведение создаёт турнир, игроки платят взнос,
-            а призовые рассчитываются автоматически.
-        </p>
+            <p>
+                Владелец заведения может создать турнир
+                <strong>бесплатным</strong> — с призом мерчем —
+                или <strong>платным</strong> с любым взносом.
+            </p>
 
-        <div class="unit-grid">
-            <div class="unit-card">
-                <div class="label">Количество призовых мест</div>
-                <div class="value">До 20 участников</div>
-                <p>5 призовых мест.</p>
+            <div class="unit-grid">
+                <div class="unit-card">
+                    <div class="label">Бесплатный турнир</div>
+                    <div class="value">Приз — мерч</div>
+
+                    <p>
+                        Все призовые места получают мерч.
+                    </p>
+                </div>
+
+                <div class="unit-card">
+                    <div class="label">Платный турнир</div>
+                    <div class="value">Любой взнос</div>
+
+                    <p>
+                        1–3 место — деньги,
+                        остальные призовые места — мерч.
+                    </p>
+                </div>
+
+                <div class="unit-card">
+                    <div class="label">Призовые места</div>
+                    <div class="value">5 / 7 / 9</div>
+
+                    <p>
+                        До 20 участников — 5 мест,
+                        до 40 — 7 мест, более 40 — 9 мест.
+                    </p>
+                </div>
             </div>
 
-            <div class="unit-card">
-                <div class="label">Количество призовых мест</div>
-                <div class="value">До 40 участников</div>
-                <p>7 призовых мест.</p>
-            </div>
-
-            <div class="unit-card">
-                <div class="label">Количество призовых мест</div>
-                <div class="value">Более 40 участников</div>
-                <p>9 призовых мест.</p>
-            </div>
+            <p style="margin-top: var(--space-5);">
+                Призовые зависят от рейтинга игрока.
+                Рейтинг рассчитывается автоматически
+                в приложении Теннис.
+            </p>
         </div>
 
-        <p style="margin-top: var(--space-5);">
-            Призовые зависят от рейтинга игрока.
-            Рейтинг рассчитывается автоматически в приложении Теннис.
-        </p>
+        <div class="image-block">
+            <img
+                src="tournaments.png"
+                alt="Турниры в Теннисе"
+                class="phone-mockup"
+            >
+        </div>
     </div>
 </section>
 
-<!-- 7. Что уже есть -->
+
+<!-- 7. Чат турнира -->
 <section class="slide">
-    <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
-        <div style="text-align:center; margin-bottom: var(--space-6);">
+    <div class="content-layout">
+        <div class="text-block">
+            <h1>Чат турнира</h1>
+
+            <p>
+                Участники турнира общаются в общем чате
+                <strong>без VPN</strong>.
+            </p>
+
+            <p>
+                Можно договориться о времени игры, уточнить детали,
+                обсудить турнир и координировать участников.
+            </p>
+
+            <div class="unit-grid">
+                <div class="unit-card">
+                    <div class="label">Для участников</div>
+                    <div class="value">Общение</div>
+
+                    <p>
+                        Быстрая связь между игроками турнира.
+                    </p>
+                </div>
+
+                <div class="unit-card">
+                    <div class="label">Без VPN</div>
+                    <div class="value">Доступен</div>
+
+                    <p>
+                        Чат работает напрямую,
+                        без дополнительных настроек.
+                    </p>
+                </div>
+
+                <div class="unit-card">
+                    <div class="label">Для заведения</div>
+                    <div class="value">Вовлечение</div>
+
+                    <p>
+                        Турнир становится не только игрой,
+                        но и точкой общения участников.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="image-block">
+            <img
+                src="tournament-chat.jpg"
+                alt="Чат турнира"
+                class="phone-mockup"
+            >
+        </div>
+    </div>
+</section>
+
+
+<!-- 8. Что уже есть -->
+<section class="slide">
+    <div style="max-width: 1300px; margin: 0 auto; width: 100%;">
+        <div style="text-align:center; margin-bottom: var(--space-5);">
             <h1 style="margin-bottom: var(--space-3);">Что уже есть</h1>
-            <p class="slide-subtitle">Приложение работает, загрузка в магазины — в процессе</p>
+
+            <p class="slide-subtitle">
+                Приложения работают,
+                загрузка в магазины — в процессе
+            </p>
         </div>
 
         <div class="results-grid">
             <div class="result-card">
                 <div class="stat">Арена</div>
                 <div class="label">Мобильное приложение</div>
+
                 <div class="desc">
-                    Лента заведений, карточки бизнесов, события,
-                    чаты «Кто идёт», профиль и календарь.
+                    Список заведений, карточки бизнесов, чаты «Кто идёт», профиль и календарь.
                 </div>
             </div>
 
             <div class="result-card is-blue">
                 <div class="stat">Теннис</div>
                 <div class="label">Веб-приложение</div>
+
                 <div class="desc">
                     Поиск партнёров, игровые режимы, рейтинг,
                     турниры, статистика и чаты.
@@ -571,35 +858,41 @@ p strong {
             <div class="result-card is-tertiary">
                 <div class="stat">Тестовый Премиум</div>
                 <div class="label">100 ₽</div>
+
                 <div class="desc">
-                    Любой пользователь может протестировать все возможности сервиса.
+                    Любой пользователь может протестировать
+                    все возможности сервиса.
                 </div>
             </div>
 
             <div class="result-card">
                 <div class="stat">Первые продажи</div>
                 <div class="label">Начало</div>
+
                 <div class="desc">
-                    Загрузка приложений в App Store и Google Play — в процессе.
+                    Загрузка приложений в Ru Store, App Store
+                    и Google Play — в процессе.
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 8. Польза для заведений -->
+
+<!-- 9. Польза для заведений -->
 <section class="slide">
     <div class="content-layout">
         <div class="text-block">
-            <h1>Заведению — <br>клиенты и турниры.</h1>
+            <h1>Заведению —<br>клиенты и турниры.</h1>
 
             <p>
-                Заведение бесплатно размещает рекламу и рассказывает о себе жителям города.
+                Заведение бесплатно размещает рекламу
+                и рассказывает о себе.
             </p>
 
             <p>
-                Турниры приводят людей в заведение, а призовые и активность игроков
-                помогают удерживать их.
+                Турниры приводят людей в заведение, а призы
+                и активность игроков помогают удерживать их.
             </p>
 
             <p>
@@ -607,61 +900,95 @@ p strong {
             </p>
         </div>
 
-        <div class="image-block" style="gap: var(--space-5);">
-            <img src="bisnes.jpg" alt="Лента бизнесов" class="phone-mockup small">
-            <img src="bisnescard.jpg" alt="Карточка бизнеса" class="phone-mockup small">
+        <div class="image-block">
+            <img
+                src="bisnes.jpg"
+                alt="Лента бизнесов"
+                class="phone-mockup small"
+            >
+
+            <img
+                src="bisnescard.jpg"
+                alt="Карточка бизнеса"
+                class="phone-mockup small"
+            >
         </div>
     </div>
 </section>
 
-<!-- 9. Теннис -->
+
+<!-- 10. Теннис -->
 <section class="slide">
-    <div style="max-width: 1200px; margin: 0 auto; width: 100%;">
-        <h1 style="margin-bottom: var(--space-4);">Теннис</h1>
+    <div class="content-layout">
+        <div class="text-block">
+            <h1>Теннис</h1>
 
-        <p style="margin-bottom: var(--space-5);">
-            Игровой процесс сбалансирован. Игрок видит свой прогресс,
-            может играть в разных режимах и получать советы по игре.
-        </p>
+            <p>
+                Игровой процесс сбалансирован. Игрок видит свой прогресс,
+                может играть в разных режимах и получать советы по игре.
+            </p>
 
-        <div class="unit-grid">
-            <div class="unit-card">
-                <div class="label">Рейтинг</div>
-                <div class="value">Прогресс</div>
-                <p>Визуализация изменения рейтинга.</p>
+            <div class="unit-grid">
+                <div class="unit-card">
+                    <div class="label">Рейтинг</div>
+                    <div class="value">Прогресс</div>
+
+                    <p>
+                        Визуализация изменения рейтинга.
+                    </p>
+                </div>
+
+                <div class="unit-card">
+                    <div class="label">Режимы</div>
+                    <div class="value">5 режимов</div>
+
+                    <p>
+                        Разные форматы игры.
+                    </p>
+                </div>
+
+                <div class="unit-card">
+                    <div class="label">Профиль</div>
+                    <div class="value">Статистика</div>
+
+                    <p>
+                        Личный профиль с игровой статистикой.
+                    </p>
+                </div>
+
+                <div class="unit-card">
+                    <div class="label">Советы</div>
+                    <div class="value">От игроков</div>
+
+                    <p>
+                        Советы по игре от известных игроков.
+                    </p>
+                </div>
             </div>
 
-            <div class="unit-card">
-                <div class="label">Режимы</div>
-                <div class="value">5 режимов</div>
-                <p>Разные форматы игры.</p>
-            </div>
-
-            <div class="unit-card">
-                <div class="label">Профиль</div>
-                <div class="value">Статистика</div>
-                <p>Личный профиль с игровой статистикой.</p>
-            </div>
-
-            <div class="unit-card">
-                <div class="label">Советы</div>
-                <div class="value">От игроков</div>
-                <p>Советы по игре от известных игроков.</p>
-            </div>
+            <p style="margin-top: var(--space-5);">
+                Предиктивные алгоритмы рассчитывают призовые места
+                по личным встречам, победам в сетах и количеству
+                забитых и пропущенных мячей. Это помогает снизить
+                стресс и недопонимание между игроками.
+            </p>
         </div>
 
-        <p style="margin-top: var(--space-5);">
-            Предиктивные алгоритмы рассчитывают призовые места по личным встречам,
-            победам в сетах и количеству забитых и пропущенных мячей.
-            Это помогает снизить разногласия и недопонимание между игроками.
-        </p>
+        <div class="image-block">
+            <img
+                src="tennis.png"
+                alt="Приложение Теннис"
+                class="phone-mockup"
+            >
+        </div>
     </div>
 </section>
 
-<!-- 10. Команда -->
+
+<!-- 11. Команда -->
 <section class="slide">
-    <div style="max-width: 1000px; margin: 0 auto; width: 100%;">
-        <div style="text-align:center; margin-bottom: var(--space-6);">
+    <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
+        <div style="text-align:center; margin-bottom: var(--space-5);">
             <h1 style="margin-bottom: var(--space-3);">Команда</h1>
         </div>
 
@@ -672,6 +999,7 @@ p strong {
                 </div>
 
                 <h3>Ильяс</h3>
+
                 <p>
                     Основатель.<br>
                     Fullstack-разработчик и DevOps-инженер.
@@ -684,6 +1012,7 @@ p strong {
                 </div>
 
                 <h3>Нэля</h3>
+
                 <p>
                     Бизнес- и системный аналитик.<br>
                     Тестировщица.
@@ -693,9 +1022,10 @@ p strong {
     </div>
 </section>
 
-<!-- 11. Компания -->
+
+<!-- 12. Компания -->
 <section class="slide">
-    <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
+    <div style="max-width: 1300px; margin: 0 auto; width: 100%;">
         <h1 style="margin-bottom: var(--space-4);">Компания</h1>
 
         <p style="margin-bottom: var(--space-5);">
@@ -707,100 +1037,140 @@ p strong {
             <div class="unit-card">
                 <div class="label">Нужно</div>
                 <div class="value">Команда</div>
+
                 <p>
-                    HR-специалист, ведущий турниров, торговый представитель
-                    и специалист техподдержки.
+                    HR-специалист, ведущий турниров,
+                    торговый представитель и специалист техподдержки.
                 </p>
             </div>
 
             <div class="unit-card">
                 <div class="label">Инвестиции</div>
-                <div class="value">4 млн ₽</div>
-                <p>На масштабирование и выплату зарплат.</p>
+                <div class="value">от 2 млн до 4 млн ₽</div>
+
+                <p>
+                    На масштабирование и выплату зарплат.
+                </p>
             </div>
 
             <div class="unit-card">
                 <div class="label">Эффект</div>
                 <div class="value">Рабочие места</div>
-                <p>Создание рабочих мест и налоговые отчисления в бюджет.</p>
+
+                <p>
+                    Создание рабочих мест
+                    и налоговые отчисления в бюджет.
+                </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 12. Выгода инвестору -->
+
+<!-- 13. Выгода инвестору -->
 <section class="slide">
-    <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
-        <h1 style="margin-bottom: var(--space-4);">Выгода для инвестора</h1>
+    <div style="max-width: 1300px; margin: 0 auto; width: 100%;">
+        <h1 style="margin-bottom: var(--space-4);">
+            Выгода для инвестора
+        </h1>
 
         <p style="margin-bottom: var(--space-5);">
-            Инвестиции направляются на масштабирование и развитие проекта.
+            Инвестиции направляются
+            на масштабирование и развитие проекта.
         </p>
 
         <div class="unit-grid">
             <div class="unit-card">
                 <div class="label">Премиум заведения</div>
                 <div class="value">5 000 ₽ / год</div>
-                <p>10 заведений — 50 000 ₽.</p>
+
+                <p>
+                    10 заведений — 50 000 ₽.
+                </p>
             </div>
 
             <div class="unit-card">
                 <div class="label">Турнир</div>
                 <div class="value">10 000 ₽</div>
-                <p>При 40 участниках общий объём взносов — 400 000 ₽.</p>
+
+                <p>
+                    При 40 участниках общий объём взносов — 400 000 ₽.
+                </p>
             </div>
 
             <div class="unit-card">
                 <div class="label">Доход сервиса</div>
                 <div class="value">Комиссия</div>
-                <p>Сервис получает процент с каждого турнира.</p>
+
+                <p>
+                    Сервис получает процент с каждого турнира.
+                </p>
             </div>
         </div>
 
         <p style="margin-top: var(--space-5);">
-            Дополнительно планируется магазин мерча: за 4–9 места игроки получают мерч,
-            остальным — бесплатная дегустация блюд с возможностью купить их на гастромаркете.
+            Дополнительно планируется магазин мерча:
+            за 4–9 места игроки получают мерч, остальным —
+            бесплатная дегустация блюд с возможностью купить их
+            на гастромаркете.
         </p>
     </div>
 </section>
 
-<!-- 13. Спасибо -->
+
+<!-- 14. Спасибо -->
 <section class="slide thank-you">
-    <div style="max-width: 900px; margin: 0 auto; width: 100%;">
+    <div style="max-width: 980px; margin: 0 auto; width: 100%;">
         <h1>Спасибо за внимание.</h1>
 
-
-        <p style="font-size: var(--type-body-lg); color: var(--md-on-surface); margin: var(--space-5) auto; max-width: 640px;">
+        <p style="color: var(--md-on-surface); max-width: 720px; margin: var(--space-4) auto;">
             Готовы обсудить партнёрство, инвестиции и запуск.
         </p>
 
-
-        <div style="display:flex; flex-direction:column; align-items:center; gap: var(--space-5); margin-top: var(--space-6);">
-            <img class="qr"
+        <div
+            style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: var(--space-5);
+                margin-top: var(--space-5);
+            "
+        >
+            <img
+                class="qr"
                 src="https://api.qrserver.com/v1/create-qr-code/?size=900x900&qzone=2&error_correction=M&data=https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F1BjcXJ7uFvQqHXLjiYEtbx0oobc5QOv4j%2Fview%3Fusp%3Dsharing"
                 alt="QR: скачать APK"
-                style="width:min(58vh, 100%); height:min(58vh, 100%); padding: 12px; border-radius: 16px;">
+                style="
+                    width: min(46vh, 100%);
+                    height: min(46vh, 100%);
+                    padding: 12px;
+                    border-radius: 16px;
+                "
+            >
 
+            <div class="link-card" style="max-width: 700px; width: 100%;">
+                <p class="label">
+                    APK для тестирования (Android)
+                </p>
 
-            <div class="link-card" style="max-width: 640px; width: 100%;">
-                <p class="label">APK для тестирования (Android)</p>
-
-
-                <a href="https://drive.google.com/file/d/1BjcXJ7uFvQqHXLjiYEtbx0oobc5QOv4j/view?usp=sharing"
-                   target="_blank"
-                   rel="noopener noreferrer">
+                <a
+                    href="https://drive.google.com/file/d/1BjcXJ7uFvQqHXLjiYEtbx0oobc5QOv4j/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     Скачать APK
                 </a>
 
-
                 <p class="note">
-                    Release-сборка · Android 7.0+<br>
-                    При установке разрешите «Установка из неизвестных источников».
+                    Beta-сборка · Android 7.0+<br>
+                    При установке разрешите
+                    «Установка из неизвестных источников».
                 </p>
             </div>
         </div>
     </div>
 </section>
+
 
 </body>
 </html>
